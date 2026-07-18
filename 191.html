@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Huruf-huruf Pembukaan Surah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:24px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:20px; direction:rtl; }
+
+  /* quote */
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:24px 28px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.15; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.7; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:52px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:16px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:20px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  .subheading{
+    font-family:'Fredoka', sans-serif; font-size:15px; font-weight:600; color:var(--ink);
+    margin:30px 0 12px; display:flex; align-items:center; gap:10px;
+  }
+  .subheading .count-badge{
+    font-family:'Fredoka', sans-serif; font-size:11px; font-weight:700; color:#fff;
+    padding:3px 11px; border-radius:20px;
+  }
+
+  /* huruf cards */
+  .huruf-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:14px; }
+  .huruf-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--accent, var(--teal));
+    border-radius:16px; padding:20px; box-shadow:var(--shadow); text-align:center;
+  }
+  .huruf-card .letters{ font-family:'Amiri', serif; font-size:32px; direction:rtl; color:var(--ink); margin-bottom:10px; }
+  .huruf-card .surah{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
+
+  /* kadar bacaan chips */
+  .kadar-block{ margin-top:16px; }
+  .kadar-label{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:14px; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .kadar-chip-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .kadar-chip{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:12px 16px;
+    display:flex; flex-direction:column; align-items:center; gap:4px; box-shadow:var(--shadow); min-width:70px;
+  }
+  .kadar-chip .letter{ font-family:'Amiri', serif; font-size:24px; color:var(--ink); }
+  .kadar-chip .name{ font-size:10.5px; color:var(--ink-soft); font-family:'Fredoka', sans-serif; font-weight:600; }
+  .mnemonic-tag{
+    display:inline-block; margin-top:12px; font-family:'Amiri', serif; font-size:18px; direction:rtl;
+    background:var(--paper-alt); padding:8px 16px; border-radius:12px; color:var(--ink);
+  }
+
+  .exception-note{
+    margin-top:14px; background:var(--amber-bg); border-radius:12px; padding:14px 18px;
+    font-size:13.5px; color:#7A5309; line-height:1.7;
+  }
+
+  .note-plain{ margin-top:16px; font-size:13.5px; color:var(--ink-soft); line-height:1.75; font-style:italic; }
+
+  /* bacaan list */
+  .bacaan-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; margin-top:18px; }
+  .bacaan-item{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 18px;
+    display:flex; align-items:center; gap:14px; box-shadow:var(--shadow);
+  }
+  .bacaan-num{
+    width:24px; height:24px; border-radius:8px; background:var(--teal-bg); color:#0B6459;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:11px; flex-shrink:0;
+  }
+  .bacaan-huruf{ font-family:'Amiri', serif; font-size:22px; direction:rtl; color:var(--ink); flex-shrink:0; }
+  .bacaan-arrow{ color:var(--ink-soft); font-size:14px; flex-shrink:0; }
+  .bacaan-lafaz{ font-family:'Amiri', serif; font-size:20px; direction:rtl; color:var(--teal); }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 191 – 195</span>
+      <h2>Huruf-huruf Pembukaan Surah</h2>
+      <p>Dua puluh sembilan surah dalam al-Quran dimulakan dengan Huruf Rahsia yang maknanya hanya diketahui Allah — dikenali sebagai Huruf-huruf Pembukaan Surah. Bab ini merangkumi bilangannya, cara ia berhimpun, kadar bacaannya, serta lafaz sebutan setiap satu.</p>
+      <div class="hero-arabic">صِلْهُ سُحَيْرًا مِنْ قَطَعَكَ</div>
+    </div>
+
+    <!-- Pengenalan -->
+    <div class="intro-card">
+      <p>Di dalam al-Quran terdapat <b>29 surah</b> yang dimulakan dengan Huruf Rahsia yang tidak diketahui maknanya kecuali Allah. Huruf-huruf tersebut dikenali sebagai <b>Huruf-huruf Pembukaan Surah</b>.</p>
+      <p>Huruf-huruf Pembukaan Surah ada <b>empat belas</b>, iaitu Alif, Ha', Ra', Sin, Shad, To', 'Ain, Qaf, Kaf, Lam, Mim, Nun, Ha' dan Ya' — yang terhimpun dalam rangkaikata <span class="term-arabic">طَرُقَ سَمْعَكَ ٱلنَّصِيحَةَ</span> atau <span class="term-arabic">صِلْهُ سُحَيْرًا مِنْ قَطَعَكَ</span>.</p>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَيَجْمَعُ ٱلْفَوَاتِـحَ ٱلْأَرْبَـعْ عَشَـرْ ۞ صِلْهُ سُحَيْرًا مَنْ قَطَعَكَ ذَا ٱشْتَهَرْ</div>
+      <div class="translation">"Dan ia menghimpun Huruf-huruf Pembukaan Surah yang empat belas pada ungkapan صِلْهُ سُحَيْرًا مِنْ قَطَعَكَ — inilah yang masyhur"</div>
+      <div class="attribution">— Kata Syeikh Sulaiman al-Jamzuri</div>
+    </div>
+
+    <!-- Lima Keadaan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">①</div>
+      <div>
+        <h3>Lima Keadaan Mengikut Bilangan Huruf</h3>
+        <div class="sub">Huruf-huruf Pembukaan Surah didatangkan dalam lima keadaan.</div>
+      </div>
+    </div>
+
+    <div id="keadaan-groups"></div>
+
+    <!-- Pembahagian Kadar Bacaan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">②</div>
+      <div>
+        <h3>Pembahagian Mengikut Kadar Bacaan</h3>
+        <div class="sub">Huruf-huruf Pembukaan Surah dibahagikan kepada tiga bahagian.</div>
+      </div>
+    </div>
+
+    <div class="kadar-block">
+      <div class="kadar-label">1️⃣ Lapan huruf — dibaca dengan kadar <b>Mad Lazim (6 harakat)</b></div>
+      <div class="kadar-chip-row" id="mad-lazim-chips"></div>
+      <div class="mnemonic-tag">كَمْ عَسَلْ نَقَصَ / نَقَصَ عَسَلَكُمْ</div>
+      <div class="exception-note">⚠ 'Ain harus dibaca <b>6 atau 4 harakat</b>, kerana pertengahan (ejaan) hurufnya adalah Huruf Lin (<span style="font-family:'Amiri',serif;">عَيْن</span>) — dan bacaan 6 harakat adalah lebih afdhal.</div>
+    </div>
+
+    <div class="kadar-block">
+      <div class="kadar-label">2️⃣ Lima huruf — dibaca dengan kadar <b>Mad Asli (2 harakat)</b></div>
+      <div class="kadar-chip-row" id="mad-asli-chips"></div>
+      <div class="mnemonic-tag">حَيٌّ طَهُرَ</div>
+    </div>
+
+    <div class="kadar-block">
+      <div class="kadar-label">3️⃣ Satu huruf — <b>tidak dibaca dengan Mad</b></div>
+      <div class="kadar-chip-row" id="no-mad-chips"></div>
+    </div>
+
+    <div class="note-plain">Setengah ulama membahagikannya kepada empat bahagian, dengan menjadikan 'Ain satu bahagian yang berasingan. Tidak menjadi kesalahan sama ada tiga atau empat bahagian, kerana maksud yang hendak disampaikan adalah sama.</div>
+
+    <div class="quote-card">
+      <div class="arabic">وَٱللَّازِمُ ٱلْحَرْفِىُّ أَوَّلَ ٱلسُّوَرْ ۞ وُجُودُهُ وَفِى ثَمَانٍ انْحَصَرْ
+يَجْمَعُهَا حُرُوفُ كَمْ عَسَلْ نَقَصْ ۞ وَعَيْنٌ ذُو وَجْهَيْنِ وَٱلطُّولُ أَخَصّ
+فَمُدَّهُ مَدًّا طَبِيعِيًّا أَلِـفْ ۞ وَمَا سِوَى ٱلْحَرْفِ ٱلثُّلَاثِى لَا أَلِفْ
+وَذَاكَ أَيْضًا فِى لَفْظِ حَىٍّ طَاهِرٍ ۞ فِى فَوَاتِحِ ٱلسُّوَرْ قَدِ انْحَصَرْ</div>
+      <div class="translation">"Dan Mad Lazim Harfi itu wujudnya di awal surah-surah, iaitu pada lapan huruf tertentu yang berhimpun huruf-hurufnya pada rangkaikata كَمْ عَسَلْ نَقَصْ. Dan 'Ain mempunyai dua wajah, dan bacaan panjang itu lebih baik. Dan selain daripada Huruf Thulathi (huruf yang ejaannya terdiri daripada tiga huruf) kecuali Alif, maka ditentukan panjangnya itu dengan kadar Mad Asli — dan dialah juga yang terdapat di pembukaan surah-surah tertentu yang terhimpun pada rangkaikata حَيٌّ طَاهِرٍ"</div>
+      <div class="attribution">— Kata Syeikh Sulaiman al-Jamzuri</div>
+    </div>
+
+    <div class="intro-card">
+      <p>Adapun Mim pada <span class="term-arabic">الٓمٓ</span> dalam Surah Ali 'Imran harus dibaca dua wajah ketika washal, iaitu <b>6 harakat</b> serta dibariskan Mim dengan baris fathah (lebih afdhal), ataupun <b>2 harakat</b> serta dibariskan Mim dengan baris fathah.</p>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَمُـدَّ لَـهُ عِـنْدَ ٱلْفَوَاتِحِ مُشْبِعَا ۞ وَإِنْ طَرَأَ ٱلتَّحْرِيكُ فَٱقْصُرْ وَطَوِّلَا
+لِلْكُلِّ وَذَا فِى ءَالِ عِمْرَانَ قَدْ أَتَى</div>
+      <div class="translation">"Dan dipanjangkan baginya pada Huruf-huruf Pembukaan Surah dengan kadar 6 harakat. Dan sekiranya (berlaku) baris yang mendatang maka 2 dan 6 harakat bagi mereka itu (Imam-imam al-Qurra') — dan inilah yang datang dalam Surah Ali 'Imran"</div>
+      <div class="attribution">— Kata Shahibul Kanz</div>
+    </div>
+
+    <!-- Cara Bacaan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">③</div>
+      <div>
+        <h3>Cara Melafazkan Huruf-huruf Pembukaan Surah</h3>
+        <div class="sub">Dibaca dengan melafazkan nama huruf tersebut, mengikut kadar yang telah dinyatakan.</div>
+      </div>
+    </div>
+
+    <div class="bacaan-grid" id="bacaan-grid"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Huruf-huruf Pembukaan Surah
+   ============================================================ */
+
+const keadaanGroups = [
+  { count: 1, jenis: 3, color: "var(--coral)",
+    items: [
+      { arabic: "صٓ", surah: "Pembukaan Surah Shad" },
+      { arabic: "قٓ", surah: "Pembukaan Surah Qaf" },
+      { arabic: "نٓ", surah: "Pembukaan Surah al-Qalam" }
+    ]
+  },
+  { count: 2, jenis: 4, color: "var(--amber)",
+    items: [
+      { arabic: "طٰه", surah: "Pembukaan Surah Toha" },
+      { arabic: "طسٓ", surah: "Pembukaan Surah al-Naml" },
+      { arabic: "يسٓ", surah: "Pembukaan Surah Yasin" },
+      { arabic: "حمٓ", surah: "Pembukaan Surah Ghafir, al-Fushshilat, al-Zukhruf, al-Dukhan, al-Jathiah dan al-Ahqaf (6 surah)" }
+    ]
+  },
+  { count: 3, jenis: 3, color: "var(--teal)",
+    items: [
+      { arabic: "الٓمٓ", surah: "Pembukaan Surah al-Baqarah, Ali 'Imran, al-'Ankabut, al-Rum, Luqman dan al-Sajdah (6 surah)" },
+      { arabic: "الٓرٰ", surah: "Pembukaan Surah Yunus, Hud, Yusuf, Ibrahim dan al-Hijr (5 surah)" },
+      { arabic: "طسٓمٓ", surah: "Pembukaan Surah al-Syu'ara' dan al-Qashash (2 surah)" }
+    ]
+  },
+  { count: 4, jenis: 2, color: "var(--emerald)",
+    items: [
+      { arabic: "الٓمٓصٓ", surah: "Pembukaan Surah al-A'raf" },
+      { arabic: "الٓمٓر", surah: "Pembukaan Surah al-Ra'd" }
+    ]
+  },
+  { count: 5, jenis: 2, color: "var(--violet)",
+    items: [
+      { arabic: "كهيعٓصٓ", surah: "Pembukaan Surah Maryam" },
+      { arabic: "حمٓ ﴿١﴾ عٓسٓقٓ", surah: "Pembukaan Surah al-Syura" }
+    ]
+  }
+];
+
+const madLazimHuruf = ["سِين", "صَاد", "عَيْن", "قَاف", "كَاف", "لَام", "مِيم", "نُون"];
+const madAsliHuruf = ["هَا", "رَا", "طَا", "حَا", "يَا"];
+const noMadHuruf = ["أَلِف"];
+
+const bacaanList = [
+  { huruf: "صٓ", lafaz: "صَادْ" },
+  { huruf: "قٓ", lafaz: "قَافْ" },
+  { huruf: "نٓ", lafaz: "نُونْ" },
+  { huruf: "طٰه", lafaz: "طَاهَا" },
+  { huruf: "طسٓ", lafaz: "طَاسِينْ" },
+  { huruf: "يسٓ", lafaz: "يَاسِينْ" },
+  { huruf: "حمٓ", lafaz: "حَامِيمْ" },
+  { huruf: "الٓمٓ", lafaz: "أَلِفْ لَامْ مِيمّ" },
+  { huruf: "الٓرٰ", lafaz: "أَلِفْ لَامْ رَا" },
+  { huruf: "طسٓمٓ", lafaz: "طَاسِينْ مِيمّ" },
+  { huruf: "الٓمٓصٓ", lafaz: "أَلِفْ لَامْ مِيمّ صَادّ" },
+  { huruf: "الٓمٓر", lafaz: "أَلِفْ لَامْ مِيمّ رَا" },
+  { huruf: "كهيعٓصٓ", lafaz: "كَافْ هَايَا عَيْن صَادّ" },
+  { huruf: "حمٓ ﴿١﴾ عٓسٓقٓ", lafaz: "حَامِيمّ (١) عَيْن سِين قَافْ" }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('keadaan-groups').innerHTML = keadaanGroups.map(g => `
+  <div class="subheading">
+    <span class="count-badge" style="background:${g.color}">${g.count} HURUF</span>
+    <span>${g.jenis} jenis</span>
+  </div>
+  <div class="huruf-grid">
+    ${g.items.map(it => `
+      <div class="huruf-card" style="--accent:${g.color}">
+        <div class="letters">${it.arabic}</div>
+        <div class="surah">${it.surah}</div>
+      </div>
+    `).join('')}
+  </div>
+`).join('');
+
+document.getElementById('mad-lazim-chips').innerHTML = madLazimHuruf.map(h => `
+  <div class="kadar-chip"><span class="letter">${h}</span><span class="name">6 harakat</span></div>
+`).join('');
+
+document.getElementById('mad-asli-chips').innerHTML = madAsliHuruf.map(h => `
+  <div class="kadar-chip"><span class="letter">${h}</span><span class="name">2 harakat</span></div>
+`).join('');
+
+document.getElementById('no-mad-chips').innerHTML = noMadHuruf.map(h => `
+  <div class="kadar-chip"><span class="letter">${h}</span><span class="name">Tiada Mad</span></div>
+`).join('');
+
+document.getElementById('bacaan-grid').innerHTML = bacaanList.map((b, i) => `
+  <div class="bacaan-item">
+    <span class="bacaan-num">${i + 1}</span>
+    <span class="bacaan-huruf">${b.huruf}</span>
+    <span class="bacaan-arrow">→</span>
+    <span class="bacaan-lafaz">${b.lafaz}</span>
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>

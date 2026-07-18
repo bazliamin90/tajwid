@@ -17,6 +17,7 @@ const NAV_PAGES = [
   { href: "156.html",   title: "Idgham Mutamathilain, Mutaqaribain & Mutajanisain", pages: "ms. 156–163" },
   { href: "182.html", title: "Martabat Mad Far'ie", pages: "ms. 182–187" },
   { href: "index.html", title: "Qashr pada Mad Jaiz Munfashil", pages: "ms. 188–190" },
+  { href: "191.html", title: "Huruf-huruf Pembukaan Surah", pages: "ms. 191–195" },
 ];
 
 (function(){
