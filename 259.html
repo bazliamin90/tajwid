@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Kesimpulan Wajah-Wajah Waqaf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(22px, 3vw, 31px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 26px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+
+  /* category banner */
+  .cat-banner{
+    margin-top:48px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .cat-banner .num{
+    width:42px; height:42px; border-radius:13px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:15px; color:#fff;
+  }
+  .cat-banner h3{ font-family:'Fredoka', sans-serif; font-size:17.5px; margin:0; line-height:1.3; }
+
+  /* keadaan cards */
+  .keadaan-grid{ display:flex; flex-direction:column; gap:14px; margin-top:16px; }
+  .keadaan-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px 22px; box-shadow:var(--shadow);
+  }
+  .keadaan-top{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:12px; }
+  .baris-tag{
+    font-family:'Fredoka', sans-serif; font-size:13px; font-weight:700; padding:5px 14px; border-radius:20px;
+  }
+  .baris-tag.fathah{ background:var(--coral-bg); color:#B8402F; }
+  .baris-tag.kasrah{ background:var(--amber-bg); color:#A5701A; }
+  .baris-tag.dhammah{ background:var(--emerald-bg); color:#1B7A4E; }
+  .wajah-count{ font-size:12px; color:var(--ink-soft); font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  sup.supref{
+    font-family:'Fredoka', sans-serif; font-size:9px; font-weight:700; color:#fff;
+    background:var(--coral); border-radius:50%; padding:1px 4px; margin-left:1px; vertical-align:super;
+  }
+
+  .wajah-chips{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px; }
+  .wajah-chip{
+    font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:600; padding:5px 11px; border-radius:20px;
+    background:var(--teal-bg); color:#0B6459;
+  }
+  .wajah-chip.raum{ background:var(--amber-bg); color:#A5701A; }
+  .wajah-chip.isymam{ background:var(--violet-bg); color:#6236C9; }
+
+  .example-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .example-item{
+    background:var(--paper-alt); border-radius:10px; padding:9px 14px;
+    display:flex; align-items:center; gap:10px; flex:1 1 auto; min-width:180px;
+  }
+  .example-item .arabic{ font-family:'Amiri', serif; font-size:18px; direction:rtl; color:var(--ink); }
+  .example-item .ref{ font-size:10.5px; color:var(--teal); font-weight:700; font-family:'Fredoka', sans-serif; white-space:nowrap; margin-left:auto; }
+
+  .footnote-card{
+    margin-top:12px; background:var(--paper-alt); border:1px dashed var(--line);
+    border-radius:12px; padding:12px 16px; font-size:12px; color:var(--ink-soft); line-height:1.7;
+  }
+  .footnote-card .fn-head{ display:flex; align-items:center; gap:7px; margin-bottom:6px; }
+  .footnote-card .fn-num{
+    display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px;
+    border-radius:50%; background:var(--coral); color:#fff; font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:10px; flex-shrink:0;
+  }
+  .footnote-card .fn-example{ background:#fff; border-radius:9px; padding:9px 12px; margin-top:8px; display:inline-flex; align-items:center; gap:10px; }
+  .footnote-card .fn-example .arabic{ font-family:'Amiri', serif; font-size:16px; direction:rtl; color:var(--ink); }
+  .footnote-card .fn-example .ref{ font-size:10.5px; color:var(--teal); font-weight:700; font-family:'Fredoka', sans-serif; }
+  .footnote-card .fn-quote{ margin-top:8px; background:#123B35; color:#EFF7F3; border-radius:10px; padding:12px 14px; }
+  .footnote-card .fn-quote .arabic{ font-family:'Amiri', serif; font-size:16px; direction:rtl; text-align:center; line-height:1.9; color:#FFE9C7; }
+  .footnote-card .fn-quote .translation{ font-size:11.5px; margin-top:8px; font-style:italic; line-height:1.6; color:#DFF3EE; }
+  .footnote-card .fn-quote .attribution{ margin-top:6px; font-size:10.5px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:22px 26px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:18px; direction:rtl; line-height:2.15; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.75; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 259 – 265</span>
+      <h2>Kesimpulan Wajah-Wajah Waqaf</h2>
+      <p>Rumusan bilangan wajah (cara) yang harus digunakan ketika waqaf, mengikut jenis Mad atau Sukun 'Aaridh yang terlibat serta baris huruf terakhirnya — Fathah, Kasrah, atau Dhammah.</p>
+    </div>
+
+    <div class="intro-card">
+      Setiap kategori Mad di bawah mempunyai bilangan <b>wajah waqaf</b> yang berbeza, bergantung kepada baris huruf terakhirnya. Wajah-wajah ini merangkumi gabungan bilangan harakat (2, 4, 5 atau 6) bersama pilihan <b>Raum</b> atau <b>Isymam</b>.
+    </div>
+
+    <div id="categories"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Kesimpulan Wajah-Wajah Waqaf
+   ============================================================ */
+
+const categories = [
+  {
+    title: "Mad 'Aaridh Lissukun — huruf akhir bukan Hamzah, Ta' Marbutah atau Ha' Dhamir",
+    color: "var(--teal)",
+    keadaan: [
+      { baris: "fathah", label: "Fathah", wajah: ["2 harakat", "4 harakat", "6 harakat"],
+        examples: [
+          { arabic: "وَعِيسَىٰ وَإِلْيَاسَ", ref: "al-An'am · 85" },
+          { arabic: "عَمَّ يَتَسَآءَلُونَ", ref: "al-Naba' · 1" },
+          { arabic: "وَطُورِ سِينِينَ", ref: "al-Tin · 1" }
+        ]
+      },
+      { baris: "kasrah", label: "Kasrah", supRef: [1,2], wajah: ["2 harakat", "4 harakat", "6 harakat", "2 harakat + Raum"],
+        examples: [
+          { arabic: "جَنَّتَانِ", ref: "al-Rahman · 62" },
+          { arabic: "ٱلزَّقُّومِ", ref: "al-Tur · 4" },
+          { arabic: "ٱلرَّحِيمِ", ref: "al-Fatihah · 3" }
+        ],
+        footnotes: [
+          { num: 1, text: "Termasuklah waqaf pada huruf yang berTanwin Majrur (baris dua di bawah).",
+            example: { arabic: "غَوَاشٍ", ref: "Surah al-A'raf · ayat 41" } },
+          { num: 2, text: "Sesungguhnya bacaan 2 harakat sahaja harus dibaca secara Raum ketika waqaf, kerana bacaan secara Raum hanya berlaku seperti bacaan ketika washal.",
+            quote: { arabic: "....................  وَرَوْمُهُمْ كَمَا وَصَلُوا۟ ....................", translation: "\"Dan berlaku raum bagi mereka (Imam-imam al-Qurra') sepertimana bacaan ketika washal\"", attribution: "Kata Imam al-Syatibi" } }
+        ]
+      },
+      { baris: "dhammah", label: "Dhammah", supRef: [1], wajah: ["2 harakat", "4 harakat", "6 harakat", "2 harakat + Raum", "2 harakat + Isymam", "4 harakat + Isymam", "6 harakat + Isymam"],
+        examples: [
+          { arabic: "ٱلْقَهَّارُ", ref: "al-Zumar · 4" },
+          { arabic: "ٱلْغَرُورُ", ref: "al-Hadid · 14" },
+          { arabic: "نَسْتَعِينُ", ref: "al-Fatihah · 5" }
+        ],
+        footnotes: [
+          { num: 1, text: "Termasuklah waqaf pada huruf yang berTanwin Marfu' (baris dua di hadapan).",
+            example: { arabic: "وَكُلًّ", ref: "Surah al-Anfal · ayat 54" } }
+        ]
+      }
+    ],
+    quote: {
+      arabic: "فَى ٱلْعَارِضِ ٱلْمَعْدُودِ سَبْعَةً أَتَـتْ ۞ مَدٌّ تَوَسُّطٌ وَقَصْرٌ سَكَّنَا\nوَأَشْمِمْ وَزِدْ رَوْمًا بِقَصْرٍ أُعْلِنَا ۞ فِى ٱلنَّصْبِ إِسْكَانٌ كَمَا تَقَدَّمَا\nوَأَرْبَعٌ فِى ٱلْجَرِّ لَا تُشْمِمْ سَمَا",
+      translation: "\"Telah tetap pada Mad 'Aaridh Lissukun tujuh wajah jika (huruf akhirnya) berbaris dhammah seperti نَسْتَعِينُ — iaitu mad (6 harakat), tawassut (4 harakat) dan qashr (2 harakat) secara sukun (mahdhi) dan isymam, serta ditambah dengan raum ketika qashr (2 harakat). Dan empat wajah ketika (huruf akhirnya) berbaris kasrah — jangan kamu isymam (padanya) kerana tinggi (keadaannya). Pada baris fathah secara sukun (mahdhi) sahaja sebagaimana terdahulu (iaitu 2, 4 dan 6 harakat dengan Sukun Mahdhi)\"",
+      attribution: "— Kata Syeikh Muhammad al-Hammami"
+    }
+  },
+  {
+    title: "Mad 'Aaridh Lissukun — huruf akhir adalah Hamzah",
+    color: "var(--amber)",
+    keadaan: [
+      { baris: "fathah", label: "Fathah", wajah: ["4 harakat", "5 harakat", "6 harakat"],
+        examples: [
+          { arabic: "إِلَّا بِمَا شَآءَ", ref: "al-Baqarah · 255" },
+          { arabic: "وَيَكْشِفُ ٱلسُّوٓءَ", ref: "al-Naml · 62" },
+          { arabic: "وَجَآءَ", ref: "al-Zumar · 69" }
+        ]
+      },
+      { baris: "kasrah", label: "Kasrah", wajah: ["4 harakat", "5 harakat", "6 harakat", "4 harakat + Raum", "5 harakat + Raum"],
+        examples: [
+          { arabic: "ٱلسَّمَآءِ", ref: "Ibrahim · 24" },
+          { arabic: "عَنِ ٱلسُّوٓءِ", ref: "al-A'raf · 165", supRef: 1 }
+        ],
+        footnotes: [
+          { num: 1, text: "Adapun Mad 'Aaridh Lissukun yang berakhir dengan Hamzah berbaris kasrah dan sebelumnya Ya' Mad, tidak terdapat dalam al-Quran." }
+        ]
+      },
+      { baris: "dhammah", label: "Dhammah", wajah: ["4 harakat", "5 harakat", "6 harakat", "4 harakat + Raum", "5 harakat + Raum", "4 harakat + Isymam", "5 harakat + Isymam", "6 harakat + Isymam"],
+        examples: [
+          { arabic: "ٱلسُّفَهَآءُ", ref: "al-Baqarah · 13" },
+          { arabic: "ٱلسُّوٓءُ", ref: "al-Zumar · 61" },
+          { arabic: "وَلَا ٱلْمُسِٓيءُ", ref: "Ghafir · 58" }
+        ]
+      }
+    ],
+    quote: {
+      arabic: "وَقَـفْ عَلَـى مُتَّصِلٍ مُتَطَرِّفَـا ۞ إِنْ كَانَ مَنصُوبًا بِسِتٍّ وَكَفَـى\nوَأَرْبَـعٍ ثُـمَّ بِخَمْسٍ فَـاقْضِ ۞ وَكُلُّهَا مَعَ ٱلسُّكُونِ ٱلْمَخْضِ\nكَجَـاءَ سَـاءَ شَـاءَ مَعَ أَضَـاءَ ۞ أَفَآءَ وَٱلسَّمَـاءَ لَا بِنَـاءَ\nوَٱلـرَّوْمَ زِدْ بِأَرْبَـعٍ وَخَمْـسٍ ۞ وَمِثْلُهُ ٱلْمَجْرُورُ دُونَ لَـيْسَ\nنَحْوُ ٱلسُّـرَّاءِ وَٱلضَّـرَّاءِ ۞ مِثَالُهُ لَفْظُ مِنَ ٱلسَّمَاءِ\nإِشْمَامُ ٱلْكُلِّ أَرَاهُ قَدْ سَـهُلْ ۞ وَمِثْلُهُ ٱلْمَرْفُوعُ لَكِنْ زِدْ لَهُ الْ\nفَمَا بَكَتْ عَلَيْهِمُ ٱلسَّمَاءُ ۞ مِثَالُهُ يَشَاءُ أُو۟لِيَاءُ",
+      translation: "\"Dan waqaf pada Mad Wajib Muttashil di hujung kalimah — jika (huruf akhirnya) berbaris fathah mencukupi dengan 6 harakat dan 4 harakat kemudian 5 harakat, maka tunaikan kesemuanya secara Sukun Mahdhi seperti أَفَاءَ، جَاءَ، سَاءَ، شَاءَ، أَضَاءَ، dan ٱلسَّمَاءَ — tidak pada بِنَاءَ. Dan seumpamanya ketika (huruf akhirnya) berbaris kasrah tanpa dikurangkan, dan ditambah pula dengan raum pada 4 dan 5 harakat — contoh-contohnya seperti lafaz فِى ٱلسُّرَّاءِ وَٱلضَّرَّاءِ dan مِنَ ٱلسَّمَاءِ. Dan seumpamanya ketika (huruf akhirnya) berbaris dhammah, tetapi ditambah pada setiap keadaannya (iaitu 4, 5 dan 6 harakat) dengan isymam — aku lihat padanya satu kemudahan, contoh-contohnya أُو۟لِيَاءُ، يَشَاءُ serta فَمَا بَكَتْ عَلَيْهِمُ ٱلسَّمَاءُ — jadi padanya (berbaris dhammah) lapan wajah, dan lima wajah pada yang berbaris kasrah\"",
+      attribution: "— Kata Syeikh Muhammad al-Siba'ie"
+    }
+  },
+  {
+    title: "Mad 'Aaridh Lissukun — huruf akhir adalah Ta' Marbutah",
+    color: "var(--rose)",
+    keadaan: [
+      { baris: "semua", label: "Fathah / Kasrah / Dhammah", wajah: ["2 harakat", "4 harakat", "6 harakat"],
+        note: "Ta' Marbutah ditukarkan menjadi Ha' Sakinah, sama ada asalnya berbaris fathah, kasrah atau dhammah.",
+        examples: [
+          { arabic: "ٱلصَّلَوٰةَ", ref: "al-Nisa' · 77" },
+          { arabic: "ٱلصَّلَوٰةَ", ref: "al-Maidah · 91" },
+          { arabic: "ٱلصَّلَوٰةُ", ref: "al-Jumu'ah · 10" }
+        ]
+      }
+    ],
+    quote: {
+      arabic: "وَهَـاءُ تَـأْنِيثٍ تَحَرُّكٍ وَمِيمِ ٱلْجَمْعِ كِلَاهُمَا امْتَـنَـعْ",
+      translation: "\"Dan pada Ha' (Ta') Ta'nith dan Mim al-Jam' serta baris yang mendatang, ditegah kedua-duanya (isymam dan raum)\"",
+      attribution: "— Kata Imam Ibnu al-Jazari"
+    }
+  },
+  {
+    title: "Mad Lin — huruf akhir bukan Ha' Dhamir",
+    color: "var(--emerald)",
+    keadaan: [
+      { baris: "fathah", label: "Fathah", wajah: ["2 harakat", "4 harakat", "6 harakat"],
+        examples: [
+          { arabic: "ءَالَ فِرْعَوْنَ", ref: "al-Anfal · 54" },
+          { arabic: "نُوحِيهِ إِلَيْكَ", ref: "Ali 'Imran · 44" }
+        ]
+      },
+      { baris: "kasrah", label: "Kasrah", wajah: ["2 harakat", "4 harakat", "6 harakat", "2 harakat + Raum"],
+        examples: [
+          { arabic: "ٱلْمَوْتِ", ref: "al-Anbia' · 35" },
+          { arabic: "ٱلْبَيْتِ", ref: "Quraisy · 3" }
+        ]
+      },
+      { baris: "dhammah", label: "Dhammah", wajah: ["2 harakat", "4 harakat", "6 harakat", "2 harakat + Isymam", "4 harakat + Isymam", "6 harakat + Isymam", "2 harakat + Raum"],
+        examples: [
+          { arabic: "ٱلْمَوْتُ", ref: "al-Nisa' · 18" },
+          { arabic: "ٱلْغَيْبُ", ref: "al-Qalam · 47" }
+        ]
+      }
+    ]
+  },
+  {
+    title: "Mad Lazim Kalimi Muthaqqal",
+    color: "var(--violet)",
+    keadaan: [
+      { baris: "fathah", label: "Fathah", wajah: ["6 harakat"],
+        examples: [ { arabic: "صَوَآفَّ", ref: "al-Hajj · 36" } ]
+      },
+      { baris: "kasrah", label: "Kasrah", wajah: ["6 harakat", "6 harakat + Raum"],
+        examples: [ { arabic: "غَيْرَ مُضَآرٍّ", ref: "al-Nisa' · 12" } ]
+      },
+      { baris: "dhammah", label: "Dhammah", wajah: ["6 harakat", "6 harakat + Isymam", "6 harakat + Raum"],
+        examples: [ { arabic: "وَلَا جَآنٌّ", ref: "al-Rahman · 74" } ]
+      }
+    ],
+    quote: {
+      arabic: "سَكِّنْهُ إِنْ تَقِـفْ وَأَشْمِمْ وَرُمْـهُ ۞ مَعَ جَـرٍّ بِمَـدٍّ مُشْبِعَا",
+      translation: "\"Sukunkanlah akannya jika kamu waqaf. Dan isymamkan serta raum ketika berbaris dhammah, juga raum ketika berbaris kasrah — kesemuanya dengan dipanjangkan kadar 6 harakat\"",
+      attribution: "— Kata Syeikh Ibrahim al-Samnudi"
+    }
+  },
+  {
+    title: "Sukun 'Aaridh — sama ada huruf sebelum akhirnya berbaris atau sukun",
+    color: "var(--blue)",
+    keadaan: [
+      { baris: "fathah", label: "Fathah", wajah: ["Sukun Mahdhi"],
+        examples: [
+          { arabic: "إِذَا أَنْعَمْتَ", ref: "al-An'am · 141" },
+          { arabic: "ٱلْعُسْرَ", ref: "al-Baqarah · 185" }
+        ]
+      },
+      { baris: "kasrah", label: "Kasrah", wajah: ["Sukun Mahdhi", "Raum"],
+        examples: [
+          { arabic: "رَبِّك", ref: "al-Dzariat · 30" },
+          { arabic: "ٱلْفَجْر", ref: "al-Qadr · 5" }
+        ]
+      },
+      { baris: "dhammah", label: "Dhammah", wajah: ["Sukun Mahdhi", "Raum", "Isymam"],
+        examples: [
+          { arabic: "ٱلصَّمَدُ", ref: "al-Ikhlash · 2" },
+          { arabic: "تَوَكَّلْتُ", ref: "Yunus · 71" }
+        ]
+      }
+    ],
+    quote: {
+      arabic: "مَا لَا يُمَـدُّ خُذْ ثَلَاثًا إِنْ يُضَمّ ۞ وَٱثْنَيْنِ جَرًّا وَاحِدٌ فِى ٱلنَّصْبِ تَمّ",
+      translation: "\"Sesuatu (kalimah) yang tidak dipanjangkan, ambillah olehmu (padanya) tiga wajah jika berbaris dhammah, dan dua wajah (jika) berbaris kasrah, serta satu wajah pada yang berbaris fathah — maka sempurnalah ia\"",
+      attribution: "— Kata Syeikh Muhammad al-Hammami"
+    }
+  }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+function wajahChip(w){
+  let cls = '';
+  if (w.includes('Raum')) cls = 'raum';
+  else if (w.includes('Isymam')) cls = 'isymam';
+  return `<span class="wajah-chip ${cls}">${w}</span>`;
+}
+
+function exampleItem(ex){
+  return `
+    <div class="example-item">
+      <span class="arabic">${ex.arabic}</span>
+      <span class="ref">${ex.ref}${ex.supRef ? `<sup class="supref">${ex.supRef}</sup>` : ''}</span>
+    </div>
+  `;
+}
+
+function footnoteBlock(fn){
+  let html = `<div class="footnote-card"><div class="fn-head"><span class="fn-num">${fn.num}</span><span>${fn.text}</span></div>`;
+  if (fn.example) html += `<div class="fn-example"><span class="arabic">${fn.example.arabic}</span><span class="ref">${fn.example.ref}</span></div>`;
+  if (fn.quote) html += `
+    <div class="fn-quote">
+      <div class="arabic">${fn.quote.arabic}</div>
+      <div class="translation">${fn.quote.translation}</div>
+      <div class="attribution">${fn.quote.attribution}</div>
+    </div>`;
+  html += `</div>`;
+  return html;
+}
+
+function keadaanCard(k){
+  const supHtml = k.supRef ? k.supRef.map(n => `<sup class="supref">${n}</sup>`).join('') : '';
+  return `
+    <div class="keadaan-card">
+      <div class="keadaan-top">
+        <span class="baris-tag ${k.baris}">${k.label}${supHtml}</span>
+        <span class="wajah-count">${k.wajah.length} wajah</span>
+      </div>
+      ${k.note ? `<div style="font-size:13px; color:var(--ink-soft); margin-bottom:12px; font-style:italic;">${k.note}</div>` : ''}
+      <div class="wajah-chips">${k.wajah.map(wajahChip).join('')}</div>
+      <div class="example-row">${k.examples.map(exampleItem).join('')}</div>
+      ${k.footnotes ? k.footnotes.map(footnoteBlock).join('') : ''}
+    </div>
+  `;
+}
+
+document.getElementById('categories').innerHTML = categories.map((cat, i) => `
+  <div class="cat-banner">
+    <div class="num" style="background:${cat.color}">${i + 1}</div>
+    <h3>${cat.title}</h3>
+  </div>
+  <div class="keadaan-grid">
+    ${cat.keadaan.map(keadaanCard).join('')}
+  </div>
+  ${cat.quote ? `
+    <div class="quote-card">
+      <div class="arabic">${cat.quote.arabic}</div>
+      <div class="translation">${cat.quote.translation}</div>
+      <div class="attribution">${cat.quote.attribution}</div>
+    </div>
+  ` : ''}
+`).join('');
+</script>
+
+</body>
+</html>

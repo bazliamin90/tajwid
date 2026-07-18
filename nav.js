@@ -19,6 +19,7 @@ const NAV_PAGES = [
   { href: "index.html", title: "Qashr pada Mad Jaiz Munfashil", pages: "ms. 188–190" },
   { href: "191.html", title: "Huruf-huruf Pembukaan Surah", pages: "ms. 191–195" },
   { href: "257.html", title: "Hukum Waqaf pada Akhir Kalimah", pages: "ms. 257-258" },
+  { href: "259.html", title: "Kesimpulan Wajah-Wajah Waqaf", pages: "ms. 259-265" },
   { href: "284.html", title: "Hukum Kalimah-Kalimah Khas", pages: "ms. 284-285" },
 ];
 
