@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Martabat Mad Far'ie dan Hukum yang Berkaitan Dengannya</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(22px, 3vw, 31px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:52px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:16px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:20px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* martabat ranked list */
+  .martabat-list{ display:flex; flex-direction:column; gap:12px; margin-top:18px; }
+  .martabat-item{
+    display:grid; grid-template-columns:44px 1fr; gap:16px;
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:18px 20px; box-shadow:var(--shadow);
+  }
+  .martabat-rank{
+    width:44px; height:44px; border-radius:12px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:16px; color:#fff;
+  }
+  .martabat-item h4{ font-family:'Fredoka', sans-serif; font-size:15px; margin:0 0 6px; color:var(--ink); }
+  .martabat-item p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin:0; }
+  .harakat-tag{
+    display:inline-block; margin-top:9px; font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700;
+    background:var(--teal-bg); color:#0B6459; padding:4px 12px; border-radius:20px;
+  }
+
+  /* quote */
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:24px 28px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.1; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.7; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  /* keadaan cards */
+  .keadaan-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:20px 24px; box-shadow:var(--shadow); margin-top:14px;
+  }
+  .keadaan-title{
+    font-family:'Fredoka', sans-serif; font-weight:600; font-size:14.5px; color:var(--ink);
+    margin-bottom:10px; display:flex; gap:10px; align-items:flex-start;
+  }
+  .keadaan-num{
+    width:26px; height:26px; border-radius:8px; background:var(--teal-bg); color:#0B6459;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:12px; flex-shrink:0; margin-top:1px;
+  }
+  .keadaan-rule{ font-size:13.5px; color:var(--ink-soft); line-height:1.7; margin-bottom:12px; }
+  .keadaan-example{ background:var(--paper-alt); border-radius:12px; padding:16px 18px; }
+  .keadaan-example .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; text-align:center; line-height:2; color:var(--ink); }
+  .keadaan-example .ref{ text-align:center; font-size:12px; color:var(--teal); font-weight:700; margin-top:8px; font-family:'Fredoka', sans-serif; }
+
+  /* superscript + footnote */
+  sup.supref{
+    font-family:'Fredoka', sans-serif; font-size:10px; font-weight:700; color:#fff;
+    background:var(--coral); border-radius:50%; padding:1px 5px; margin-left:2px; vertical-align:super;
+  }
+  .footnote-card{
+    margin-top:12px; background:var(--paper-alt); border:1px dashed var(--line);
+    border-radius:12px; padding:14px 18px 16px; font-size:12.5px; color:var(--ink-soft); line-height:1.75;
+  }
+  .footnote-card .fn-head{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+  .footnote-card .fn-num{
+    display:inline-flex; align-items:center; justify-content:center; width:20px; height:20px;
+    border-radius:50%; background:var(--coral); color:#fff; font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:11px; flex-shrink:0;
+  }
+  .footnote-card .fn-label{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:12px; color:var(--ink); }
+  .footnote-card .fn-example{ background:#fff; border-radius:10px; padding:12px 14px; margin-top:8px; }
+  .footnote-card .fn-example .arabic{ font-family:'Amiri', serif; direction:rtl; font-size:17px; color:var(--ink); text-align:center; line-height:1.9; }
+  .footnote-card .fn-example .ref{ text-align:center; font-size:11.5px; color:var(--teal); font-weight:700; margin-top:6px; font-family:'Fredoka', sans-serif; }
+  .footnote-card .fn-extra{ margin-top:10px; font-style:italic; }
+  .footnote-card .fn-sub{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); }
+  .footnote-card .fn-sub-item{ margin-bottom:12px; }
+  .footnote-card .fn-sub-item:last-child{ margin-bottom:0; }
+  .footnote-card .fn-sub-item .fn-sub-label{ font-weight:600; color:var(--ink); display:block; margin-bottom:6px; }
+
+  .note-plain{
+    margin-top:16px; font-size:13.5px; color:var(--ink-soft); line-height:1.75; font-style:italic;
+  }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 182 – 187</span>
+      <h2>Martabat Mad Far'ie dan Hukum yang Berkaitan Dengannya</h2>
+      <p>Mad Far'ie mempunyai lima martabat mengikut kekuatan sebabnya. Apabila dua atau lebih Mad berhimpun dalam satu ayat — sama ada sebab yang sama atau berbeza — terdapat kaedah tersendiri untuk menentukan cara bacaannya.</p>
+    </div>
+
+    <!-- Martabat -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">①</div>
+      <div>
+        <h3>Lima Martabat Mad Far'ie</h3>
+        <div class="sub">Disusun daripada yang paling kuat sebabnya kepada yang paling lemah.</div>
+      </div>
+    </div>
+
+    <div class="martabat-list" id="martabat-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">أَقْوَى ٱلْمُدُودِ لَازِمٌ فَمَا اتَّصَلْ ۞ فَعَارِضٌ فَذُو انفِصَالٍ فَبَدَلْ</div>
+      <div class="translation">"Mad yang paling kuat (sebabnya) iaitu Mad Lazim, kemudian Mad Wajib, kemudian Mad 'Aaridh, kemudian Mad Jaiz Munfashil, kemudian Mad Badal"</div>
+      <div class="attribution">— Kata Syeikh Ibrahim al-Samnudi</div>
+    </div>
+
+    <!-- Berhimpun sama sebab -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">②</div>
+      <div>
+        <h3>Berhimpun Dua Mad yang Sama Sebabnya</h3>
+        <div class="sub">Hendaklah dibaca sama panjang harakatnya. Terdapat 5 keadaan.</div>
+      </div>
+    </div>
+
+    <div id="keadaan-sama-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَٱللَّفْظُ فِى نَظِيرِهِ كَمِثْلِهِ</div>
+      <div class="translation">"Dan lafaz pada bandingannya itu seperti seumpamanya"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <!-- Berhimpun beza sebab -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--coral)">③</div>
+      <div>
+        <h3>Berhimpun Dua Mad yang Berbeza Sebabnya</h3>
+        <div class="sub">Satu kuat dan satu lemah — beramallah dengan sebab yang kuat, gugurkan sebab yang lemah. Terdapat 4 keadaan.</div>
+      </div>
+    </div>
+
+    <div id="keadaan-beza-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَسَبَبَا مَدٍّ إِذَا مَا وُجِدَا ۞ فَإِنَّ أَقْوَى ٱلسَّبَبَيْنِ ٱنفَرَدَا</div>
+      <div class="translation">"Dan apabila berhimpun dua sebab Mad, maka sesungguhnya sebab yang paling kuat akan beramal bersendirian (dikekalkan pada bacaan)"</div>
+      <div class="attribution">— Kata Syeikh Ibrahim al-Samnudi</div>
+    </div>
+
+    <!-- Wajib Muttashil & Jaiz Munfashil -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">④</div>
+      <div>
+        <h3>Berhimpun Mad Wajib Muttashil &amp; Mad Jaiz Munfashil</h3>
+        <div class="sub">Dalam satu ayat — terdapat 2 keadaan.</div>
+      </div>
+    </div>
+
+    <div id="keadaan4-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَٱللَّفْظُ فِى نَظِيرِهِ كَمِثْلِهِ</div>
+      <div class="translation">"Dan lafaz pada bandingannya itu seperti seumpamanya"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <div class="note-plain">Berhimpunnya Mad Wajib Muttashil dengan Mad Jaiz Munfashil dalam satu ayat juga menggunakan dalil di atas, kerana kedua-dua adalah sama pada lafaz ketika bacaan washal.</div>
+
+    <!-- Aaridh Lissukun & Lin -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--emerald)">⑤</div>
+      <div>
+        <h3>Berhimpun Mad 'Aaridh Lissukun &amp; Mad Lin</h3>
+        <div class="sub">Terdapat 2 keadaan.</div>
+      </div>
+    </div>
+
+    <div id="keadaan5-list"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Martabat Mad Far'ie dan Hukum yang Berkaitan Dengannya
+   ============================================================ */
+
+const martabat = [
+  { rank: 1, name: "Mad Lazim", color: "var(--coral)",
+    sebab: "Terjadi disebabkan adanya sukun selepas Huruf Mad ketika washal dan waqaf.",
+    harakat: "Dibaca 6 harakat oleh semua Imam al-Qurra'." },
+  { rank: 2, name: "Mad Wajib Muttashil", color: "var(--amber)",
+    sebab: "Terjadi disebabkan adanya Hamzah selepas Huruf Mad ketika washal dan waqaf.",
+    harakat: "Dibaca antara 3 hingga 6 harakat mengikut bacaan Imam masing-masing." },
+  { rank: 3, name: "Mad 'Aaridh Lissukun", color: "var(--emerald)",
+    sebab: "Terjadi disebabkan adanya sukun selepas Huruf Mad ketika waqaf sahaja.",
+    harakat: "Harus dibaca 2, 4 atau 6 harakat oleh semua Imam al-Qurra'." },
+  { rank: 4, name: "Mad Jaiz Munfashil", color: "var(--teal)",
+    sebab: "Terjadi disebabkan adanya Hamzah selepas Huruf Mad ketika washal sahaja.",
+    harakat: "Dibaca antara 2 hingga 6 harakat mengikut bacaan Imam masing-masing." },
+  { rank: 5, name: "Mad Badal", color: "var(--violet)",
+    sebab: "Terjadi disebabkan Hamzah menduhului Huruf Mad.",
+    harakat: "Dibaca 2 harakat oleh semua Imam al-Qurra', kecuali riwayat Warsy mengikut toriq Azraq — beliau membaca 2, 4 atau 6 harakat." }
+];
+
+const keadaanSama = [
+  { num: 1, title: "Berhimpun dua Mad Lazim (atau lebih)",
+    rule: "Hendaklah dibaca 6 harakat pada kedua-duanya.",
+    example: { arabic: "قَالَ أَتُحَآجُّوٓنِّى", ref: "Surah al-An'am · ayat 80" } },
+  { num: 2, title: "Berhimpun dua Mad Wajib Muttashil (atau lebih)",
+    rule: "Hendaklah dibaca sama harakatnya. Jika dibaca 4 harakat tempat pertama maka 4 harakat tempat kedua. Jika dibaca 5 harakat tempat pertama maka 5 harakat tempat kedua.<sup class='supref'>1</sup>",
+    example: { arabic: "وَنِسَآءَنَا وَنِسَآءَكُمْ", ref: "Surah Ali 'Imran · ayat 61" },
+    footnote: {
+      label: "Nota mengenai waqaf pada tempat kedua",
+      text: "Adapun jika berlaku waqaf pada tempat yang kedua maka diharuskan seperti berikut: jika dibaca 4 harakat tempat pertama maka diwaqafkan dengan 4 atau 6 harakat tempat kedua; jika dibaca 5 harakat tempat pertama maka diwaqafkan dengan 5 atau 6 harakat tempat kedua.",
+      example: { arabic: "يَغْفِرُ لِمَن يَشَآءُ وَيُعَذِّبُ مَن يَشَآءُ", ref: "Surah Ali 'Imran · ayat 129" },
+      extra: "Samalah keadaan (hukum) tersebut jika tempat pertamanya Mad Jaiz Munfashil atau Mad Shilah Towilah.",
+      extraExamples: [
+        { arabic: "وَمَآ أَنتُم بِمُؤْمِنِينَ فِى ٱلْأَرْضِ وَلَا فِى ٱلسَّمَآءِ", ref: "Surah al-'Ankabut · ayat 22" },
+        { arabic: "وَلَا يُحِيطُونَ بِشَىْءٍ مِّنْ عِلْمِهِۦٓ إِلَّا بِمَا شَآءَ", ref: "Surah al-Baqarah · ayat 255" }
+      ]
+    }
+  },
+  { num: 3, title: "Berhimpun dua Mad Jaiz Munfashil (atau lebih)",
+    rule: "Hendaklah dibaca sama harakatnya. Jika dibaca 4 harakat tempat pertama maka 4 harakat tempat kedua. Jika dibaca 5 harakat tempat pertama maka 5 harakat tempat kedua.<sup class='supref'>2</sup>",
+    example: { arabic: "وَلَآ أَنتُمْ عَٰبِدُونَ مَآ أَعْبُدُ", ref: "Surah al-Kafirun · ayat 3" },
+    footnote: {
+      label: "Termasuklah beberapa keadaan berikut",
+      subList: [
+        { label: "(1) Berhimpun dua Mad Shilah Towilah.", arabic: "خَيْرٌ لَّهُۥٓ أَصْحَٰبٌ يَدْعُونَهُۥٓ إِلَى ٱلْهُدَى ٱئْتِنَا", ref: "Surah al-An'am · ayat 71" },
+        { label: "(2a) Mad Jaiz Munfashil mendahului Mad Shilah Towilah.", arabic: "وَلَآ أُشْرِكُ بِهِۦٓ أَحَدًا", ref: "Surah al-Jinn · ayat 20" },
+        { label: "(2b) Mad Shilah Towilah mendahului Mad Jaiz Munfashil.", arabic: "فَمَا كَانَ جَوَابَ قَوْمِهِۦٓ إِلَّآ أَن قَالُوا۟", ref: "Surah al-'Ankabut · ayat 29" }
+      ]
+    }
+  },
+  { num: 4, title: "Berhimpun dua Mad 'Aaridh Lissukun (atau lebih)",
+    rule: "Hendaklah dibaca sama harakatnya (2↔2, 4↔4, 6↔6).",
+    example: { arabic: "ٱلرَّحْمَٰنُ ﴿١﴾ عَلَّمَ ٱلْقُرْءَانَ ﴿٢﴾", ref: "Surah al-Rahman · ayat 1–2" } },
+  { num: 5, title: "Berhimpun dua Mad Lin (atau lebih)",
+    rule: "Hendaklah dibaca sama harakatnya (2↔2, 4↔4, 6↔6).",
+    example: { arabic: "وَلِسَانًا وَشَفَتَيْنِ ﴿٩﴾ وَهَدَيْنَٰهُ ٱلنَّجْدَيْنِ ﴿١٠﴾", ref: "Surah al-Balad · ayat 9–10" } }
+];
+
+const keadaanBeza = [
+  { num: 1, title: "Berhimpun Mad Badal dan Mad Lazim Kalimi Muthaqqal",
+    rule: "Beramallah dengan Mad Lazim Kalimi Muthaqqal, dan digugurkan Mad Badal.",
+    example: { arabic: "وَلَآ ءَآمِّينَ", ref: "Surah al-Maidah · ayat 2" } },
+  { num: 2, title: "Berhimpun Mad Badal dan Mad Wajib Muttashil",
+    rule: "Beramallah dengan Mad Wajib Muttashil, dan digugurkan Mad Badal.",
+    example: { arabic: "رِئَآءَ ٱلنَّاسِ", ref: "Surah al-Baqarah · ayat 264" } },
+  { num: 3, title: "Berhimpun Mad Badal dan Mad Jaiz Munfashil",
+    rule: "Beramallah dengan Mad Jaiz Munfashil, dan digugurkan Mad Badal.",
+    example: { arabic: "وَجَآءُوٓ أَبَاهُمْ", ref: "Surah Yusuf · ayat 16" } },
+  { num: 4, title: "Berhimpun Mad Badal dan Mad 'Aaridh Lissukun",
+    rule: "Beramallah dengan Mad 'Aaridh Lissukun, dan digugurkan Mad Badal.",
+    example: { arabic: "وَإِلَيْهِ مَتَابِ", ref: "Surah al-Ra'd · ayat 36" } }
+];
+
+const keadaan4 = [
+  { num: 1, title: "Mad Wajib Muttashil mendahului Mad Jaiz Munfashil<sup class='supref'>1</sup>",
+    rule: "Jika Mad Wajib Muttashil dibaca 4 harakat maka Mad Jaiz Munfashil mesti dibaca 4 harakat. Jika Mad Wajib Muttashil dibaca 5 harakat maka Mad Jaiz Munfashil mesti dibaca 5 harakat.",
+    example: { arabic: "لَمَّا جَآءَهُمْ فَهُمْ فِى أَمْرٍ مَّرِيجٍ", ref: "Surah Qaf · ayat 5" },
+    footnote: {
+      label: "Termasuk keadaan",
+      text: "Termasuklah apabila Mad Wajib Muttashil mendahului Mad Shilah Towilah.",
+      example: { arabic: "وَٱبْتِغَآؤُكُم مِّن فَضْلِهِۦٓ إِنَّ فِى ذَٰلِكَ", ref: "Surah al-Rum · ayat 23" }
+    }
+  },
+  { num: 2, title: "Mad Jaiz Munfashil mendahului Mad Wajib Muttashil<sup class='supref'>1</sup>",
+    rule: "Jika Mad Jaiz Munfashil dibaca 4 harakat maka Mad Wajib Muttashil mesti dibaca 4 harakat. Jika Mad Jaiz Munfashil dibaca 5 harakat maka Mad Wajib Muttashil mesti dibaca 5 harakat.",
+    example: { arabic: "إِلَّآ أَن يَشَآءَ ٱللَّهُ", ref: "Surah al-Kahf · ayat 24" },
+    footnote: {
+      label: "Termasuk keadaan",
+      text: "Termasuklah apabila Mad Shilah Towilah mendahului Mad Wajib Muttashil.",
+      example: { arabic: "وَٱلَّذِينَ مَعَهُۥٓ أَشِدَّآءُ عَلَى ٱلْكُفَّارِ رُحَمَآءُ بَيْنَهُمْ", ref: "Surah al-Fath · ayat 29" }
+    }
+  }
+];
+
+const keadaan5 = [
+  { num: 1, title: "Mad 'Aaridh Lissukun mendahului Mad Lin",
+    rule: "Jika Mad 'Aaridh Lissukun dibaca 2 harakat maka Mad Lin mesti dibaca 2 harakat. Jika dibaca 4 harakat maka Mad Lin boleh dibaca 2 atau 4 harakat. Jika dibaca 6 harakat maka Mad Lin boleh dibaca 2, 4 atau 6 harakat.",
+    example: { arabic: "يَٰٓأَيُّهَا ٱلنَّبِىُّ حَرِّضِ ٱلْمُؤْمِنِينَ عَلَى ٱلْقِتَالِ إِن يَكُن مِّنكُمْ عِشْرُونَ صَٰبِرُونَ يَغْلِبُوا۟ مِا۟ئَتَيْنِ", ref: "Waqaf pada kalimah ٱلْقِتَال dan مِا۟ئَتَيْن · Surah al-Anfal · ayat 65" },
+    quote: {
+      arabic: "وَكُلُّ مَنْ أَشْبَعَ نَحْوَ ٱلدِّينِ ۞ ثَلَاثَةً تَجْرِى بِوَقْفِ ٱللِّينِ\nوَمَنْ يَرَىٰ قَصْرًا فَبِٱلْقَصْرِ اقْتَصَرْ ۞ وَمَنْ يُوَسِّطْهُ يُوَسِّطْ أَوْ قَصَرْ",
+      translation: "\"Dan setiap orang yang membaca panjang (iaitu 6 harakat) umpama ٱلدِّين (Mad 'Aaridh Lissukun) maka harus waqaf dengan tiga wajah (2, 4 atau 6 harakat) pada Mad Lin. Dan barangsiapa yang membacanya (Mad 'Aaridh Lissukun) 2 harakat maka (mesti) 2 harakat juga (pada Mad Lin). Dan barangsiapa yang membacanya (Mad 'Aaridh Lissukun) 4 harakat maka 4 atau 2 harakat pada Mad Lin\"",
+      attribution: "— Kata Syeikh Ali al-Manshuri"
+    }
+  },
+  { num: 2, title: "Mad Lin mendahului Mad 'Aaridh Lissukun",
+    rule: "Jika Mad Lin dibaca 2 harakat maka Mad 'Aaridh Lissukun boleh dibaca 2, 4 atau 6 harakat. Jika Mad Lin dibaca 4 harakat maka Mad 'Aaridh Lissukun boleh dibaca 4 atau 6 harakat. Jika Mad Lin dibaca 6 harakat maka Mad 'Aaridh Lissukun mesti dibaca 6 harakat.",
+    example: { arabic: "وَلَدَارُ ٱلْءَاخِرَةِ خَيْرٌ وَلَنِعْمَ دَارُ ٱلْمُتَّقِينَ", ref: "Waqaf pada kalimah خَيْر dan ٱلْمُتَّقِين · Surah al-Nahl · ayat 30" },
+    quote: {
+      arabic: "وَكُلُّ مَنْ قَصَّرْ حَرْفَ ٱللِّينِ ۞ ثَلَاثَةً تَجْرِى بِنَحْوِ ٱلدِّينِ\nوَإِنْ تُوَسِّطْهُ فَوَسِّطْ أَشْبِعَا ۞ وَإِنْ تَمُدُّهُ فَمُدَّ مُشْبِعَا",
+      translation: "\"Dan setiap orang yang memendekkan (2 harakat) akan Mad Lin maka harus waqaf dengan tiga wajah (iaitu 2, 4 atau 6 harakat) umpama ٱلدِّين (iaitu Mad 'Aaridh Lissukun). Dan sekiranya kamu membacanya (Mad Lin) 4 harakat maka 4 atau 6 harakat pada Mad 'Aaridh Lissukun. Dan jika kamu memanjangkannya (Mad Lin) 6 harakat maka panjangkanlah Mad 'Aaridh Lissukun 6 harakat\"",
+      attribution: "— Kata Syeikh Mustafa al-Ahmadi"
+    }
+  }
+];
+
+/* ============================================================
+   RENDER HELPERS
+   ============================================================ */
+
+function exampleBlock(ex, cls){
+  return `
+    <div class="${cls || 'keadaan-example'}">
+      <div class="arabic">${ex.arabic}</div>
+      <div class="ref">${ex.ref}</div>
+    </div>
+  `;
+}
+
+function footnoteBlock(fn){
+  let html = `<div class="footnote-card">`;
+  html += `<div class="fn-head"><span class="fn-num">i</span><span class="fn-label">${fn.label || 'Nota'}</span></div>`;
+  if (fn.text) html += `<div>${fn.text}</div>`;
+  if (fn.example) html += `<div class="fn-example"><div class="arabic">${fn.example.arabic}</div><div class="ref">${fn.example.ref}</div></div>`;
+  if (fn.extra) html += `<div class="fn-extra">${fn.extra}</div>`;
+  if (fn.extraExamples) {
+    html += fn.extraExamples.map(ex => `<div class="fn-example"><div class="arabic">${ex.arabic}</div><div class="ref">${ex.ref}</div></div>`).join('');
+  }
+  if (fn.subList) {
+    html += `<div class="fn-sub">` + fn.subList.map(item => `
+      <div class="fn-sub-item">
+        <span class="fn-sub-label">${item.label}</span>
+        <div class="fn-example"><div class="arabic">${item.arabic}</div><div class="ref">${item.ref}</div></div>
+      </div>
+    `).join('') + `</div>`;
+  }
+  html += `</div>`;
+  return html;
+}
+
+function quoteBlock(q){
+  return `
+    <div class="quote-card" style="margin-top:12px;">
+      <div class="arabic">${q.arabic}</div>
+      <div class="translation">${q.translation}</div>
+      <div class="attribution">${q.attribution}</div>
+    </div>
+  `;
+}
+
+function keadaanCard(item){
+  return `
+    <div class="keadaan-card">
+      <div class="keadaan-title"><span class="keadaan-num">${item.num}</span><span>${item.title}</span></div>
+      <div class="keadaan-rule">${item.rule}</div>
+      ${exampleBlock(item.example)}
+      ${item.footnote ? footnoteBlock(item.footnote) : ''}
+      ${item.quote ? quoteBlock(item.quote) : ''}
+    </div>
+  `;
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('martabat-list').innerHTML = martabat.map(m => `
+  <div class="martabat-item">
+    <div class="martabat-rank" style="background:${m.color}">${m.rank}</div>
+    <div>
+      <h4>${m.name}</h4>
+      <p>${m.sebab}</p>
+      <span class="harakat-tag">${m.harakat}</span>
+    </div>
+  </div>
+`).join('');
+
+document.getElementById('keadaan-sama-list').innerHTML = keadaanSama.map(keadaanCard).join('');
+document.getElementById('keadaan-beza-list').innerHTML = keadaanBeza.map(keadaanCard).join('');
+document.getElementById('keadaan4-list').innerHTML = keadaan4.map(keadaanCard).join('');
+document.getElementById('keadaan5-list').innerHTML = keadaan5.map(keadaanCard).join('');
+</script>
+
+</body>
+</html>

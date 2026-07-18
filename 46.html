@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Membaca al-Quran atas Orang yang Berhadas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(23px, 3vw, 32px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  /* dalil */
+  .dalil-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 26px; box-shadow:var(--shadow); margin-top:14px;
+  }
+  .dalil-label{ font-family:'Fredoka', sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.6px; }
+  .dalil-arabic{ font-family:'Amiri', serif; font-size:23px; direction:rtl; text-align:center; line-height:2; color:var(--ink); margin:14px 0; }
+  .dalil-translation{ font-size:14px; font-style:italic; color:var(--ink-soft); text-align:center; line-height:1.7; }
+  .dalil-ref{ text-align:center; font-size:12.5px; color:var(--teal); font-weight:700; margin-top:10px; font-family:'Fredoka', sans-serif; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:52px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:21px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  .subheading{
+    font-family:'Fredoka', sans-serif; font-size:16px; font-weight:600; color:var(--ink);
+    margin:34px 0 12px; display:flex; align-items:center; gap:10px;
+  }
+
+  /* madzhab grid */
+  .madzhab-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:18px; }
+  .madzhab-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--violet);
+    border-radius:16px; padding:20px; box-shadow:var(--shadow);
+  }
+  .madzhab-card .who{ font-family:'Fredoka', sans-serif; font-weight:700; font-size:15px; color:var(--ink); margin-bottom:10px; }
+  .madzhab-card .rulings{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .madzhab-card p{ font-size:13px; color:var(--ink-soft); line-height:1.6; margin:0; }
+  .ruling{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700;
+    padding:5px 13px; border-radius:20px;
+  }
+  .ruling.haram{ background:var(--coral-bg); color:#B8402F; }
+  .ruling.harus{ background:var(--emerald-bg); color:#1B7A4E; }
+  .ruling.syarat{ background:var(--amber-bg); color:#A5701A; }
+  .ruling.dua{ background:var(--violet-bg); color:#6236C9; }
+
+  /* scholar chips */
+  .scholar-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .scholar-chip{
+    font-family:'Fredoka', sans-serif; font-size:12px; font-weight:600;
+    background:var(--teal-bg); color:#0B6459; padding:6px 13px; border-radius:20px;
+  }
+
+  /* hadith item */
+  .hadith-item{ margin-top:14px; }
+  .hadith-label{ font-family:'Fredoka', sans-serif; font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:6px; }
+
+  .perhatian-block{
+    margin-top:18px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--amber);
+    border-radius:14px; padding:18px 22px; box-shadow:var(--shadow);
+  }
+  .perhatian-block .p-title{ font-family:'Fredoka', sans-serif; font-weight:700; color:#A5701A; font-size:14px; margin-bottom:8px; }
+  .perhatian-block p{ font-size:14px; color:var(--ink-soft); line-height:1.7; margin:0; }
+  .perhatian-block ol{ margin:0; padding-left:20px; }
+  .perhatian-block li{ font-size:14px; color:var(--ink-soft); line-height:1.7; margin-bottom:8px; }
+  .perhatian-block li:last-child{ margin-bottom:0; }
+
+  .footnote-block{
+    margin-top:18px; background:var(--paper-alt); border:1px solid var(--line);
+    border-radius:14px; padding:16px 20px; font-size:12.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footnote-block .fn-item{ margin-bottom:8px; }
+  .footnote-block .fn-item:last-child{ margin-bottom:0; }
+  .footnote-block b{ color:var(--ink); }
+  .footnote-block .fn-arabic{ font-family:'Amiri', serif; direction:rtl; font-size:18px; color:var(--ink); display:block; text-align:center; margin:10px 0; }
+
+  .hujah-card{
+    margin-top:16px; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 26px; box-shadow:var(--shadow); font-size:14.5px; line-height:1.8; color:var(--ink-soft);
+  }
+  .hujah-card p{ margin:0 0 12px; }
+  .hujah-card p:last-child{ margin-bottom:0; }
+  .hujah-card b{ color:var(--ink); }
+  .hujah-card .verdict{
+    margin-top:14px; display:inline-block; font-family:'Fredoka', sans-serif; font-weight:700; font-size:13px;
+    background:var(--emerald-bg); color:#1B7A4E; padding:6px 15px; border-radius:20px;
+  }
+
+  .kesimpulan-card{
+    margin-top:18px;
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:var(--radius); padding:28px 30px; box-shadow:var(--shadow);
+  }
+  .kesimpulan-card .label{
+    font-family:'Fredoka', sans-serif; font-size:12.5px; font-weight:600; letter-spacing:1px;
+    text-transform:uppercase; color:#9FCBBE; display:flex; align-items:center; gap:10px;
+  }
+  .kesimpulan-card .wallahu-arabic{ font-family:'Amiri', serif; font-size:20px; direction:rtl; color:#FFE9C7; }
+  .kesimpulan-card p{ font-size:14.5px; line-height:1.85; color:#E7F5F0; margin:14px 0 0; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 46 – 48</span>
+      <h2>Hukum Membaca al-Quran atas Orang yang Berhadas</h2>
+      <p>Ulama sepakat membenarkan orang yang berhadas kecil membaca al-Quran (dengan disunatkan berwudhu' terlebih dahulu), tetapi berselisih pendapat mengenai orang yang berhadas besar. Bab ini menghimpunkan pendapat empat Madzhab Imam Mujtahid mengenainya.</p>
+    </div>
+
+    <!-- Madzhab -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">⚖</div>
+      <div>
+        <h3>Pendapat Empat Madzhab</h3>
+        <div class="sub">Mengenai bacaan al-Quran bagi orang yang berhadas besar.</div>
+      </div>
+    </div>
+
+    <div class="madzhab-grid" id="madzhab-grid"></div>
+
+    <div class="footnote-block">
+      <div class="fn-item">1. Ada ulama mengatakan harus membaca al-Quran ketika berhadas jika diniatkan sebagai zikir pada tempat-tempat tertentu, seperti ketika menaiki kenderaan harus membaca ayat 13 dan 14 dari Surah al-Zukhruf:
+        <span class="fn-arabic">سُبْحَٰنَ ٱلَّذِى سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُۥ مُقْرِنِينَ ﴿١٣﴾ وَإِنَّآ إِلَىٰ رَبِّنَا لَمُنقَلِبُونَ ﴿١٤﴾</span>
+      </div>
+    </div>
+
+    <!-- Madzhab Syafie: Pendapat Pertama -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--coral)">١</div>
+      <div>
+        <h3>Madzhab Syafie — Pendapat Pertama (Masyhur)</h3>
+        <div class="sub">Haram walaupun sedikit, dengan niat membaca al-Quran.</div>
+      </div>
+    </div>
+
+    <div class="intro-card">
+      <p>Pendapat ini disepakati oleh:</p>
+      <div class="scholar-list">
+        <span class="scholar-chip">Imam al-Nawawi</span>
+        <span class="scholar-chip">Imam al-Rafie</span>
+        <span class="scholar-chip">Ibnu Hajar al-'Asqalani</span>
+        <span class="scholar-chip">al-Ramli</span>
+      </div>
+      <p style="margin-top:14px;">Mereka berdalilkan hadis Rasulullah Shallallahu 'Alaihi Wasallam, antaranya:</p>
+    </div>
+
+    <div class="hadith-item">
+      <div class="hadith-label">(a) Sabda Rasulullah Shallallahu 'Alaihi Wasallam</div>
+      <div class="dalil-card">
+        <div class="dalil-arabic">لَا يَقْرَإِ ٱلْجُنُبُ وَلَا ٱلْحَائِضُ شَيْئًا مِنَ ٱلْقُرْءَانِ</div>
+        <div class="dalil-translation">"Janganlah hendaknya orang yang berjunub dan orang yang haidh itu membaca sesuatu daripada al-Quran"</div>
+        <div class="dalil-ref">Riwayat al-Baihaqi</div>
+      </div>
+    </div>
+
+    <div class="hadith-item">
+      <div class="hadith-label">(b) Sabda Rasulullah Shallallahu 'Alaihi Wasallam</div>
+      <div class="dalil-card">
+        <div class="dalil-arabic">لَا يَقْرَإِ ٱلْحَائِضُ وَلَا ٱلنُّفَسَاءُ شَيْئًا مِنَ ٱلْقُرْءَانِ</div>
+        <div class="dalil-translation">"Janganlah hendaknya orang yang haidh dan orang yang nifas itu membaca sesuatu daripada al-Quran"</div>
+        <div class="dalil-ref">Riwayat al-Daruqutni</div>
+      </div>
+    </div>
+
+    <div class="perhatian-block">
+      <div class="p-title">⚠ Perhatian</div>
+      <p>Kedua-dua hadis tersebut adalah <b>Hadis Dhaif</b> di sisi semua Ulama Hadis.</p>
+    </div>
+
+    <div class="footnote-block">
+      <div class="fn-item">2. <b>Abu al-Qasim Abdul Karim bin Muhammad bin Abdul Karim</b> (Imam al-Rafie) — meninggal dunia pada tahun 623H.</div>
+      <div class="fn-item">3. <b>Abu al-Fadhl Ahmad bin Ali bin Muhammad al-'Asqalani</b> (Ibnu Hajar) — meninggal dunia pada tahun 852H.</div>
+    </div>
+
+    <!-- Madzhab Syafie: Pendapat Kedua -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--emerald)">٢</div>
+      <div>
+        <h3>Madzhab Syafie — Pendapat Kedua</h3>
+        <div class="sub">Harus bagi orang yang berhadas besar membaca seluruh al-Quran.</div>
+      </div>
+    </div>
+
+    <div class="intro-card">
+      <p>Pendapat ini diriwayatkan oleh al-Haitami dalam kitab <i>al-'Iyab Syarhul Ubab</i>, bahawa Ibnu al-Mundzir dan al-Darimi memilih apa yang diriwayatkan Ibnu Mas'ud dan lainnya, bahawa boleh bagi orang haidh membaca seluruh al-Quran. Imam Bukhari juga meriwayatkan pendapat Ibnu Mas'ud ini, bahkan beliau sendiri berpendapat sedemikian.</p>
+      <div class="scholar-list">
+        <span class="scholar-chip">al-Haitami</span>
+        <span class="scholar-chip">Ibnu al-Mundzir</span>
+        <span class="scholar-chip">al-Darimi</span>
+        <span class="scholar-chip">Ibnu Mas'ud</span>
+        <span class="scholar-chip">Imam Bukhari</span>
+      </div>
+    </div>
+
+    <div class="hujah-card">
+      <p>Mereka menolak hadis-hadis yang dinyatakan tersebut untuk dijadikan sebagai hujah, kerana kedudukan (martabat) hadis tersebut sebagai Hadis Dhaif secara sepakat Ulama Hadis.</p>
+      <p>Mereka berhujah bahawa pada zaman Rasulullah Shallallahu 'Alaihi Wasallam ramai wanita yang kedatangan haidh. Jika sekiranya diharamkan ke atas mereka membaca al-Quran sebagaimana diharamkan sembahyang, maka tentulah baginda telah menerangkannya kepada umatnya serta mengajarkannya kepada isteri-isteri baginda. Tetapi tidak ada seorang pun daripada Ummahatul Mu'minin yang meriwayatkan daripada Rasulullah Shallallahu 'Alaihi Wasallam bahawa diharamkan ke atas perempuan yang haidh membaca al-Quran.</p>
+      <p>Maka dengan hujah tersebut, mereka berpendapat bahawa:</p>
+      <span class="verdict">Tidaklah diharamkan atas perempuan yang haidh membaca al-Quran</span>
+    </div>
+
+    <div class="footnote-block">
+      <div class="fn-item">1. <b>Abu Bakar Ahmad bin al-Husain bin Ali bin Musa al-Baihaqi</b> — dilahirkan pada tahun 384H, meninggal dunia pada tahun 458H.</div>
+      <div class="fn-item">2. <b>Abu al-Hasan Ali bin Umar al-Daruqutni al-Baghdadi</b> — dilahirkan pada tahun 306H, meninggal dunia pada tahun 385H.</div>
+      <div class="fn-item">3. <b>Abu Bakar Muhammad bin Ibrahim bin al-Mundzir al-Naisaburi</b> — dilahirkan pada tahun 242H, meninggal dunia di Mekah pada tahun 319H.</div>
+    </div>
+
+    <!-- Kesimpulan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">✦</div>
+      <div>
+        <h3>Kesimpulan</h3>
+        <div class="sub">Pandangan penulis kitab dalam mendamaikan kedua-dua pendapat.</div>
+      </div>
+    </div>
+
+    <div class="kesimpulan-card">
+      <div class="label"><span class="wallahu-arabic">وَٱللَّهُ أَعْلَم</span>&nbsp;· Wallahu A'lam</div>
+      <p>Saya katakan bahawa jika seseorang itu jarang membaca al-Quran, atau membacanya kerana sesuatu majlis tertentu — sama ada majlis kesyukuran atau sebaliknya — maka pendapat yang pertama layak baginya.</p>
+      <p>Adapun jika seseorang itu membaca al-Quran setiap hari atau menjadikan al-Quran teman hidupnya, maka harus baginya membaca al-Quran ketika haidh atau nifas berdasarkan pandangan yang kedua — tetapi bagi mereka yang berjanabah, dilarang, kerana mereka boleh bersuci (mandi hadas) pada bila-bila masa tanpa tempoh yang tertentu.</p>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Membaca al-Quran atas Orang yang Berhadas
+   ============================================================ */
+
+const madzhab = [
+  {
+    who: "Madzhab Hanafi",
+    rulings: [ { text: "Haram walaupun sedikit", cls: "haram" } ]
+  },
+  {
+    who: "Madzhab Maliki",
+    rulings: [
+      { text: "Boleh (bacaan sedikit)", cls: "harus" },
+      { text: "Riwayat lain: tanpa syarat", cls: "syarat" }
+    ]
+  },
+  {
+    who: "Madzhab Hanbali",
+    rulings: [ { text: "Haram", cls: "haram" } ],
+    note: "Satu riwayat daripada Imam Ahmad: jika perempuan yang haidh berhajat kepadanya (membaca al-Quran), maka tidak perlu tunggu suci (dibolehkan)."
+  },
+  {
+    who: "Madzhab Syafie",
+    rulings: [ { text: "2 Pendapat — lihat huraian di bawah", cls: "dua" } ]
+  }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('madzhab-grid').innerHTML = madzhab.map(m => `
+  <div class="madzhab-card">
+    <div class="who">${m.who}</div>
+    <div class="rulings">
+      ${m.rulings.map(r => `<span class="ruling ${r.cls}">${r.text}</span>`).join('')}
+    </div>
+    ${m.note ? `<p>${m.note}</p>` : ''}
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>

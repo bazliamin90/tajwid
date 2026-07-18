@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Basmalah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.2;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:24px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  /* dalil */
+  .dalil-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px; box-shadow:var(--shadow); margin-top:16px;
+  }
+  .dalil-label{ font-family:'Fredoka', sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.6px; }
+  .dalil-arabic{ font-family:'Amiri', serif; font-size:25px; direction:rtl; text-align:center; line-height:2; color:var(--ink); margin:14px 0; }
+  .dalil-translation{ font-size:14px; font-style:italic; color:var(--ink-soft); text-align:center; line-height:1.7; }
+  .dalil-ref{ text-align:center; font-size:12.5px; color:var(--teal); font-weight:700; margin-top:10px; font-family:'Fredoka', sans-serif; }
+
+  /* chips */
+  .chip{
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:7px 14px 7px 10px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid transparent;
+  }
+  .chip i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+  .chip.idgham{ background:var(--teal-bg); color:#0B6459; } .chip.idgham i{ background:var(--teal); }
+  .chip.ghunnah{ background:var(--rose-bg); color:#C42553; } .chip.ghunnah i{ background:var(--rose); }
+  .chip.sinshad{ background:var(--amber-bg); color:#A5701A; } .chip.sinshad i{ background:var(--amber); }
+  .chip.saktah{ background:var(--coral-bg); color:#B8402F; } .chip.saktah i{ background:var(--coral); }
+  .chip.sifat{ background:var(--violet-bg); color:#6236C9; } .chip.sifat i{ background:var(--violet); }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:52px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:21px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* reason list */
+  .reason-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin-top:18px; }
+  .reason-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--teal);
+    border-radius:16px; padding:20px; box-shadow:var(--shadow); font-size:14.5px; line-height:1.65; color:var(--ink-soft);
+  }
+  .reason-card .rnum{ font-family:'Fredoka', sans-serif; font-weight:700; color:var(--teal); font-size:13px; margin-bottom:8px; display:block; }
+
+  /* pendapat (opinions) */
+  .pendapat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:18px; }
+  .pendapat-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--violet);
+    border-radius:16px; padding:20px; box-shadow:var(--shadow);
+  }
+  .pendapat-card .who{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:14px; color:var(--ink); margin-bottom:10px; line-height:1.5; }
+  .pendapat-card .rulings{ display:flex; flex-wrap:wrap; gap:8px; }
+  .pendapat-card .ruling{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:12px; font-weight:700;
+    padding:5px 14px; border-radius:20px; background:var(--violet-bg); color:#6236C9;
+  }
+  .pendapat-card .ruling.alt{ background:var(--amber-bg); color:#A5701A; }
+
+  .footnote-block{
+    margin-top:18px; background:var(--paper-alt); border:1px solid var(--line);
+    border-radius:14px; padding:16px 20px; font-size:12.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footnote-block .fn-item{ margin-bottom:8px; }
+  .footnote-block .fn-item:last-child{ margin-bottom:0; }
+  .footnote-block b{ color:var(--ink); }
+
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:24px 28px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:20px; direction:rtl; line-height:2.1; text-align:center; color:#FFE9C7; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.7; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  /* cara membaca */
+  .cara-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:20px 24px; box-shadow:var(--shadow); margin-top:14px;
+  }
+  .cara-card.forbidden{ border:2px solid var(--coral); background:linear-gradient(180deg,#FFF6F4 0%,#FFFFFF 100%); }
+  .cara-title{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:14.5px; color:var(--ink); margin-bottom:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .cara-num{
+    width:26px; height:26px; border-radius:8px; background:var(--teal-bg); color:#0B6459;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:12.5px; flex-shrink:0;
+  }
+  .cara-num.forbidden-num{ background:var(--coral-bg); color:#B8402F; }
+  .cara-line{ font-family:'Amiri', serif; font-size:20px; direction:rtl; line-height:2.3; color:var(--ink); text-align:center; }
+  .cara-mark{ font-family:'Nunito', sans-serif; font-weight:800; font-size:13px; }
+  .forbidden-tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11px; font-weight:700;
+    background:var(--coral-bg); color:#B8402F; padding:3px 10px; border-radius:20px;
+  }
+  .cara-legend{
+    display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:12px; color:var(--ink-soft);
+  }
+  .cara-legend b.waqaf{ color:var(--coral); } .cara-legend b.washal{ color:var(--emerald); } .cara-legend b.saktah{ color:var(--amber); }
+
+  /* perhatian */
+  .perhatian-block{
+    margin-top:18px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--amber);
+    border-radius:14px; padding:20px 24px; box-shadow:var(--shadow);
+  }
+  .perhatian-block .p-title{ font-family:'Fredoka', sans-serif; font-weight:700; color:#A5701A; font-size:14px; margin-bottom:12px; }
+  .perhatian-block ol{ margin:0; padding-left:20px; }
+  .perhatian-block li{ font-size:14px; color:var(--ink-soft); line-height:1.7; margin-bottom:8px; }
+  .perhatian-block li:last-child{ margin-bottom:0; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 115 – 119</span>
+      <h2>Hukum Basmalah</h2>
+      <p>Basmalah ialah perhiasan bagi al-Quran, dibaca di permulaan setiap surah kecuali satu — Surah al-Taubah. Bab ini merangkumi makna, dalil, hukum, dan cara-cara ia disambungkan antara ayat serta antara surah.</p>
+      <div class="hero-arabic">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+    </div>
+
+    <!-- Makna -->
+    <div class="intro-card">
+      <p><b>Basmalah</b> (<span class="term-arabic">بَسْمَلَة</span>) adalah ringkasan bagi <b>Bismillahir Rahmanir Rahim</b> (<span class="term-arabic">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>) — sepertimana <b>Hai'alah</b> (<span class="term-arabic">حَيْعَلَة</span>) adalah ringkasan bagi <i>Haiya 'Alash Shalah</i> (<span class="term-arabic">حَيَّ عَلَى ٱلصَّلَاة</span>), ataupun <b>Hauqalah</b> (<span class="term-arabic">حَوْقَلَة</span>) ringkasan bagi <i>La Haula Wala Quwwata Illa Billah</i> (<span class="term-arabic">لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّه</span>).</p>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">إِنَّ ٱللَّهَ سُبْحَانَهُ وَتَعَالَى زَيَّنَ ٱلسَّمَاءَ بِٱلْكَوَاكِبِ وَزَيَّنَ ٱلْمَلَائِكَةَ بِجِبْرِيلَ وَزَيَّنَ ٱلْجَنَّةَ بِٱلْحُورِ وَٱلْقُصُورِ وَزَيَّنَ ٱلْأَنْبِيَاءَ بِمُحَمَّدٍ صَلَّى ٱللَّهُ عَلَيْهِ وَسَلَّمَ وَزَيَّنَ ٱلْأَيَّامَ بِيَوْمِ ٱلْجُمْعَةِ وَزَيَّنَ ٱللَّيَالِيَ بِلَيْلَةِ ٱلْقَدْرِ وَزَيَّنَ ٱلشُّهُورَ بِشَهْرِ رَمَضَانَ وَزَيَّنَ ٱلْمَسَاجِدَ بِٱلْكَعْبَةِ وَزَيَّنَ ٱلْكُتُبَ بِٱلْقُرْءَانِ وَزَيَّنَ ٱلْقُرْءَانَ بِبِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+      <div class="translation">"Sesungguhnya Allah Subhanahu Wa Ta'ala menghiasi langit dengan bintang-bintang, menghiasi para malaikat dengan Jibril, menghiasi syurga dengan bidadari dan istana-istana (yang indah), menghiasi para nabi dengan Nabi Muhammad Shallallahu 'Alaihi Wasallam, menghiasi segala hari dengan hari Jumaat, menghiasi segala malam dengan Lailatul Qadar, menghiasi segala bulan dengan bulan Ramadhan, menghiasi segala masjid dengan Ka'bah, menghiasi segala kitab dengan al-Quran, dan menghiasi al-Quran dengan Bismillahir Rahmanir Rahim"</div>
+      <div class="attribution">— Sabda Rasulullah Shallallahu 'Alaihi Wasallam</div>
+    </div>
+
+    <!-- Lafaz & Dalil -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">﴾﴿</div>
+      <div>
+        <h3>Lafaz &amp; Dalil</h3>
+        <div class="sub">Lafaz Basmalah dan buktinya dalam al-Quran.</div>
+      </div>
+    </div>
+
+    <div class="intro-card">
+      <p>Lafaznya: <span class="term-arabic" style="font-size:22px;">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</span>. Inilah lafaz yang terdapat dalam Surah al-Naml, ayat 30.</p>
+    </div>
+
+    <div class="dalil-card">
+      <div class="dalil-arabic">إِنَّهُ مِن سُلَيْمَٰنَ وَإِنَّهُ بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+      <div class="dalil-translation">"Sesungguhnya ia (surat) daripada Sulaiman dan sesungguhnya (isi kandungannya) Bismillahir Rahmanir Rahim"</div>
+      <div class="dalil-ref">Surah al-Naml · ayat 30</div>
+    </div>
+
+    <!-- Kenapa tidak di al-Taubah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--coral)">٩</div>
+      <div>
+        <h3>Kenapa Tidak Dibaca di Awal Surah al-Taubah</h3>
+        <div class="sub">Hukum membaca Basmalah di awal surah adalah ditunut (sunat), kecuali di awal Surah al-Taubah.</div>
+      </div>
+    </div>
+
+    <div class="reason-grid">
+      <div class="reason-card"><span class="rnum">SEBAB 1</span>Basmalah tidak ditulis di awal Surah al-Taubah, sebaliknya ia ditulis di awal surah-surah yang lain.</div>
+      <div class="reason-card"><span class="rnum">SEBAB 2</span>Surah al-Taubah diturunkan ketika perang. Perang adalah huru-hara dan Basmalah adalah keamanan — tidak mungkin berhimpun keamanan dan huru-hara dalam satu masa.</div>
+    </div>
+
+    <!-- Tahap Larangan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">⚖</div>
+      <div>
+        <h3>Tahap Larangan Membaca Basmalah di Surah al-Taubah</h3>
+        <div class="sub">Ulama berselisih pendapat mengenai tahap larangan tersebut.</div>
+      </div>
+    </div>
+
+    <div class="pendapat-grid" id="pendapat-grid"></div>
+
+    <div class="footnote-block">
+      <div class="fn-item">1. <b>Muhammad bin Ahmad bin Ahmad Hamzah al-Ramli</b> — dilahirkan pada tahun 919H, meninggal dunia pada tahun 1004H.</div>
+      <div class="fn-item">2. <b>Abu al-Fadhl Ahmad bin Ali bin Hajar al-'Asqalani</b> — dilahirkan pada tahun 773H, meninggal dunia pada tahun 852H.</div>
+      <div class="fn-item">3. <b>Ahmad bin Ali bin Thabit al-Baghdadi</b> — dilahirkan pada tahun 392H, meninggal dunia di Baghdad pada tahun 463H.</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَلَا بُدَّ مِنْهَا فِى ٱبْتِدَائِكَ سُورَةً ۞ سِوَاهَا وَفِى ٱلْأَجْزَاءِ خُيِّرَ مَنْ تَلَا</div>
+      <div class="translation">"Dan tidak dapat tidak (mesti) mendatangkannya (Basmalah) di permulaan surah melainkan dia (awal surah al-Taubah), dan di pertengahannya adalah pilihan bagi orang yang membaca"</div>
+      <div class="attribution">— Kata Imam al-Syatibi</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَفِى ٱبْتِدَا ٱلسُّورَةِ كُلٍّ بَسْمَلَا .................... سِوَى بَرَاءَةٍ فَلَا وَصِلْ<br>وَسَطًا خُيِّرْ وَفِيهَا يَحْتَمِلَا</div>
+      <div class="translation">"Dan pada permulaan surah, semua (Imam-imam al-Qurra') membaca Basmalah kecuali (awal) surah al-Taubah maka tidak dibaca walaupun ia diwashalkan (dengan surah sebelumnya). Dan di pertengahannya, pilih olehmu (baca atau tidak) kerana ihtimal padanya"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <!-- Galakan membaca -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--emerald)">✦</div>
+      <div>
+        <h3>Galakan Membaca Basmalah</h3>
+        <div class="sub">Sunat membaca Basmalah ketika hendak melakukan sesuatu pekerjaan, lebih-lebih lagi ketika hendak membaca al-Quran — sama ada di permulaan surah atau di pertengahannya.</div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">كُلُّ أَمْرٍ ذِى بَالٍ لَا يُبْدَأُ فِيهِ بِبِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ فَهُوَ أَبْتَرُ<br>(وَفِى رِوَايَةٍ فَهُوَ أَقْطَعُ، وَفِى رِوَايَةٍ فَهُوَ أَجْذَمُ)</div>
+      <div class="translation">"Setiap perkara kebaikan (kebajikan) yang tidak dimulakan dengan Bismillahir Rahmanir Rahim maka amalan itu terputus (daripada keberkatan)"</div>
+      <div class="attribution">— Riwayat Abu Daud</div>
+    </div>
+
+    <!-- Tiga cara antara dua surah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">۞</div>
+      <div>
+        <h3>Membaca Basmalah di Antara Dua Surah</h3>
+        <div class="sub">Tiga cara yang diharuskan · (−) waqaf · (+) washal</div>
+      </div>
+    </div>
+
+    <div id="cara-antara-surah"></div>
+
+    <div class="cara-card forbidden">
+      <div class="cara-title"><span class="cara-num forbidden-num">✕</span>Dilarang: menyambung akhir surah pertama dengan Basmalah dan berhenti padanya, kemudian membaca awal surah kedua <span class="forbidden-tag">Tidak Diharuskan</span></div>
+      <div class="cara-line">وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class="cara-mark" style="color:var(--emerald)">(+)</span></div>
+      <div class="cara-line">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class="cara-mark" style="color:var(--coral)">(−)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ</div>
+      <div style="font-size:12.5px;color:var(--ink-soft);margin-top:10px;">Kerana Basmalah dijadikan di awal surah, bukan di akhirnya.</div>
+    </div>
+
+    <div class="cara-legend">
+      <span><b class="waqaf">(−)</b> = waqaf / berhenti</span>
+      <span><b class="washal">(+)</b> = washal / menyambung</span>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَمَهْمَا تَصِلْهَا مَعْ أَوَاخِرِ سُورَةٍ ۞ فَلَا تَقفَنَّ ٱلدَّهْرَ فِيهَا فَتُثقَلَا</div>
+      <div class="translation">"Dan jika kamu sambungkan ia (Basmalah) dengan penghujung mana-mana surah maka jangan sesekali kamu waqaf padanya — (jika kamu waqaf) maka kamu telah melakukan kesalahan yang besar (berat)"</div>
+      <div class="attribution">— Kata Imam al-Syatibi</div>
+    </div>
+
+    <!-- al-Anfal - al-Taubah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">٩</div>
+      <div>
+        <h3>Antara Surah al-Anfal &amp; Surah al-Taubah</h3>
+        <div class="sub">Tiga cara meneruskan bacaan tanpa Basmalah · (−) waqaf · (س) saktah · (+) washal</div>
+      </div>
+    </div>
+
+    <div id="cara-anfal-taubah"></div>
+
+    <div class="cara-legend">
+      <span><b class="waqaf">(−)</b> = waqaf / berhenti</span>
+      <span><b class="saktah">(س)</b> = saktah</span>
+      <span><b class="washal">(+)</b> = washal / menyambung</span>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَعَـنْ كُلِّهِمْ قِفْ صِلْ عَلِيمٌ وَبَيْنَ ٱلنَّاسِ .................... أَوِ ٱسْكُتْ وَبَيْنَ ٱلْحَمْدُ بَسْمَلَا</div>
+      <div class="translation">"Dan (diriwayatkan) daripada mereka (semua Imam al-Qurra') waqafkanlah atau washal ataupun saktah pada 'عَلِيمٌ بَرَاءَةٌ', dan di antara 'ٱلنَّاس' dan 'ٱلْحَمْدُ' bacalah Basmalah"</div>
+      <div class="attribution">— Kata Imam al-Mutawalli</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَبَيْـنَ ٱلْأَنْفَـالِ وَتَـوْبَـةٍ بَسْمَلَة .................... لِلْكُلِّ قِفْ وَٱسْكُتْ وَصِلَا</div>
+      <div class="translation">"Dan di antara surah al-Anfal dengan surah al-Taubah tidak ada Basmalah bagi semua (Imam-imam al-Qurra'). Waqafkanlah olehmu, atau saktah, atau washal"</div>
+      <div class="attribution">— Kata Syeikh al-Khaliji</div>
+    </div>
+
+    <div class="perhatian-block">
+      <div class="p-title">⚠ Perhatian</div>
+      <ol>
+        <li>Membaca dengan tiga wajah tersebut (iaitu waqaf, saktah dan washal) bukan khusus bagi surah al-Anfal dengan surah al-Taubah sahaja. Ia juga harus bagi surah-surah sebelum surah al-Anfal, seperti menyambung surah al-Nisa' dengan surah al-Taubah.</li>
+        <li>Tidak harus membaca secara saktah dan washal sekiranya surah al-Taubah disambungkan dengan surah-surah yang selepasnya (mengikut susunan surah), seperti menyambung surah Yunus dengan surah al-Taubah, atau menyambung surah al-Baiyinah dengan surah al-Taubah.</li>
+        <li>Sekiranya surah al-Taubah diulang dua kali, maka tidak harus membaca secara saktah atau washal antara ayat yang terakhir dengan awal surah tersebut.</li>
+      </ol>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Basmalah
+   ============================================================ */
+
+const pendapat = [
+  { who: "Syeikh al-Ramli", rulings: [
+      { text: "Awal Surah al-Taubah: Makruh", alt: false },
+      { text: "Pertengahannya: Sunat", alt: true }
+  ]},
+  { who: "Imam Ibnu Hajar, Syeikh al-Khatib &amp; Imam al-Syatibi", rulings: [
+      { text: "Awal Surah al-Taubah: Haram", alt: false },
+      { text: "Pertengahannya: Makruh", alt: true }
+  ]}
+];
+
+const caraAntaraSurah = [
+  { title: "Berhenti pada akhir surah pertama dan juga pada Basmalah, kemudian membaca awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Berhenti pada akhir surah pertama, kemudian membaca Basmalah dan disambungkan dengan awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Menyambungkan akhir surah pertama dengan Basmalah dan awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" }
+];
+
+const caraAnfalTaubah = [
+  { title: "Waqaf pada akhir surah al-Anfal kemudian membaca awal surah al-Taubah",
+    line1: "إِنَّ ٱللَّهَ بِكُلِّ شَىْءٍ عَلِيمٌ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "...... بَرَآءَةٌ مِنَ ٱللَّهِ" },
+  { title: "Saktah pada akhir surah al-Anfal kemudian membaca awal surah al-Taubah",
+    line1: "إِنَّ ٱللَّهَ بِكُلِّ شَىْءٍ عَلِيمٌ <span class='cara-mark' style='color:var(--amber)'>(س)</span>",
+    line2: "...... بَرَآءَةٌ مِنَ ٱللَّهِ" },
+  { title: "Washal akhir surah al-Anfal dengan awal surah al-Taubah",
+    line1: "إِنَّ ٱللَّهَ بِكُلِّ شَىْءٍ عَلِيمٌ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "...... بَرَآءَةٌ مِنَ ٱللَّهِ" }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('pendapat-grid').innerHTML = pendapat.map(p => `
+  <div class="pendapat-card">
+    <div class="who">${p.who}</div>
+    <div class="rulings">
+      ${p.rulings.map(r => `<span class="ruling ${r.alt ? 'alt' : ''}">${r.text}</span>`).join('')}
+    </div>
+  </div>
+`).join('');
+
+document.getElementById('cara-antara-surah').innerHTML = caraAntaraSurah.map((c, i) => `
+  <div class="cara-card">
+    <div class="cara-title"><span class="cara-num">${i + 1}</span>${c.title}</div>
+    <div class="cara-line">${c.line1}</div>
+    <div class="cara-line">${c.line2}</div>
+  </div>
+`).join('');
+
+document.getElementById('cara-anfal-taubah').innerHTML = caraAnfalTaubah.map((c, i) => `
+  <div class="cara-card">
+    <div class="cara-title"><span class="cara-num">${i + 1}</span>${c.title}</div>
+    <div class="cara-line">${c.line1}</div>
+    <div class="cara-line">${c.line2}</div>
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>

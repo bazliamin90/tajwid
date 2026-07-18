@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Isti'adzah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.2;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:24px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  /* dalil */
+  .dalil-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px; box-shadow:var(--shadow); margin-top:16px;
+  }
+  .dalil-label{ font-family:'Fredoka', sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.6px; }
+  .dalil-arabic{ font-family:'Amiri', serif; font-size:25px; direction:rtl; text-align:center; line-height:2; color:var(--ink); margin:14px 0; }
+  .dalil-translation{ font-size:14px; font-style:italic; color:var(--ink-soft); text-align:center; line-height:1.7; }
+  .dalil-ref{ text-align:center; font-size:12.5px; color:var(--teal); font-weight:700; margin-top:10px; font-family:'Fredoka', sans-serif; }
+
+  /* chips */
+  .chip{
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:7px 14px 7px 10px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid transparent;
+  }
+  .chip i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+  .chip.idgham{ background:var(--teal-bg); color:#0B6459; } .chip.idgham i{ background:var(--teal); }
+  .chip.ghunnah{ background:var(--rose-bg); color:#C42553; } .chip.ghunnah i{ background:var(--rose); }
+  .chip.sinshad{ background:var(--amber-bg); color:#A5701A; } .chip.sinshad i{ background:var(--amber); }
+  .chip.saktah{ background:var(--coral-bg); color:#B8402F; } .chip.saktah i{ background:var(--coral); }
+  .chip.sifat{ background:var(--violet-bg); color:#6236C9; } .chip.sifat i{ background:var(--violet); }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:52px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:21px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* pendapat (opinions) */
+  .pendapat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:18px; }
+  .pendapat-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--violet);
+    border-radius:16px; padding:20px; box-shadow:var(--shadow);
+  }
+  .pendapat-card .who{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:14px; color:var(--ink); margin-bottom:10px; line-height:1.5; }
+  .pendapat-card .ruling{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:12px; font-weight:700;
+    padding:5px 14px; border-radius:20px; background:var(--violet-bg); color:#6236C9;
+  }
+
+  .footnote-block{
+    margin-top:18px; background:var(--paper-alt); border:1px solid var(--line);
+    border-radius:14px; padding:16px 20px; font-size:12.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footnote-block .fn-item{ margin-bottom:8px; }
+  .footnote-block .fn-item:last-child{ margin-bottom:0; }
+  .footnote-block b{ color:var(--ink); }
+
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:24px 28px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:20px; direction:rtl; line-height:2.1; text-align:center; color:#FFE9C7; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.7; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  /* lafaz cards */
+  .lafaz-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:22px 24px; box-shadow:var(--shadow); margin-top:14px; position:relative;
+  }
+  .lafaz-card.featured{ border:2px solid var(--amber); }
+  .featured-badge{
+    position:absolute; top:-11px; right:18px;
+    background:var(--amber); color:#fff; font-family:'Fredoka', sans-serif;
+    font-size:11px; font-weight:700; padding:4px 13px; border-radius:20px;
+    box-shadow:0 4px 10px -2px rgba(242,169,60,0.55);
+  }
+  .lafaz-head{ display:flex; align-items:flex-start; gap:12px; }
+  .lafaz-num{
+    width:30px; height:30px; border-radius:10px; background:var(--teal); color:#fff;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:13px; flex-shrink:0;
+  }
+  .lafaz-source{ font-size:13.5px; color:var(--ink-soft); line-height:1.55; padding-top:4px; }
+  .lafaz-arabic{ font-family:'Amiri', serif; font-size:22px; direction:rtl; text-align:center; line-height:2.1; color:var(--ink); margin:16px 0; }
+  .lafaz-translation{ font-size:13.5px; font-style:italic; color:var(--ink-soft); text-align:center; line-height:1.7; }
+
+  /* dua keadaan */
+  .state-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:18px; }
+  .state-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--teal);
+    border-radius:16px; padding:20px; box-shadow:var(--shadow);
+  }
+  .state-card .label{ font-family:'Fredoka', sans-serif; font-weight:700; color:var(--teal); font-size:14.5px; margin-bottom:8px; }
+  .state-card p{ font-size:14px; color:var(--ink-soft); line-height:1.65; margin:0; }
+
+  /* cara membaca */
+  .cara-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:20px 24px; box-shadow:var(--shadow); margin-top:14px;
+  }
+  .cara-title{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:14.5px; color:var(--ink); margin-bottom:14px; display:flex; align-items:center; gap:10px; }
+  .cara-num{
+    width:26px; height:26px; border-radius:8px; background:var(--teal-bg); color:#0B6459;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:12.5px; flex-shrink:0;
+  }
+  .cara-line{ font-family:'Amiri', serif; font-size:20px; direction:rtl; line-height:2.3; color:var(--ink); text-align:center; }
+  .cara-mark{ font-family:'Nunito', sans-serif; font-weight:800; font-size:13px; }
+  .best-tag{
+    display:inline-block; margin-left:10px; font-family:'Fredoka', sans-serif; font-size:11px; font-weight:700;
+    background:var(--emerald-bg); color:#1B7A4E; padding:3px 10px; border-radius:20px;
+  }
+  .cara-legend{
+    display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:12px; color:var(--ink-soft);
+  }
+  .cara-legend b.waqaf{ color:var(--coral); } .cara-legend b.washal{ color:var(--emerald); }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 110 – 114</span>
+      <h2>Hukum Isti'adzah</h2>
+      <p>Isti'adzah — atau Ta'auwudz — ialah permohonan perlindungan kepada Allah daripada syaitan sebelum membaca al-Quran. Bab ini merangkumi makna, dalil, tahap tuntutannya, lafaz-lafaznya, serta cara ia disambungkan dengan Basmalah dan awal surah.</p>
+      <div class="hero-arabic">أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ</div>
+    </div>
+
+    <!-- Makna -->
+    <div class="intro-card">
+      <p><b>Pada bahasa:</b> Isti'adzah (<span class="term-arabic">إِسْتِعَاذَة</span>) bermaksud <b>berlindung</b>.</p>
+      <p><b>Pada istilah:</b> Lafaz yang menghasilkan perlindungan dan naungan Allah daripada syaitan yang dilaknat. Ia juga dikenali sebagai <b>Ta'auwudz</b> (<span class="term-arabic">تَعَوُّذ</span>).</p>
+    </div>
+
+    <!-- Dalil -->
+    <div class="dalil-card">
+      <div class="dalil-label">Dalil Tuntutan Membaca Isti'adzah</div>
+      <div class="dalil-arabic">فَإِذَا قَرَأْتَ ٱلْقُرْءَانَ فَٱسْتَعِذْ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ</div>
+      <div class="dalil-translation">"Apabila kamu (hendak) membaca al-Quran maka hendaklah kamu meminta perlindungan kepada Allah daripada syaitan yang direjam"</div>
+      <div class="dalil-ref">Surah al-Nahl · ayat 98</div>
+    </div>
+
+    <!-- Tahap Tuntutan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">⚖</div>
+      <div>
+        <h3>Tahap Tuntutan Membaca Isti'adzah</h3>
+        <div class="sub">Ulama berselisih pendapat mengenai tahap tuntutan ini ketika hendak membaca al-Quran.</div>
+      </div>
+    </div>
+
+    <div class="pendapat-grid" id="pendapat-grid"></div>
+
+    <div class="footnote-block">
+      <div class="fn-item">1. Jika seseorang memutuskan bacaannya dengan sebab darurat seperti menguap, terbersin dan sebagainya, atau perkara yang berhubung dengan qiraat, maka tidak perlu ia mengulangi Isti'adzah. Adapun sebaliknya — walaupun menjawab salam — maka hendaklah ia mengulangi Isti'adzah.</div>
+      <div class="fn-item">2. <b>'Ata' bin Abu Ribah</b> — dilahirkan di Yaman pada tahun 27H, meninggal dunia di Mekah pada tahun 115H.</div>
+      <div class="fn-item">3. <b>Abu Abdullah Sufyan bin Sa'id bin Masruq al-Thauri</b> — dilahirkan di Kufah pada tahun 97H, meninggal dunia di Bashrah pada tahun 161H.</div>
+      <div class="fn-item">4. <b>Abu Bakar Muhammad bin Sirin al-Bashri</b> — dilahirkan pada tahun 33H, meninggal dunia pada tahun 110H.</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَٱسْتُحِبْ .................... تَعَوُّذٌ وَقَالَ بَعْضُهُمْ يَجِبْ</div>
+      <div class="translation">"Dan disunatkan Isti'adzah (ketika hendak membaca al-Quran) dan kata setengah daripada mereka wajib"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <!-- Lafaz-lafaz -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">﴾﴿</div>
+      <div>
+        <h3>Lafaz-Lafaz Isti'adzah</h3>
+        <div class="sub">Terdapat banyak lafaz (shighah) Isti'adzah — antaranya tujuh lafaz berikut.</div>
+      </div>
+    </div>
+
+    <div id="lafaz-list"></div>
+
+    <!-- Dua Keadaan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">🔊</div>
+      <div>
+        <h3>Dua Keadaan Bacaan Isti'adzah</h3>
+        <div class="sub">Perbezaan antara dibaca kuat dan dibaca perlahan.</div>
+      </div>
+    </div>
+
+    <div class="state-grid" id="state-grid"></div>
+
+    <div class="footnote-block">
+      <div class="fn-item"><b>Sembahyang Jahar</b> ialah sembahyang yang dikuatkan bacaan fatihahnya, seperti sembahyang Subuh dan Maghrib. <b>Sembahyang Sir</b> pula ialah sembahyang yang diperlahankan bacaan fatihahnya, seperti sembahyang Zohor dan Asar.</div>
+    </div>
+
+    <!-- Empat Cara -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--emerald)">۞</div>
+      <div>
+        <h3>Empat Cara Membaca Isti'adzah, Basmalah &amp; Awal Surah</h3>
+        <div class="sub">(−) menandakan waqaf/berhenti · (+) menandakan washal/menyambung</div>
+      </div>
+    </div>
+
+    <div id="cara-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَوَقْفٌ عَلَيْهِ ثُمَّ وَصْلٌ بِأَرْبَعِ .................... لَهُمْ</div>
+      <div class="translation">"Dan boleh waqaf padanya (ta'auwudz) kemudian boleh juga washal (padanya), maka bagi mereka itu (Imam-imam al-Qurra') dengan empat keadaan"</div>
+      <div class="attribution">— Kata Shahibu Ittihaf al-Bariah</div>
+    </div>
+
+    <!-- Al-Taubah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--coral)">٩</div>
+      <div>
+        <h3>Isti'adzah di Awal Surah al-Taubah</h3>
+        <div class="sub">Surah al-Taubah tidak dimulakan dengan Basmalah, maka terdapat dua cara membaca Isti'adzah di awalnya.</div>
+      </div>
+    </div>
+
+    <div id="taubah-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَقَفْ لَهُمْ عَلَيْهِ أَوْ صِلْ ....................</div>
+      <div class="translation">"Dan boleh waqaf padanya (ta'auwudz) bagi mereka itu (Imam-imam al-Qurra'), atau diwashalkan ia (dengan ayat selepasnya, sama ada Basmalah atau selain daripadanya)"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Isti'adzah
+   ============================================================ */
+
+const pendapat = [
+  { who: "Jumhur ulama'", ruling: "Sunat Muakkad" },
+  { who: "'Ata', Sufyan al-Thauri dan Daud Zhahiri serta pengikutnya", ruling: "Wajib" },
+  { who: "Ibnu Sirin", ruling: "Wajib untuk sekali seumur hidup" }
+];
+
+const lafaz = [
+  {
+    source: "Lafaz yang diajar oleh Malaikat Jibril 'Alaihis Salam kepada Rasulullah Shallallahu 'Alaihi Wasallam.",
+    featured: true,
+    arabic: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
+    translation: "\"Aku berlindung diri dengan Allah daripada syaitan yang direjam\""
+  },
+  {
+    source: "Lafaz yang diambil daripada hadis Rasulullah Shallallahu 'Alaihi Wasallam serta digemari oleh segolongan Ulama Salaf.",
+    arabic: "أَعُوذُ بِٱللَّهِ ٱلسَّمِيعِ ٱلْعَلِيمِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
+    translation: "\"Aku berlindung diri dengan Allah yang Maha Mendengar lagi Maha Mengetahui daripada syaitan yang direjam\""
+  },
+  {
+    source: "Lafaz yang diambil daripada Rasulullah Shallallahu 'Alaihi Wasallam.",
+    arabic: "أَعُوذُ بِعَفْوِ ٱللَّهِ ٱلْعَظِيمِ مِنْ عَذَابِهِ ٱلْأَلِيمِ وَمِنْ هَمَزَاتِ ٱلشَّيَاطِينِ إِنَّهُ هُوَ ٱلسَّمِيعُ ٱلْعَلِيمُ",
+    translation: "\"Aku berlindung diri dengan keampunan Allah yang Maha Agong daripada azabNya yang amat pedih dan daripada tipu daya syaitan, sesungguhnya Dialah (Tuhan) yang Maha Mendengar lagi Maha Mengetahui\""
+  },
+  {
+    source: "Lafaz yang diambil daripada Saiyidina Abu Bakar al-Shiddiq radhiallahu 'anhu.",
+    arabic: "أَعُوذُ بِٱللَّهِ ٱلْوَاحِدِ ٱلْمَاجِدِ مِنْ كُلِّ عَدُوٍّ وَحَاسِدٍ وَمِنْ كُلِّ شَيْطَانٍ مَارِدٍ إِنَّهُ هُوَ ٱلسَّمِيعُ ٱلْعَلِيمُ",
+    translation: "\"Aku berlindung diri dengan Allah yang Maha Esa lagi Maha Mulia daripada setiap musuh dan setiap orang yang berhasad dengki serta daripada setiap syaitan yang durhaka, sesungguhnya Dialah (Tuhan) yang Maha Mendengar lagi Maha Mengetahui\""
+  },
+  {
+    source: "Lafaz yang diambil daripada Saiyidina Umar bin al-Khattab radhiallahu 'anhu.",
+    arabic: "أَعُوذُ بِٱللَّهِ ٱلْمُعِينِ مِنَ ٱلشَّيْطَٰنِ ٱللَّعِينِ إِلَى يَوْمِ ٱلدِّينِ",
+    translation: "\"Aku berlindung diri dengan Allah yang Maha Memberi pertolongan daripada syaitan yang dilaknat hingga hari qiamat\""
+  },
+  {
+    source: "Lafaz yang diambil daripada Saiyidina Othman bin 'Affan radhiallahu 'anhu.",
+    arabic: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ وَٱلْكُفْرِ وَٱلطُّغْيَانِ وَهُوَ ٱلْمُنْعِمُ ٱلْمُسْتَعَانُ",
+    translation: "\"Aku berlindung diri dengan Allah daripada syaitan dan kekufuran serta Taghut dan Dialah (Tuhan) yang Maha Memberi nikmat lagi Maha Memberi pertolongan\""
+  },
+  {
+    source: "Lafaz yang diambil daripada Saiyidina Ali bin Abu Talib karramallahu wajhah.",
+    arabic: "أَعُوذُ بِٱللَّهِ ٱلْعَظِيمِ ٱلْكَرِيمِ وَوَجْهِهِ ٱلْكَرِيمِ وَسُلْطَانِهِ ٱلْقَدِيمِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ",
+    translation: "\"Aku berlindung diri dengan Allah yang Maha Agong dan wajahNya yang Maha Mulia serta kekuasaanNya yang Maha Tersedia daripada syaitan yang direjam\""
+  }
+];
+
+const states = [
+  { label: "Dibaca Kuat", text: "Ketika membaca al-Quran dalam majlis dan waktu belajar." },
+  { label: "Dibaca Perlahan", text: "Ketika membaca al-Quran dengan nada suara yang perlahan walaupun di tempat orang ramai; ketika membaca di tempat yang sunyi walaupun dengan suara yang kuat; ketika membaca secara bergilir-gilir sedangkan kita bukan orang yang pertama; dan ketika dalam sembahyang, sama ada sembahyang Sir atau Jahar." }
+];
+
+const caraList = [
+  { title: "Berhenti pada Isti'adzah dan pada Basmalah", best: true,
+    line1: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span> قُلْ هُوَ ٱللَّهُ أَحَدٌ" },
+  { title: "Berhenti pada Isti'adzah dan menyambung Basmalah dengan awal surah",
+    line1: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ هُوَ ٱللَّهُ أَحَدٌ" },
+  { title: "Menyambung Isti'adzah dengan Basmalah sahaja",
+    line1: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span> قُلْ هُوَ ٱللَّهُ أَحَدٌ" },
+  { title: "Menyambung ketiga-tiganya sekali",
+    line1: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ هُوَ ٱللَّهُ أَحَدٌ" }
+];
+
+const taubahList = [
+  { title: "Berhenti pada Isti'adzah kemudian meneruskan bacaan",
+    line1: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بَرَآءَةٌ مِنَ ٱللَّهِ ..." },
+  { title: "Menyambung Isti'adzah dengan awal surah al-Taubah",
+    line1: "أَعُوذُ بِٱللَّهِ مِنَ ٱلشَّيْطَٰنِ ٱلرَّجِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "بَرَآءَةٌ مِنَ ٱللَّهِ ..." }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('pendapat-grid').innerHTML = pendapat.map(p => `
+  <div class="pendapat-card">
+    <div class="who">${p.who}</div>
+    <span class="ruling">${p.ruling}</span>
+  </div>
+`).join('');
+
+document.getElementById('lafaz-list').innerHTML = lafaz.map((l, i) => `
+  <div class="lafaz-card ${l.featured ? 'featured' : ''}">
+    ${l.featured ? '<span class="featured-badge">LAFAZ TERPILIH</span>' : ''}
+    <div class="lafaz-head">
+      <div class="lafaz-num">${i + 1}</div>
+      <div class="lafaz-source">${l.source}</div>
+    </div>
+    <div class="lafaz-arabic">${l.arabic}</div>
+    <div class="lafaz-translation">${l.translation}</div>
+  </div>
+`).join('');
+
+document.getElementById('state-grid').innerHTML = states.map(s => `
+  <div class="state-card">
+    <div class="label">${s.label}</div>
+    <p>${s.text}</p>
+  </div>
+`).join('');
+
+document.getElementById('cara-list').innerHTML = caraList.map((c, i) => `
+  <div class="cara-card">
+    <div class="cara-title"><span class="cara-num">${i + 1}</span>${c.title}${c.best ? '<span class="best-tag">Cara Terbaik</span>' : ''}</div>
+    <div class="cara-line">${c.line1}</div>
+    <div class="cara-line">${c.line2}</div>
+  </div>
+`).join('') + `
+  <div class="cara-legend">
+    <span><b class="waqaf">(−)</b> = waqaf / berhenti</span>
+    <span><b class="washal">(+)</b> = washal / menyambung</span>
+  </div>
+`;
+
+document.getElementById('taubah-list').innerHTML = taubahList.map((c, i) => `
+  <div class="cara-card">
+    <div class="cara-title"><span class="cara-num">${i + 1}</span>${c.title}</div>
+    <div class="cara-line">${c.line1}</div>
+    <div class="cara-line">${c.line2}</div>
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>

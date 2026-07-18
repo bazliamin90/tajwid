@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Qashr pada Mad Jaiz Munfashil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;   /* idgham & izhar */
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;   /* saktah */
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;   /* sin/shad */
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;   /* mad */
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;   /* sifat huruf */
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;   /* ghunnah */
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;   /* sunnah bacaan */
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:0;
+  }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  .sidebar-note{
+    margin:20px 0 22px;
+    font-size:12.5px;
+    line-height:1.5;
+    color:#B7DACE;
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(255,255,255,0.12);
+    border-radius:12px;
+    padding:12px 14px;
+  }
+
+  .toc-label{
+    font-family:'Fredoka', sans-serif;
+    font-size:11.5px;
+    text-transform:uppercase;
+    letter-spacing:1.2px;
+    color:#7FB5A4;
+    margin:22px 0 10px;
+    font-weight:600;
+  }
+
+  .toc-item{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:11px 12px;
+    border-radius:12px;
+    margin-bottom:6px;
+    cursor:pointer;
+    border:1px solid transparent;
+    transition:background .15s ease, border-color .15s ease, transform .15s ease;
+  }
+  .toc-item.active{
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.18);
+  }
+  .toc-item:not(.disabled):hover{ transform:translateX(2px); background:rgba(255,255,255,0.07); }
+  .toc-dot{
+    margin-top:4px;
+    width:9px;height:9px;border-radius:50%;
+    background:var(--amber);
+    flex-shrink:0;
+    box-shadow:0 0 0 3px rgba(242,169,60,0.25);
+  }
+  .toc-item.disabled .toc-dot{ background:#4B665F; box-shadow:none; }
+  .toc-text b{
+    display:block; font-size:13.5px; font-weight:700; color:#F3FAF7;
+    font-family:'Fredoka', sans-serif;
+  }
+  .toc-item.disabled .toc-text b{ color:#8FADA4; }
+  .toc-text small{ font-size:11.5px; color:#9BC9BB; }
+  .toc-item.disabled .toc-text small{ color:#6E8B82; }
+  .badge-soon{
+    font-size:9.5px; font-weight:700; letter-spacing:.5px;
+    background:rgba(255,255,255,0.08); color:#8FADA4;
+    padding:2px 7px; border-radius:20px; margin-left:auto;
+    white-space:nowrap; align-self:center;
+  }
+
+  .toc-add-hint{
+    margin-top:16px;
+    font-size:11.5px;
+    color:#6E8B82;
+    line-height:1.5;
+    border-top:1px dashed rgba(255,255,255,0.15);
+    padding-top:14px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(26px, 3vw, 36px);
+    line-height:1.2;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:640px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:30px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:28px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+
+  /* legend */
+  .legend{
+    margin-top:30px;
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .chip{
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:7px 14px 7px 10px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid transparent;
+  }
+  .chip i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+
+  .chip.saktah{ background:var(--coral-bg); color:#B8402F; } .chip.saktah i{ background:var(--coral); }
+  .chip.mad{ background:var(--emerald-bg); color:#1B7A4E; } .chip.mad i{ background:var(--emerald); }
+  .chip.sinshad{ background:var(--amber-bg); color:#A5701A; } .chip.sinshad i{ background:var(--amber); }
+  .chip.idgham{ background:var(--teal-bg); color:#0B6459; } .chip.idgham i{ background:var(--teal); }
+  .chip.sifat{ background:var(--violet-bg); color:#6236C9; } .chip.sifat i{ background:var(--violet); }
+  .chip.ghunnah{ background:var(--rose-bg); color:#C42553; } .chip.ghunnah i{ background:var(--rose); }
+  .chip.sunnah{ background:var(--blue-bg); color:#215B8C; } .chip.sunnah i{ background:var(--blue); }
+
+  /* section headers */
+  .section-title{
+    font-family:'Fredoka', sans-serif;
+    font-size:21px;
+    margin:44px 0 6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:20px; }
+
+  /* saktah grid */
+  .saktah-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    gap:16px;
+  }
+  .saktah-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid var(--line);
+    border-top:4px solid var(--coral);
+    padding:20px;
+    box-shadow:var(--shadow);
+  }
+  .saktah-card .num{
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; color:var(--coral); font-size:13px;
+  }
+  .saktah-card .arabic{
+    font-family:'Amiri', serif; font-size:25px;
+    direction:rtl; margin:10px 0; color:var(--ink); line-height:1.7;
+  }
+  .saktah-card .ref{ font-size:13px; color:var(--ink-soft); font-weight:600; }
+
+  /* rule list */
+  .rules{
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .rule-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid var(--line);
+    padding:20px 22px;
+    display:grid;
+    grid-template-columns:44px 1fr;
+    gap:16px;
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .rule-card:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -10px rgba(34,48,43,0.22); }
+  .rule-num{
+    width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:16px; color:#fff;
+  }
+  .rule-body .rule-top{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:8px; }
+  .rule-text{ font-size:15px; line-height:1.65; color:var(--ink); }
+  .rule-arabic{
+    font-family:'Amiri', serif; font-size:22px; direction:rtl;
+    margin-top:8px; color:var(--ink);
+  }
+  .rule-ref{ font-size:12.5px; color:var(--ink-soft); font-weight:700; margin-top:6px; }
+  .rule-sub{ margin-top:10px; padding-left:2px; display:flex; flex-direction:column; gap:6px; }
+  .rule-sub-item{ font-size:14px; color:var(--ink-soft); }
+  .rule-sub-item .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; color:var(--ink); margin-right:6px;}
+
+  footer{
+    margin-top:60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    line-height:1.7;
+  }
+
+  /* mobile */
+  .menu-toggle{ display:none; }
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .rule-card{ grid-template-columns:38px 1fr; padding:16px; }
+    .hero{ padding:26px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 188 – 190</span>
+      <h2>Hukum Membaca Qashr (2 Harakat) pada Mad Jaiz Munfashil</h2>
+      <p>Toriq Imam Ibnu al-Jazari membenarkan bacaan Mad Jaiz Munfashil dengan kadar 2 harakat ketika washal — tetapi hanya bagi pelajar yang mengambilnya terus daripada guru yang muktabar, dan dengan syarat mesti menepati kesemua 20 syarat di bawah.</p>
+      <div class="hero-arabic">عَنِ الشَّيْخِ إِلَى الطَّالِبِ سَنَدًا مُتَّصِلًا</div>
+    </div>
+
+    <div class="intro-card">
+      Sebelum ini dinyatakan bahawa <b>Mad Jaiz Munfashil</b> harus dibaca <b>4 atau 5 harakat</b> ketika washal, dan wajib dibaca <b>2 harakat</b> ketika waqaf. Ini adalah toriq Imam al-Syatibi. Adapun mengikut toriq <b>Imam Ibnu al-Jazari</b>, ia harus dibaca dengan kadar <b>2 harakat</b> ketika washal — bagi mereka yang belajar dan mengambilnya daripada guru yang muktabar, dengan syarat-syarat berikut.
+    </div>
+
+    <div class="legend" id="legend"></div>
+
+    <!-- Syarat 1 : Saktah -->
+    <h3 class="section-title">🛑 Syarat 1 — Wajib Meninggalkan Saktah</h3>
+    <p class="section-sub">Pada empat tempat berikut ketika washal:</p>
+    <div class="saktah-grid" id="saktah-grid"></div>
+
+    <!-- Remaining rules -->
+    <h3 class="section-title">📜 Syarat 2 – 20</h3>
+    <p class="section-sub">Syarat-syarat selanjutnya yang wajib dipenuhi bagi membolehkan bacaan qashr pada Mad Jaiz Munfashil.</p>
+    <div class="rules" id="rules-list"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA
+   To add a new chapter later: push a new object into `chapters`
+   following the same shape as `qashrChapter` below, then add a
+   matching entry (active:true) to the `chapters` array.
+   ============================================================ */
+
+const categories = {
+  saktah:  { label: "Saktah",         class: "saktah",  color: "var(--coral)"   },
+  mad:     { label: "Mad",            class: "mad",     color: "var(--emerald)"},
+  sinshad: { label: "Sin / Shad",     class: "sinshad", color: "var(--amber)"  },
+  idgham:  { label: "Idgham / Izhar", class: "idgham",  color: "var(--teal)"   },
+  sifat:   { label: "Sifat Huruf",    class: "sifat",   color: "var(--violet)" },
+  ghunnah: { label: "Ghunnah",        class: "ghunnah", color: "var(--rose)"   },
+  sunnah:  { label: "Sunnah Bacaan",  class: "sunnah",  color: "var(--blue)"   }
+};
+
+const saktahPoints = [
+  { arabic: "عِوَجًا ۜ قَيِّمًا", ref: "Surah al-Kahf · ayat 1" },
+  { arabic: "مِنْ مَرْقَدِنَا هَـٰذَا", ref: "Surah Yasin · ayat 52" },
+  { arabic: "وَقِيلَ مَنْ رَاقٍ", ref: "Surah al-Qiamah · ayat 27" },
+  { arabic: "كَلَّا بَلْ رَانَ", ref: "Surah al-Mutoffifin · ayat 14" }
+];
+
+const rules = [
+  {
+    num: 2, cat: "mad",
+    text: "Wajib membaca satu wajah sahaja, iaitu menukarkan Hamzah Washal kepada Alif serta dibaca 6 harakat, pada tiga kalimah berikut:",
+    sub: [
+      { arabic: "ءَآلْـَٔانَ", ref: "Surah Yunus · ayat 51 dan 91" },
+      { arabic: "ءَآلذَّكَرَيْنِ", ref: "Surah al-An'am · ayat 143 dan 144" },
+      { arabic: "ءَآللَّهُ", ref: "Surah Yunus · ayat 59 dan Surah al-Naml · ayat 59" }
+    ]
+  },
+  { num: 3, cat: "sinshad", text: "Harus membaca dengan Sin atau Shad pada kalimah:", arabic: "وَيَبْصُطْ", ref: "Surah al-Baqarah · ayat 245" },
+  { num: 4, cat: "sinshad", text: "Harus membaca dengan Sin atau Shad pada kalimah:", arabic: "بَصْطَةً", ref: "Surah al-A'raf · ayat 69" },
+  { num: 5, cat: "sinshad", text: "Wajib membaca dengan Sin pada kalimah:", arabic: "ٱلْمُصَيْطِرُونَ", ref: "Surah al-Tur · ayat 37" },
+  { num: 6, cat: "sinshad", text: "Harus membaca dengan Sin atau Shad pada kalimah:", arabic: "بِمُصَيْطِرٍ", ref: "Surah al-Ghasyiyah · ayat 22" },
+  {
+    num: 7, cat: "idgham",
+    text: "Harus membaca secara Izhar atau Idgham ketika washal pada dua tempat berikut:",
+    sub: [
+      { arabic: "يسٓ ﴿١﴾ وَٱلْقُرْءَانِ ٱلْحَكِيمِ", ref: "Surah Yasin · ayat 1–2" },
+      { arabic: "نٓ ۚ وَٱلْقَلَمِ وَمَا يَسْطُرُونَ", ref: "Surah al-Qalam · ayat 1" }
+    ]
+  },
+  {
+    num: 8, cat: "idgham",
+    text: "Wajib membaca secara Idgham ketika washal pada dua tempat berikut:",
+    sub: [
+      { arabic: "يَلْهَث ذَّٰلِكَ", ref: "Surah al-A'raf · ayat 176" },
+      { arabic: "ٱرْكَب مَّعَنَا", ref: "Surah Hud · ayat 42" }
+    ]
+  },
+  { num: 9, cat: "sifat", text: "Wajib membaca secara Isymam pada kalimah:", arabic: "لَا تَأْمَ۫نَّا", ref: "Surah Yusuf · ayat 11" },
+  { num: 10, cat: "sifat", text: "Wajib membaca Ra' dengan tafkhim pada kalimah:", arabic: "فِرْقٍ", ref: "Surah al-Syu'ara' · ayat 63" },
+  { num: 11, cat: "mad", text: "Wajib membaca secara Mad 'Aaridh Lissukun ketika waqaf pada kalimah:", arabic: "فَمَآ ءَاتَىٰنِۦَ", ref: "Surah al-Naml · ayat 36" },
+  { num: 12, cat: "idgham", text: "Wajib membaca secara Idgham Kamil pada kalimah:", arabic: "نَخْلُقكُّم", ref: "Surah al-Mursalat · ayat 20" },
+  {
+    num: 13, cat: "mad",
+    text: "Wajib membaca 'Ain secara qashr (2 harakat) pada pembukaan Surah Maryam dan Surah al-Syura, iaitu kalimah:",
+    sub: [
+      { arabic: "كٓهٰيٰعٓصٓ", ref: "Pembukaan Surah Maryam" },
+      { arabic: "حمٓ ﴿١﴾ عسٓقٓ", ref: "Pembukaan Surah al-Syura" }
+    ]
+  },
+  { num: 14, cat: "mad", text: "Wajib membaca Mad Wajib Muttashil secara tawassut (4 harakat) sahaja." },
+  { num: 15, cat: "mad", text: "Wajib membaca Mad Ta'zhim secara qashr (2 harakat) sahaja." },
+  { num: 16, cat: "saktah", text: "Meninggalkan saktah pada huruf sukun sebelum Hamzah, sama ada pada Sakin Maushul, Sakin Mafshul, Mad Wajib Muttashil, atau Mad Jaiz Munfashil." },
+  { num: 17, cat: "ghunnah", text: "Wajib meninggalkan ghunnah pada Nun Sakinah apabila bertemu dengan Ra' atau Lam." },
+  { num: 18, cat: "sifat", text: "Harus membaca dengan fathah atau dhammah pada Dhad, kalimah:", arabic: "ضَعْفٍ  ·  ضَعْفًا", ref: "Surah al-Rum · ayat 54" },
+  { num: 19, cat: "sunnah", text: "Tidak harus meninggalkan Basmalah di awal setiap surah, kecuali Surah al-Taubah." },
+  { num: 20, cat: "sunnah", text: "Memulakan takbir di akhir Surah al-Dhuha dan berakhir di akhir Surah al-Nas, jika memilih untuk melakukannya." }
+];
+
+const chapters = [
+  { title: "Qashr pada Mad Jaiz Munfashil", pages: "188–190", active: true },
+  { title: "Ahkam Nun Sakinah & Tanwin", pages: "akan datang", active: false },
+  { title: "Ahkam Mim Sakinah", pages: "akan datang", active: false }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+function renderLegend(){
+  const el = document.getElementById('legend');
+  el.innerHTML = Object.values(categories).map(c => `
+    <span class="chip ${c.class}"><i></i>${c.label}</span>
+  `).join('');
+}
+
+function renderSaktah(){
+  const el = document.getElementById('saktah-grid');
+  el.innerHTML = saktahPoints.map((p, idx) => `
+    <div class="saktah-card">
+      <div class="num">TEMPAT ${idx + 1}</div>
+      <div class="arabic">${p.arabic}</div>
+      <div class="ref">${p.ref}</div>
+    </div>
+  `).join('');
+}
+
+function renderRules(){
+  const el = document.getElementById('rules-list');
+  el.innerHTML = rules.map(r => {
+    const cat = categories[r.cat];
+    const subHtml = r.sub ? `
+      <div class="rule-sub">
+        ${r.sub.map(s => `<div class="rule-sub-item"><span class="arabic">${s.arabic}</span>— ${s.ref}</div>`).join('')}
+      </div>` : '';
+    const singleArabic = r.arabic ? `<div class="rule-arabic">${r.arabic}</div>` : '';
+    const singleRef = r.ref ? `<div class="rule-ref">${r.ref}</div>` : '';
+    return `
+      <div class="rule-card">
+        <div class="rule-num" style="background:${cat.color}">${r.num}</div>
+        <div class="rule-body">
+          <div class="rule-top">
+            <span class="chip ${cat.class}"><i></i>${cat.label}</span>
+          </div>
+          <div class="rule-text">${r.text}</div>
+          ${singleArabic}
+          ${singleRef}
+          ${subHtml}
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+renderLegend();
+renderSaktah();
+renderRules();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Menyentuh al-Quran atas Orang yang Berhadas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(23px, 3vw, 32px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  /* dalil */
+  .dalil-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 26px; box-shadow:var(--shadow); margin-top:14px;
+  }
+  .dalil-label{ font-family:'Fredoka', sans-serif; font-size:12.5px; font-weight:600; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.6px; }
+  .dalil-arabic{ font-family:'Amiri', serif; font-size:23px; direction:rtl; text-align:center; line-height:2; color:var(--ink); margin:14px 0; }
+  .dalil-translation{ font-size:14px; font-style:italic; color:var(--ink-soft); text-align:center; line-height:1.7; }
+  .dalil-ref{ text-align:center; font-size:12.5px; color:var(--teal); font-weight:700; margin-top:10px; font-family:'Fredoka', sans-serif; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:52px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:21px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  .subheading{
+    font-family:'Fredoka', sans-serif; font-size:16px; font-weight:600; color:var(--ink);
+    margin:34px 0 12px; display:flex; align-items:center; gap:10px;
+  }
+
+  /* madzhab grid */
+  .madzhab-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:18px; }
+  .madzhab-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--violet);
+    border-radius:16px; padding:20px; box-shadow:var(--shadow);
+  }
+  .madzhab-card .who{ font-family:'Fredoka', sans-serif; font-weight:700; font-size:15px; color:var(--ink); margin-bottom:10px; }
+  .madzhab-card .rulings{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px; }
+  .madzhab-card p{ font-size:13px; color:var(--ink-soft); line-height:1.6; margin:0; }
+  .ruling{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700;
+    padding:5px 13px; border-radius:20px;
+  }
+  .ruling.haram{ background:var(--coral-bg); color:#B8402F; }
+  .ruling.harus{ background:var(--emerald-bg); color:#1B7A4E; }
+  .ruling.syarat{ background:var(--amber-bg); color:#A5701A; }
+  .ruling.dua{ background:var(--violet-bg); color:#6236C9; }
+
+  /* scholar chips */
+  .scholar-list{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+  .scholar-chip{
+    font-family:'Fredoka', sans-serif; font-size:12px; font-weight:600;
+    background:var(--teal-bg); color:#0B6459; padding:6px 13px; border-radius:20px;
+  }
+
+  /* hadith item */
+  .hadith-item{ margin-top:14px; }
+  .hadith-label{ font-family:'Fredoka', sans-serif; font-size:13px; font-weight:600; color:var(--ink-soft); margin-bottom:6px; }
+
+  .perhatian-block{
+    margin-top:18px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--amber);
+    border-radius:14px; padding:18px 22px; box-shadow:var(--shadow);
+  }
+  .perhatian-block .p-title{ font-family:'Fredoka', sans-serif; font-weight:700; color:#A5701A; font-size:14px; margin-bottom:8px; }
+  .perhatian-block p{ font-size:14px; color:var(--ink-soft); line-height:1.7; margin:0; }
+  .perhatian-block ol{ margin:0; padding-left:20px; }
+  .perhatian-block li{ font-size:14px; color:var(--ink-soft); line-height:1.7; margin-bottom:8px; }
+  .perhatian-block li:last-child{ margin-bottom:0; }
+
+  .footnote-block{
+    margin-top:18px; background:var(--paper-alt); border:1px solid var(--line);
+    border-radius:14px; padding:16px 20px; font-size:12.5px; color:var(--ink-soft); line-height:1.8;
+  }
+  .footnote-block .fn-item{ margin-bottom:8px; }
+  .footnote-block .fn-item:last-child{ margin-bottom:0; }
+  .footnote-block b{ color:var(--ink); }
+  .footnote-block .fn-arabic{ font-family:'Amiri', serif; direction:rtl; font-size:18px; color:var(--ink); display:block; text-align:center; margin:10px 0; }
+
+  .hujah-card{
+    margin-top:16px; background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 26px; box-shadow:var(--shadow); font-size:14.5px; line-height:1.8; color:var(--ink-soft);
+  }
+  .hujah-card p{ margin:0 0 12px; }
+  .hujah-card p:last-child{ margin-bottom:0; }
+  .hujah-card b{ color:var(--ink); }
+  .hujah-card .verdict{
+    margin-top:14px; display:inline-block; font-family:'Fredoka', sans-serif; font-weight:700; font-size:13px;
+    background:var(--emerald-bg); color:#1B7A4E; padding:6px 15px; border-radius:20px;
+  }
+
+  .kesimpulan-card{
+    margin-top:18px;
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:var(--radius); padding:28px 30px; box-shadow:var(--shadow);
+  }
+  .kesimpulan-card .label{
+    font-family:'Fredoka', sans-serif; font-size:12.5px; font-weight:600; letter-spacing:1px;
+    text-transform:uppercase; color:#9FCBBE; display:flex; align-items:center; gap:10px;
+  }
+  .kesimpulan-card .wallahu-arabic{ font-family:'Amiri', serif; font-size:20px; direction:rtl; color:#FFE9C7; }
+  .kesimpulan-card p{ font-size:14.5px; line-height:1.85; color:#E7F5F0; margin:14px 0 0; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 49 – 51</span>
+      <h2>Hukum Menyentuh al-Quran atas Orang yang Berhadas</h2>
+      <p>Berbeza daripada hukum membaca, bab ini membincangkan hukum menyentuh dan membawa mushaf al-Quran — bagi orang yang berhadas besar (berjanabah, haidh dan nifas) mahupun berhadas kecil (tidak berwudhu').</p>
+    </div>
+
+    <!-- Berhadas Besar -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--coral)">١</div>
+      <div>
+        <h3>Orang yang Berhadas Besar</h3>
+        <div class="sub">Berjanabah, haidh dan nifas — ulama berselisih pendapat mengenai menyentuh al-Quran.</div>
+      </div>
+    </div>
+
+    <div class="madzhab-grid" id="besar-grid"></div>
+
+    <div class="footnote-block">
+      <div class="fn-item">1. <b>Abu Sulaiman Daud bin Ali bin Khalaf</b> — salah seorang daripada Imam Mujtahid yang masyhur dan beliau adalah Imam bagi Madzhab Zhahiri. Dilahirkan di Kufah pada tahun 201H dan meninggal dunia di Baghdad pada tahun 270H.</div>
+    </div>
+
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">✦</div>
+      <div>
+        <h3>Kesimpulan</h3>
+        <div class="sub">Pandangan penulis kitab bagi orang yang berhadas besar.</div>
+      </div>
+    </div>
+
+    <div class="kesimpulan-card">
+      <div class="label"><span class="wallahu-arabic">وَٱللَّهُ أَعْلَم</span>&nbsp;· Wallahu A'lam</div>
+      <p>Saya katakan <b style="color:#FFE9C7;">haram</b> atas orang yang berhadas besar menyentuh al-Quran, walaupun dengan menggunakan perantaraan pensil atau penunjuk. Diharamkan juga menanggungnya walaupun berlapik dengan kain, kecuali ketika darurat seperti berlakunya kebakaran dan sebagainya.</p>
+    </div>
+
+    <!-- Berhadas Kecil -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">٢</div>
+      <div>
+        <h3>Orang yang Berhadas Kecil</h3>
+        <div class="sub">Tidak berwudhu' — ulama berselisih pendapat mengenai menyentuh al-Quran tanpa wudhu'.</div>
+      </div>
+    </div>
+
+    <div class="subheading">🚫 Pendapat Pertama — Jumhur Ulama Fiqh: Haram</div>
+    <div class="intro-card">
+      <p>Jumhur Ulama Fiqh mengharamkan bagi orang yang tidak berwudhu' menyentuh atau menanggung al-Quran. Mereka berhujah dengan dalil-dalil berikut:</p>
+    </div>
+
+    <div class="hadith-item">
+      <div class="hadith-label">(a) Firman Allah Ta'ala</div>
+      <div class="dalil-card">
+        <div class="dalil-arabic">لَا يَمَسُّهُۥٓ إِلَّا ٱلْمُطَهَّرُونَ</div>
+        <div class="dalil-translation">"Tidak menyentuhnya (al-Quran) kecuali mereka yang disucikan"</div>
+        <div class="dalil-ref">Surah al-Waqi'ah · ayat 79</div>
+      </div>
+    </div>
+
+    <div class="hadith-item">
+      <div class="hadith-label">(b) Sabda Rasulullah Shallallahu 'Alaihi Wasallam</div>
+      <div class="dalil-card">
+        <div class="dalil-arabic">لَا يَمَسُّ ٱلْقُرْءَانَ إِلَّا طَاهِرٌ</div>
+        <div class="dalil-translation">"Tidak menyentuh al-Quran kecuali orang yang suci"</div>
+        <div class="dalil-ref">Riwayat Ibnu Hibban</div>
+      </div>
+    </div>
+
+    <div class="hadith-item">
+      <div class="hadith-label">(c) Hadis Rasulullah Shallallahu 'Alaihi Wasallam</div>
+      <div class="dalil-card">
+        <div class="dalil-arabic">عَنْ أَبِى بَكْرِ بْنِ مُحَمَّدِ بْنِ عَمْرِو بْنِ حَزْمٍ عَنْ أَبِيهِ عَنْ جَدِّهِ أَنَّ ٱلنَّبِىَّ صَلَّى ٱللَّهُ عَلَيْهِ وَسَلَّمَ كَتَبَ إِلَىٰ أَهْلِ ٱلْيَمَنِ كِتَابًا وَكَانَ فِيهِ لَا يَمَسُّ ٱلْقُرْءَانَ إِلَّا طَاهِرٌ</div>
+        <div class="dalil-translation">"Daripada Abu Bakar bin Muhammad bin 'Amru bin Hazmin, daripada ayahnya, daripada datuknya: bahawa Rasulullah Shallallahu 'Alaihi Wasallam menulis surat kepada penduduk Yaman, dan di dalamnya mengandungi ucapan 'Tidak boleh menyentuh al-Quran kecuali orang yang suci'"</div>
+        <div class="dalil-ref">Riwayat al-Nasaie</div>
+      </div>
+    </div>
+
+    <div class="subheading">✅ Pendapat Kedua — Boleh Menyentuh</div>
+    <div class="intro-card">
+      <p>Ibnu 'Abbas, al-Sya'bi, al-Dhahak bin Muzahim, Daud Zhahiri, Ibnu Hazmin dan Hammad al-Basti berpendapat bahawa orang yang berhadas kecil boleh menyentuh al-Quran, kerana tidak ada dalil yang terang yang mengharamkannya.</p>
+      <div class="scholar-list">
+        <span class="scholar-chip">Ibnu 'Abbas</span>
+        <span class="scholar-chip">al-Sya'bi</span>
+        <span class="scholar-chip">al-Dhahak bin Muzahim</span>
+        <span class="scholar-chip">Daud Zhahiri</span>
+        <span class="scholar-chip">Ibnu Hazmin</span>
+        <span class="scholar-chip">Hammad al-Basti</span>
+      </div>
+      <p style="margin-top:14px;">Mereka menolak hujah jumhur ulama dengan alasan berikut:</p>
+    </div>
+
+    <div class="hujah-card">
+      <p><b>(a)</b> Ayat 79 Surah al-Waqi'ah tidak boleh dijadikan hujah, kerana Ha' Dhamir (ganti nama) tersebut kembali kepada "Luh Mahfuzh", dan yang dimaksudkan dengan "mereka yang disucikan" ialah para malaikat, seperti yang ditunjukkan oleh ayat-ayat sebelumnya.</p>
+      <p><b>(b)</b> Hadis tersebut terlalu umum. Perkataan <b>طَاهِر</b> (orang yang suci) mengandungi pelbagai erti — ia mungkin bererti suci daripada hadas besar atau hadas kecil, mungkin suci badan daripada najis, dan mungkin bererti orang yang beriman, kerana orang beriman itu suci — tidak seperti orang musyrik (kafir) kerana mereka dihukumkan najis. Firman Allah Ta'ala:</p>
+    </div>
+
+    <div class="dalil-card">
+      <div class="dalil-arabic">إِنَّمَا ٱلْمُشْرِكُونَ نَجَسٌ فَلَا يَقْرَبُوا۟ ٱلْمَسْجِدَ ٱلْحَرَامَ بَعْدَ عَامِهِمْ هَٰذَا</div>
+      <div class="dalil-translation">"Sesungguhnya orang-orang musyrikin itu najis, maka janganlah mereka mendekati Masjid al-Haram selepas tahun ini"</div>
+      <div class="dalil-ref">Surah al-Taubah · ayat 28</div>
+    </div>
+
+    <div class="footnote-block">
+      <div class="fn-item">1. <b>al-Dhahak bin Muzahim</b> — meninggal dunia pada tahun 105H.</div>
+      <div class="fn-item">2. <b>Hammad al-Basti</b> — meninggal dunia pada tahun 388H.</div>
+    </div>
+
+    <!-- Kesimpulan kedua -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">✦</div>
+      <div>
+        <h3>Kesimpulan</h3>
+        <div class="sub">Pandangan penulis kitab bagi orang yang berhadas kecil.</div>
+      </div>
+    </div>
+
+    <div class="kesimpulan-card">
+      <div class="label"><span class="wallahu-arabic">وَٱللَّهُ أَعْلَم</span>&nbsp;· Wallahu A'lam</div>
+      <p>Saya cenderung kepada pandangan pertama yang mengatakan <b style="color:#FFE9C7;">haram</b> atas orang yang berhadas kecil menyentuh al-Quran, jika mereka orang awam (bukan ahli al-Quran).</p>
+      <p>Adapun pandangan kedua yang mengharuskannya, wajar bagi ahli al-Quran, kerana memandangkan keadaan mereka yang selalu membaca al-Quran tanpa mengira tempat dan waktu.</p>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Menyentuh al-Quran atas Orang yang Berhadas
+   ============================================================ */
+
+const berhadasBesar = [
+  {
+    who: "Imam Daud Zhahiri &amp; Ibnu Hazmin (Madzhab Zhahiri)",
+    rulings: [ { text: "Membolehkan", cls: "harus" } ],
+    note: "Berhujah bahawa surat yang dikirimkan oleh Rasulullah Shallallahu 'Alaihi Wasallam kepada Heraklius mengandungi petikan ayat-ayat al-Quran di dalamnya. Sudah tentu Heraklius menyentuhnya walhal beliau seorang kristian lagi berjanabah — jika tidak boleh, tentu Rasulullah tidak memasukkan petikan ayat-ayat al-Quran dalam surat tersebut."
+  },
+  {
+    who: "Jumhur Ulama",
+    rulings: [ { text: "Tidak Membolehkan", cls: "haram" } ],
+    note: "Menolak hujah Daud Zhahiri dan Ibnu Hazmin, kerana surat kiriman Rasulullah Shallallahu 'Alaihi Wasallam itu — walaupun ada petikan ayat-ayat al-Quran di dalamnya — bukanlah al-Quran sepenuhnya. Bahkan surat tersebut samalah dengan kitab-kitab tafsir atau sebagainya yang boleh disentuh atau dibawa oleh orang yang berhadas besar."
+  }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('besar-grid').innerHTML = berhadasBesar.map(m => `
+  <div class="madzhab-card">
+    <div class="who">${m.who}</div>
+    <div class="rulings">
+      ${m.rulings.map(r => `<span class="ruling ${r.cls}">${r.text}</span>`).join('')}
+    </div>
+    ${m.note ? `<p>${m.note}</p>` : ''}
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>

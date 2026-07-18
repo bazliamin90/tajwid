@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Idgham Mutamathilain, Mutaqaribain & Mutajanisain</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;   /* bila ghunnah */
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;   /* perkara menegah */
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;   /* lam ta'rif */
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;   /* catatan / pandangan ulama */
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;   /* bi ghunnah */
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.2;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:26px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+
+  /* chips (shared vocabulary with index.html) */
+  .chip{
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:7px 14px 7px 10px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid transparent;
+  }
+  .chip i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+  .chip.idgham{ background:var(--teal-bg); color:#0B6459; } .chip.idgham i{ background:var(--teal); }
+  .chip.ghunnah{ background:var(--rose-bg); color:#C42553; } .chip.ghunnah i{ background:var(--rose); }
+  .chip.sinshad{ background:var(--amber-bg); color:#A5701A; } .chip.sinshad i{ background:var(--amber); }
+  .chip.saktah{ background:var(--coral-bg); color:#B8402F; } .chip.saktah i{ background:var(--coral); }
+  .chip.sifat{ background:var(--violet-bg); color:#6236C9; } .chip.sifat i{ background:var(--violet); }
+
+  /* chapter banner (per idgham type) */
+  .chapter-banner{
+    margin-top:56px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:46px; height:46px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{
+    font-family:'Fredoka', sans-serif; font-size:23px; margin:0;
+  }
+  .chapter-banner .arabic{
+    font-family:'Amiri', serif; font-size:19px; color:var(--ink-soft); direction:rtl; margin-top:2px;
+  }
+  .chapter-pages{
+    margin-left:auto; font-size:12px; font-weight:700; color:var(--ink-soft);
+    background:var(--paper-alt); padding:5px 12px; border-radius:20px; white-space:nowrap;
+  }
+
+  /* group header + term grid */
+  .group-block{ margin-top:26px; }
+  .group-header{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .group-note{
+    font-size:13.5px; color:var(--ink-soft); font-style:italic;
+    margin:16px 0 12px; line-height:1.6;
+  }
+  .group-note b{ color:var(--ink); font-style:normal; }
+
+  .term-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(255px,1fr));
+    gap:14px;
+  }
+  .term-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid var(--line);
+    border-top:4px solid var(--accent, var(--teal));
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+  }
+  .term-card .huruf{
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:12.5px; color:var(--accent, var(--teal));
+    text-transform:uppercase; letter-spacing:.3px;
+  }
+  .term-card .arabic{
+    font-family:'Amiri', serif; font-size:22px;
+    direction:rtl; margin:10px 0; color:var(--ink); line-height:1.8;
+  }
+  .term-card .ref{ font-size:12.5px; color:var(--ink-soft); font-weight:600; }
+  .term-card .footnote{
+    margin-top:10px; padding-top:9px; border-top:1px dashed var(--line);
+    font-size:12px; color:var(--ink-soft); line-height:1.6;
+  }
+  .term-card .footnote .fn-arabic{
+    font-family:'Amiri', serif; direction:rtl; font-size:16px; color:var(--ink); margin:0 4px;
+  }
+
+  /* exceptions block */
+  .exceptions-block{
+    margin-top:30px;
+    background: linear-gradient(180deg, #FFF6F4 0%, #FFFBF2 100%);
+    border:1px solid var(--coral-bg);
+    border-radius:var(--radius);
+    padding:24px 26px;
+  }
+  .exception-item{ margin-top:18px; }
+  .exception-item:first-child{ margin-top:6px; }
+  .exception-item .ex-title{
+    font-family:'Fredoka', sans-serif; font-size:15px; font-weight:600;
+    color:#B8402F; margin-bottom:10px;
+  }
+
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3;
+    border-radius:18px;
+    padding:24px 28px;
+    margin-top:14px;
+    box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{
+    font-family:'Amiri', serif; font-size:21px; direction:rtl;
+    line-height:2.1; text-align:center; color:#FFE9C7;
+  }
+  .quote-card .translation{
+    font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.7;
+  }
+  .quote-card .attribution{
+    margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600;
+  }
+
+  footer{
+    margin-top:60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    line-height:1.7;
+  }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+    .chapter-pages{ margin-left:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 156 – 163</span>
+      <h2>Idgham Mutamathilain, Mutaqaribain &amp; Mutajanisain</h2>
+      <p>Tiga jenis idgham yang berlaku bukan kerana Nun Sakinah atau Mim Sakinah semata-mata, tetapi kerana hubungan sifat dan makhraj antara dua huruf yang bertemu — sama ada bersamaan, berhampiran, atau sekadar sama makhraj.</p>
+      <div class="hero-arabic">إِدْغَام مُتَمَاثِلَيْن ۚ إِدْغَام مُتَقَارِبَيْن ۚ إِدْغَام مُتَجَانِسَيْن</div>
+    </div>
+
+    <div class="intro-card" id="overview"></div>
+
+    <div id="sections"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Idgham Mutamathilain / Mutaqaribain / Mutajanisain
+   ============================================================ */
+
+const overview = `
+  <p><b>Idgham</b> secara umum bermaksud memasukkan satu huruf ke dalam huruf yang lain sehingga menjadi seolah-olah satu huruf yang bertasydid. Bab ini membincangkan tiga jenis idgham yang timbul daripada hubungan sifat dan makhraj huruf, bukan daripada hukum Nun Sakinah atau Mim Sakinah:</p>
+  <p><b>Mutamathilain</b> — dua huruf yang <b>bersamaan</b> sifat dan makhraj. <b>Mutaqaribain</b> — dua huruf yang <b>berhampiran</b> sifat dan makhraj, atau salah satu daripada keduanya. <b>Mutajanisain</b> — dua huruf yang <b>bersamaan makhraj</b> tetapi <b>berlainan sifat</b>.</p>
+  <p>Setiap satu terbahagi kepada <b>Bila Ghunnah</b> (tanpa dengung) dan <b>Bi Ghunnah</b> (dengan dengung).</p>
+`;
+
+const accentColor = { teal: "var(--teal)", rose: "var(--rose)", amber: "var(--amber)" };
+
+const sections = [
+  {
+    numColor: "var(--teal)",
+    title: "Idgham Mutamathilain",
+    arabic: "إِدْغَام مُتَمَاثِلَيْن",
+    pages: "ms. 156–158",
+    definition: `Idgham yang berlaku pada dua huruf yang <b>bersamaan sifat dan makhraj</b>.`,
+    groups: [
+      {
+        label: "Bila Ghunnah — Tanpa Dengung",
+        chipClass: "idgham", accent: "teal",
+        items: [
+          { huruf: "Ba' Sakinah → Ba'", arabic: "أَذْهَبْ بِّكُتُبِى هَـٰذَا", ref: "Surah al-Naml · ayat 28" },
+          { huruf: "Ta' Sakinah → Ta'", arabic: "كَانَتْ تَأْتِيهِمْ رُسُلُهُمْ", ref: "Surah Ghafir · ayat 22" },
+          { huruf: "Dal Sakinah → Dal", arabic: "وَقَد دَّخَلُوا۟", ref: "Surah al-Maidah · ayat 61" },
+          { huruf: "Dzal Sakinah → Dzal", arabic: "إِذْ ذَهَبَ مُغَضَبًا", ref: "Surah al-Anbia' · ayat 87" },
+          { huruf: "Ra' Sakinah → Ra'", arabic: "وَٱذْكُر رَّبَّكَ كَثِيرًا", ref: "Surah Ali 'Imran · ayat 41" },
+          { huruf: "'Ain Sakinah → 'Ain", arabic: "مَا لَمْ تَسْطِع عَّلَيْهِ", ref: "Surah al-Kahf · ayat 82" },
+          { huruf: "Fa' Sakinah → Fa'", arabic: "فَلَا يُسْرِف فِّى ٱلْقَتْلِ", ref: "Surah al-Isra' · ayat 33" },
+          { huruf: "Kaf Sakinah → Kaf", arabic: "يُدْرِككُّمُ ٱلْمَوْتُ", ref: "Surah al-Nisa' · ayat 78" },
+          { huruf: "Lam Sakinah → Lam", arabic: "فَقُل لِّى عَمَلِى", ref: "Surah Yunus · ayat 41",
+            footnote: "Termasuklah Lam Ta'rif bertemu dengan Lam. Contoh: <span class='fn-arabic'>ٱللَّطِيفُ</span> — Surah al-Mulk · ayat 14" },
+          { huruf: "Wau Sakinah → Wau", arabic: "فَنَادَوا۟ وَّلَاتَ", ref: "Surah Shad · ayat 3" },
+          { huruf: "Ha' Sakinah → Ha'", arabic: "أَيْنَمَا يُوَجِّههُّ", ref: "Surah al-Nahl · ayat 76" }
+        ]
+      },
+      {
+        label: "Bi Ghunnah — Dengan Dengung",
+        chipClass: "ghunnah", accent: "rose",
+        items: [
+          { huruf: "Mim Sakinah → Mim", arabic: "إِنَّهُم مُّعْرِقُونَ", ref: "Surah Hud · ayat 37" },
+          { huruf: "Nun Sakinah → Nun", arabic: "وَمَن نَّشَآءُ", ref: "Surah al-Anbia' · ayat 9",
+            footnote: "Termasuklah Tanwin bertemu dengan Nun. Contoh: <span class='fn-arabic'>يَوْمَئِذٍ نَّاعِمَةٌ</span> — Surah al-Ghasyiyah · ayat 8" }
+        ]
+      }
+    ],
+    exceptions: {
+      label: "Dua Perkara yang Menegah Berlakunya Idgham Mutamathilain",
+      items: [
+        {
+          title: "1. Jika huruf pertamanya adalah Huruf Mad — wajib diizharkan",
+          examples: [
+            { arabic: "وَصَابِرُوا۟ وَرَابِطُوا۟", ref: "Surah Ali 'Imran · ayat 200" },
+            { arabic: "ٱلَّذِى يُوَسْوِسُ", ref: "Surah al-Nas · ayat 5" }
+          ],
+          quote: {
+            arabic: "ذَا لَا تُدْغِمُوا يَا مَعْشَرَ ٱلْإِخْوَانِ ۞ فِى يَوْمٍ مَعْ قَالُوا۟ وَهُمْ وَنَظِيرِ",
+            translation: "“Kalimah <b>فِى يَوْمٍ</b> serta <b>قَالُوا۟</b> dan <b>وَهُم</b>, dan bandingan seperti ini (iaitu Ya' Mad bertemu Ya', atau Wau Mad bertemu Wau), janganlah kamu idghamkan, wahai saudara-saudaraku.”",
+            attribution: "— Kata Imam al-Sakhawi (contoh: Surah al-Sajdah · ayat 5, Surah al-Syu'ara' · ayat 96)"
+          }
+        },
+        {
+          title: "2. Jika berlaku Saktah",
+          examples: [
+            { arabic: "مَالِيَهْ ۜ هَلَكَ", ref: "Surah al-Haqqah · ayat 28–29" }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    numColor: "var(--amber)",
+    title: "Idgham Mutaqaribain",
+    arabic: "إِدْغَام مُتَقَارِبَيْن",
+    pages: "ms. 158–161",
+    definition: `Idgham yang berlaku pada dua huruf yang <b>berhampiran</b> sifat dan makhraj, atau salah satu daripada keduanya.`,
+    groups: [
+      {
+        label: "Bila Ghunnah — Tanpa Dengung",
+        chipClass: "idgham", accent: "teal",
+        items: [
+          { huruf: "Qaf Sakinah → Kaf", arabic: "أَلَمْ نَخْلُقكُّم", ref: "Surah al-Mursalat · ayat 20" },
+          { huruf: "Nun Sakinah → Ra'", arabic: "مِن رُّوحِى", ref: "Surah Shad · ayat 72",
+            footnote: "Termasuklah Tanwin bertemu dengan Ra'. Contoh: <span class='fn-arabic'>ثَمَرَةٍ رِّزْقًا</span> — Surah al-Baqarah · ayat 25" },
+          { huruf: "Nun Sakinah → Lam", arabic: "وَمَن لَّمْ يَتُبْ", ref: "Surah al-Hujurat · ayat 11",
+            footnote: "Termasuklah Tanwin bertemu dengan Lam. Contoh: <span class='fn-arabic'>هُدًى لِّلْمُتَّقِينَ</span> — Surah al-Baqarah · ayat 2" }
+        ]
+      },
+      {
+        label: "Lam Ta'rif pada Huruf Syamsiah — kecuali pada Lam",
+        chipClass: "sinshad", accent: "amber",
+        note: "Termasuk dalam Idgham Mutaqaribain Bila Ghunnah ialah Idgham Lam Ta'rif pada Huruf Syamsiah, kecuali pada Lam.",
+        items: [
+          { huruf: "Lam Ta'rif → Ta'", arabic: "ٱلتَّكَاثُرُ", ref: "Surah al-Takathur · ayat 1" },
+          { huruf: "Lam Ta'rif → Tha'", arabic: "ٱلثِّقَالَ", ref: "Surah al-Ra'd · ayat 12" },
+          { huruf: "Lam Ta'rif → Dal", arabic: "ٱلدَّاعِى", ref: "Surah Toha · ayat 108" },
+          { huruf: "Lam Ta'rif → Dzal", arabic: "ٱلذُّكُورَ", ref: "Surah al-Syura · ayat 49" },
+          { huruf: "Lam Ta'rif → Ra'", arabic: "ٱلرَّشِيدُ", ref: "Surah Hud · ayat 87" },
+          { huruf: "Lam Ta'rif → Zai", arabic: "ٱلزُّجَاجَةُ", ref: "Surah al-Nur · ayat 35" },
+          { huruf: "Lam Ta'rif → Sin", arabic: "ٱلسَّحَرَةُ", ref: "Surah Yunus · ayat 80" },
+          { huruf: "Lam Ta'rif → Syin", arabic: "ٱلشَّدِيدَ", ref: "Surah Yunus · ayat 70" },
+          { huruf: "Lam Ta'rif → Shad", arabic: "ٱلصُّورِ", ref: "Surah Qaf · ayat 20" },
+          { huruf: "Lam Ta'rif → Dhad", arabic: "ٱلضُّرُّ", ref: "Surah Yunus · ayat 12" },
+          { huruf: "Lam Ta'rif → To'", arabic: "ٱلطُّورَ", ref: "Surah al-Baqarah · ayat 63" },
+          { huruf: "Lam Ta'rif → Zha'", arabic: "ٱلظِّلُّ", ref: "Surah Fatir · ayat 21" }
+        ]
+      },
+      {
+        label: "Bi Ghunnah — Dengan Dengung",
+        chipClass: "ghunnah", accent: "rose",
+        items: [
+          { huruf: "Nun Sakinah → Wau", arabic: "مِن وَرَآئِى", ref: "Surah Maryam · ayat 5",
+            footnote: "Termasuklah Tanwin bertemu dengan Wau. Contoh: <span class='fn-arabic'>وَٰلِدٍ وَمَا وَلَدَ</span> — Surah al-Balad · ayat 3" },
+          { huruf: "Nun Sakinah → Ya'", arabic: "أَن يُنَزَّلَ", ref: "Surah al-Maidah · ayat 112",
+            footnote: "Termasuklah Tanwin bertemu dengan Ya'. Contoh: <span class='fn-arabic'>وُجُوهٌ يَوْمَئِذٍ</span> — Surah al-Ghasyiyah · ayat 2" }
+        ],
+        note: "Termasuk dalam Idgham Mutaqaribain Bi Ghunnah ialah Idgham Lam Ta'rif pada Nun. Contoh: <span class='fn-arabic'>ٱلنَّارَ</span> — Surah Hud · ayat 98"
+      }
+    ]
+  },
+  {
+    numColor: "var(--violet)",
+    title: "Idgham Mutajanisain",
+    arabic: "إِدْغَام مُتَجَانِسَيْن",
+    pages: "ms. 161–163",
+    definition: `Idgham yang berlaku pada dua huruf yang <b>bersamaan makhraj</b> tetapi <b>berlainan sifat</b>.`,
+    groups: [
+      {
+        label: "Bila Ghunnah — Tanpa Dengung",
+        chipClass: "idgham", accent: "teal",
+        items: [
+          { huruf: "Ta' Sakinah → Dal", arabic: "أُجِيبَت دَّعْوَتُكُمَا", ref: "Surah Yunus · ayat 89" },
+          { huruf: "Ta' Sakinah → To'", arabic: "وَقَالَت طَّآئِفَةٌ", ref: "Surah Ali 'Imran · ayat 72" },
+          { huruf: "Tha' Sakinah → Dzal", arabic: "يَلْهَث ذَّٰلِكَ", ref: "Surah al-A'raf · ayat 176",
+            footnote: "Wajib dibaca secara Idgham mengikut toriq Imam al-Syatibi. Adapun mengikut toriq Imam Ibnu al-Jazari, harus padanya dua wajah iaitu Izhar dan Idgham." },
+          { huruf: "Dal Sakinah → Ta'", arabic: "قَد تَّبَيَّنَ", ref: "Surah al-Baqarah · ayat 256" },
+          { huruf: "Dzal Sakinah → Zha'", arabic: "إِذ ظَّلَمْتُمْ", ref: "Surah al-Zukhruf · ayat 39" },
+          { huruf: "To' Sakinah → Ta'", arabic: "فَقَالَ أَحَطتُّ", ref: "Surah al-Naml · ayat 22" }
+        ]
+      },
+      {
+        label: "Bi Ghunnah — Dengan Dengung",
+        chipClass: "ghunnah", accent: "rose",
+        note: "Berlaku pada satu tempat sahaja, iaitu Idgham Ba' Sakinah pada Mim.",
+        items: [
+          { huruf: "Ba' Sakinah → Mim", arabic: "ٱرْكَب مَّعَنَا", ref: "Surah Hud · ayat 42",
+            footnote: "Wajib dibaca secara Idgham mengikut toriq Imam al-Syatibi. Adapun mengikut toriq Imam Ibnu al-Jazari, harus padanya dua wajah iaitu Izhar dan Idgham." }
+        ]
+      },
+      {
+        label: "Pandangan Ulama — Turut Termasuk dalam Bi Ghunnah",
+        chipClass: "sifat", accent: "violet",
+        note: "Ada ulama berkata: termasuklah dalam Idgham Mutajanisain Bi Ghunnah iaitu Idgham Nun Sakinah atau Tanwin pada Mim, kerana di sisi mereka Mutajanisain bermaksud dua huruf yang bersamaan pada makhraj tetapi berlainan sifat, ataupun bersamaan pada semua sifat tetapi berlainan makhraj.",
+        items: [
+          { huruf: "Nun Sakinah → Mim", arabic: "وَمَن مَّعَكَ", ref: "Surah al-Mu'minun · ayat 28" },
+          { huruf: "Tanwin → Mim", arabic: "إِنَّمَا مُبِينًا", ref: "Surah al-Nisa' · ayat 50" }
+        ]
+      }
+    ]
+  }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+function termCard(item, accent){
+  const footnoteHtml = item.footnote ? `<div class="footnote">${item.footnote}</div>` : '';
+  return `
+    <div class="term-card" style="--accent:${accent}">
+      <div class="huruf">${item.huruf || ''}</div>
+      <div class="arabic">${item.arabic}</div>
+      <div class="ref">${item.ref}</div>
+      ${footnoteHtml}
+    </div>
+  `;
+}
+
+function renderGroup(group){
+  const accent = accentColor[group.accent] || "var(--teal)";
+  const noteHtml = group.note ? `<div class="group-note">${group.note}</div>` : '';
+  return `
+    <div class="group-block">
+      <div class="group-header">
+        <span class="chip ${group.chipClass}"><i></i>${group.label}</span>
+      </div>
+      ${noteHtml}
+      <div class="term-grid">
+        ${group.items.map(it => termCard(it, accent)).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function renderExceptions(exc){
+  return `
+    <div class="exceptions-block">
+      <div class="group-header">
+        <span class="chip saktah"><i></i>${exc.label}</span>
+      </div>
+      ${exc.items.map(item => `
+        <div class="exception-item">
+          <div class="ex-title">${item.title}</div>
+          <div class="term-grid">
+            ${item.examples.map(ex => termCard(ex, "var(--coral)")).join('')}
+          </div>
+          ${item.quote ? `
+            <div class="quote-card">
+              <div class="arabic">${item.quote.arabic}</div>
+              <div class="translation">${item.quote.translation}</div>
+              <div class="attribution">${item.quote.attribution}</div>
+            </div>
+          ` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderSections(){
+  const el = document.getElementById('sections');
+  el.innerHTML = sections.map(sec => `
+    <div class="chapter-banner">
+      <div class="num" style="background:${sec.numColor}">▤</div>
+      <div>
+        <h3>${sec.title}</h3>
+        <div class="arabic">${sec.arabic}</div>
+      </div>
+      <span class="chapter-pages">${sec.pages}</span>
+    </div>
+    <div class="intro-card">${sec.definition}</div>
+    ${sec.groups.map(renderGroup).join('')}
+    ${sec.exceptions ? renderExceptions(sec.exceptions) : ''}
+  `).join('');
+}
+
+document.getElementById('overview').innerHTML = overview;
+renderSections();
+</script>
+
+</body>
+</html>
