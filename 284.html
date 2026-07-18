@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Kalimah-Kalimah Khas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 26px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+
+  /* kalimah card */
+  .kalimah-card{
+    margin-top:30px;
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:26px 28px; box-shadow:var(--shadow);
+  }
+  .kalimah-head{ display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:16px; }
+  .kalimah-num{
+    width:38px; height:38px; border-radius:12px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:15px; color:#fff;
+  }
+  .kalimah-name{ font-family:'Amiri', serif; font-size:26px; direction:rtl; color:var(--ink); }
+  .kalimah-ref{
+    margin-left:auto; font-family:'Fredoka', sans-serif; font-size:12px; font-weight:700;
+    background:var(--paper-alt); color:var(--ink-soft); padding:5px 14px; border-radius:20px; white-space:nowrap;
+  }
+
+  .ayat-block{
+    background:var(--paper-alt); border-radius:14px; padding:20px 22px; margin-bottom:18px;
+  }
+  .ayat-block .arabic{ font-family:'Amiri', serif; font-size:21px; direction:rtl; line-height:2.1; color:var(--ink); text-align:center; }
+  .ayat-block .ref{ text-align:center; font-size:12px; color:var(--teal); font-weight:700; margin-top:10px; font-family:'Fredoka', sans-serif; }
+
+  .wajah-label{
+    font-family:'Fredoka', sans-serif; font-size:13px; font-weight:600; color:var(--ink-soft);
+    margin-bottom:10px; display:flex; align-items:center; gap:8px;
+  }
+  .wajah-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-bottom:18px; }
+  .wajah-box{
+    border-radius:14px; padding:18px 20px; border:2px solid var(--line);
+  }
+  .wajah-box.a{ border-color:var(--teal); background:var(--teal-bg); }
+  .wajah-box.b{ border-color:var(--amber); background:var(--amber-bg); }
+  .wajah-box .tag{
+    font-family:'Fredoka', sans-serif; font-size:11px; font-weight:700; letter-spacing:.4px;
+    text-transform:uppercase; margin-bottom:8px; display:block;
+  }
+  .wajah-box.a .tag{ color:#0B6459; }
+  .wajah-box.b .tag{ color:#A5701A; }
+  .wajah-box .arabic{ font-family:'Amiri', serif; font-size:24px; direction:rtl; color:var(--ink); margin-bottom:6px; }
+  .wajah-box .desc{ font-size:13px; color:var(--ink-soft); line-height:1.6; }
+
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:22px 26px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.15; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.75; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .kalimah-ref{ margin-left:0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 284 – 285</span>
+      <h2>Hukum Kalimah-Kalimah Khas</h2>
+      <p>Terdapat beberapa kalimah dalam al-Quran yang harus dibaca dua wajah (dua cara) bagi riwayat Hafsh. Bab ini menghimpunkan tiga kalimah tersebut, lengkap dengan penjelasan Imam Ibnu al-Jazari mengenai bacaan pelbagai Imam Qurra'.</p>
+    </div>
+
+    <div class="intro-card">
+      Terdapat beberapa kalimah yang harus dibaca <b>dua wajah</b> bagi riwayat Hafsh. Huraiannya seperti berikut.
+    </div>
+
+    <div id="kalimah-list"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Kalimah-Kalimah Khas
+   ============================================================ */
+
+const kalimahList = [
+  {
+    num: 1, color: "var(--coral)",
+    name: "ضَعْف",
+    ref: "Surah al-Rum · ayat 54",
+    note: "Kalimah ini berulang 3 kali dalam ayat yang sama.",
+    ayat: "ٱللَّهُ ٱلَّذِى خَلَقَكُم مِّن ضَعْفٍ ثُمَّ جَعَلَ مِنۢ بَعْدِ ضَعْفٍ قُوَّةً ثُمَّ جَعَلَ مِنۢ بَعْدِ قُوَّةٍ ضَعْفًا وَشَيْبَةً ۚ يَخْلُقُ مَا يَشَآءُ ۖ وَهُوَ ٱلْعَلِيمُ ٱلْقَدِيرُ ﴿٥٤﴾",
+    wajahLabel: "Harus dibaca dua wajah pada ketiga-tiga tempat tersebut:",
+    wajahA: { tag: "Wajah 1", arabic: "ضَعْف", desc: "Dhad berbaris fathah — seperti dalam Mushaf." },
+    wajahB: { tag: "Wajah 2", arabic: "ضُعْف", desc: "Dhad berbaris dhammah." },
+    quote: {
+      arabic: "ضُعْـفًا فَحَرِّكْ لَا تُنَوِّنْ نَلْ فَتَى ۞ وَٱلضَّمَّ فَٱفْتَحْ مُدَّ ثُبْ\nعَنْ خُلْفٍ فَوْزِ .................... وَٱلرُّومَ صَحْ",
+      translation: "\"Kalimah ضُعْفًا (dalam Surah al-Anfal) maka dibariskan 'Ain dan tanpa Tanwin serta panjang (ضُعَفَاءَ) bagi Imam Abu Ja'far. Dan difathahkan baris dhammah (ضَعْفًا) bagi Imam 'Aashim, Imam Hamzah, Imam al-Kisaie dan Imam Khalaf al-'Aasyir. Adapun (kalimah ضُعْف) dalam Surah al-Rum difathahkan baris dhammah bagi Syu'bah, Hafsh secara khilaf, dan Imam Hamzah\"",
+      attribution: "— Kata Imam Ibnu al-Jazari"
+    }
+  },
+  {
+    num: 2, color: "var(--teal)",
+    name: "ءَاتَىٰنِ",
+    ref: "Surah al-Naml · ayat 36",
+    note: "Perbezaan berlaku ketika waqaf sahaja.",
+    ayat: "فَلَمَّا جَآءَ سُلَيْمَٰنَ قَالَ أَتُمِدُّونَنِ بِمَالٍ فَمَآ ءَاتَىٰنِۦَ ٱللَّهُ خَيْرٌ مِّمَّآ ءَاتَىٰكُم بَلْ أَنتُم بِهَدِيَّتِكُمْ تَفْرَحُونَ ﴿٣٦﴾",
+    wajahLabel: "Harus dibaca dua wajah ketika waqaf:",
+    wajahA: { tag: "Wajah 1", arabic: "ءَاتَىٰنِى", desc: "Diwaqafkan dengan Ya' sebagai Mad Asli." },
+    wajahB: { tag: "Wajah 2", arabic: "ءَاتَىٰنْ", desc: "Diwaqafkan tanpa Ya' serta dimatikan Nun sebagai Mad 'Aaridh Lissukun." },
+    quote: {
+      arabic: "ءَاتَانِ نَمْل وَٱفْتَحُوا مَذَا غَبَـى ۞ ....................\nحُزْ عُدْ وَقَفْ ظَعْنَا وَخَلَفٌ عَنْ حَسَنْ ۞ .................... بِنْ زُرْ",
+      translation: "\"Kalimah ءَاتَان dalam Surah al-Naml dibaca fathah (akan Ya' ketika washal) bagi Imam Nafi', Imam Abu Ja'far, Ruwais, Imam Abu 'Amru dan Hafsh. Dan diwaqafkan (dengan Ya') bagi Imam Ya'kub, serta secara khilaf (iaitu diwaqafkan dengan Ya' atau sebaliknya) bagi Hafsh, Imam Abu 'Amru, Qalun dan Qanbul\"",
+      attribution: "— Kata Imam Ibnu al-Jazari"
+    }
+  },
+  {
+    num: 3, color: "var(--violet)",
+    name: "سَلَٰسِلَا۟",
+    ref: "Surah al-Insan · ayat 4",
+    note: "Perbezaan berlaku ketika waqaf sahaja.",
+    ayat: "إِنَّآ أَعْتَدْنَا لِلْكَٰفِرِينَ سَلَٰسِلَا۟ وَأَغْلَٰلًا وَسَعِيرًا ﴿٤﴾",
+    wajahLabel: "Harus dibaca dua wajah ketika waqaf:",
+    wajahA: { tag: "Wajah 1", arabic: "سَلَاسِلَا", desc: "Diwaqafkan dengan Alif sebagai Mad Asli." },
+    wajahB: { tag: "Wajah 2", arabic: "سَلَاسِلْ", desc: "Diwaqafkan tanpa Alif serta dimatikan Lam." },
+    quote: {
+      arabic: "سَلَاسِلَا نَوِّنْ مَدًّا رُمْ لِى غَدَا ۞ عَنْ مَنْ دَنَا شَهْمٌ بِخُلْفِهِمْ حَفَا\nخَلْفُهُمَا صِفْ مَعْهُمُ ٱلْوَقْفَ ٱمْتَدَا",
+      translation: "\"Kalimah سَلَاسِلَا dibaca Tanwin (ketika washal) bagi Imam Nafi', Imam Abu Ja'far, Imam al-Kisaie, Hisyam secara khilaf, Ruwais secara khilaf dan Syu'bah. Bersama mereka ketika waqaf (iaitu waqaf dengan Alif) iaitu Hafsh, Ibnu Dzakuan, Imam Ibnu Kathir dan Rauh secara khilaf bagi mereka, dan Imam Abu 'Amru\"",
+      attribution: "— Kata Imam Ibnu al-Jazari"
+    }
+  }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+function wajahBox(w, cls){
+  return `
+    <div class="wajah-box ${cls}">
+      <span class="tag">${w.tag}</span>
+      <div class="arabic">${w.arabic}</div>
+      <div class="desc">${w.desc}</div>
+    </div>
+  `;
+}
+
+document.getElementById('kalimah-list').innerHTML = kalimahList.map(k => `
+  <div class="kalimah-card">
+    <div class="kalimah-head">
+      <span class="kalimah-num" style="background:${k.color}">${k.num}</span>
+      <span class="kalimah-name">${k.name}</span>
+      <span class="kalimah-ref">${k.ref}</span>
+    </div>
+    <div class="ayat-block">
+      <div class="arabic">${k.ayat}</div>
+    </div>
+    <div class="wajah-label">${k.wajahLabel}${k.note ? ' <span style="font-style:italic; font-weight:400;">(' + k.note + ')</span>' : ''}</div>
+    <div class="wajah-grid">
+      ${wajahBox(k.wajahA, 'a')}
+      ${wajahBox(k.wajahB, 'b')}
+    </div>
+    <div class="quote-card">
+      <div class="arabic">${k.quote.arabic}</div>
+      <div class="translation">${k.quote.translation}</div>
+      <div class="attribution">${k.quote.attribution}</div>
+    </div>
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>
