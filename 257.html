@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Waqaf pada Akhir Kalimah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+
+  /* three-method definition cards */
+  .method-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:18px; }
+  .method-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--accent); border-radius:16px;
+    padding:18px 20px; box-shadow:var(--shadow);
+  }
+  .method-card h4{ font-family:'Fredoka', sans-serif; font-size:15px; margin:0 0 8px; color:var(--ink); }
+  .method-card p{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin:0; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:48px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:16px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:20px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* matrix */
+  .matrix-wrap{ margin-top:18px; overflow-x:auto; }
+  table.matrix{ border-collapse:separate; border-spacing:0; width:100%; background:#fff; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); }
+  table.matrix th, table.matrix td{ padding:14px 16px; text-align:center; border-bottom:1px solid var(--line); }
+  table.matrix th{ font-family:'Fredoka', sans-serif; font-size:12.5px; color:var(--ink-soft); background:var(--paper-alt); font-weight:700; }
+  table.matrix td.baris-label{ font-family:'Fredoka', sans-serif; font-weight:700; font-size:13.5px; text-align:left; color:var(--ink); }
+  table.matrix td .yes{ color:var(--emerald); font-size:18px; font-weight:700; }
+  table.matrix td .no{ color:var(--coral); font-size:16px; }
+  table.matrix tr:last-child td{ border-bottom:none; }
+
+  /* keadaan cards */
+  .keadaan-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:18px; }
+  .keadaan-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow);
+  }
+  .keadaan-card .rule{ font-size:13.5px; color:var(--ink-soft); line-height:1.6; margin-bottom:12px; }
+  .keadaan-card .example{ background:var(--paper-alt); border-radius:12px; padding:14px 16px; }
+  .keadaan-card .example .arabic{ font-family:'Amiri', serif; font-size:21px; direction:rtl; text-align:center; color:var(--ink); }
+  .keadaan-card .example .ref{ text-align:center; font-size:12px; color:var(--teal); font-weight:700; margin-top:8px; font-family:'Fredoka', sans-serif; }
+  .keadaan-tag{
+    display:inline-block; margin-bottom:10px; font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700;
+    padding:4px 12px; border-radius:20px;
+  }
+
+  /* peringatan */
+  .peringatan-block{
+    margin-top:18px; background:linear-gradient(180deg,#FFF6F4 0%,#FFFFFF 100%); border:1px solid var(--coral-bg);
+    border-radius:var(--radius); padding:22px 26px;
+  }
+  .peringatan-title{ font-family:'Fredoka', sans-serif; font-weight:700; color:#B8402F; font-size:15px; margin-bottom:6px; display:flex; align-items:center; gap:8px; }
+  .peringatan-intro{ font-size:14px; color:var(--ink-soft); line-height:1.7; margin-bottom:16px; }
+
+  /* quote */
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:22px 26px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.15; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.75; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 257 – 258</span>
+      <h2>Hukum Waqaf pada Akhir Kalimah</h2>
+      <p>Apabila berhenti (waqaf) di akhir sesebuah kalimah, terdapat tiga cara yang harus digunakan — dan cara mana yang harus dipakai bergantung kepada baris huruf terakhir kalimah tersebut.</p>
+    </div>
+
+    <div class="intro-card">
+      Harus waqaf pada akhir kalimah dengan <b>tiga cara</b> berikut:
+    </div>
+
+    <div class="method-grid" id="method-grid"></div>
+
+    <!-- Bergantung baris -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">②</div>
+      <div>
+        <h3>Bergantung kepada Baris Huruf Terakhir</h3>
+        <div class="sub">Waqaf dengan tiga cara di atas bergantung kepada baris huruf terakhir pada kalimah tersebut.</div>
+      </div>
+    </div>
+
+    <div class="matrix-wrap">
+      <table class="matrix" id="matrix-table"></table>
+    </div>
+
+    <div class="keadaan-grid" id="keadaan-grid"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَٱلْأَصْلُ فِى ٱلْوَقْفِ ٱلسُّكُونُ وَلَهُمْ ۞ فِى ٱلرَّفْعِ وَٱلضَّمِّ ٱشْمِمْهُ وَرُمْ
+وَٱمْنَعْهُمَا فِى ٱلنَّصْبِ وَٱلْفَتْحِ بَلَى ۞ فِى ٱلْجَرِّ وَٱلْكَسْرِ يُرَامُ مُسْجَلَا</div>
+      <div class="translation">"Dan asal pada waqaf itu ialah sukun. Dan bagi mereka (semua Imam al-Qurra') pada baris dhammah (harus) isymam dan raum. Dan ditegah keduanya (isymam dan raum) pada baris fathah, serta ditentukan raum pada baris kasrah"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <!-- Peringatan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--coral)">⚠</div>
+      <div>
+        <h3>Peringatan</h3>
+        <div class="sub">Keadaan yang tidak boleh diwaqafkan secara Raum atau Isymam.</div>
+      </div>
+    </div>
+
+    <div class="peringatan-block">
+      <div class="peringatan-intro">Beberapa keadaan di bawah ini <b>tidak boleh</b> diwaqafkan secara Raum atau Isymam, walaupun berbaris dhammah atau kasrah. Ia hanya boleh dibaca secara <b>Sukun Mahdhi</b> sahaja:</div>
+      <div class="keadaan-grid" id="peringatan-grid"></div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَفِى هَاءِ تَأْنِيثٍ وَمِيمِ ٱلْجَمِيعِ قُلْ ۞ وَعَارِضِ شَكْلٍ لَّمْ يَكُونَا لِيَدْخُلَا</div>
+      <div class="translation">"Dan katakanlah pada Ha' Ta'nith, Mim al-Jam' dan huruf yang berbaris mendatang, tiada dimasuki oleh keduanya (isymam dan raum)"</div>
+      <div class="attribution">— Kata Imam al-Syatibi</div>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Waqaf pada Akhir Kalimah
+   ============================================================ */
+
+const methods = [
+  { name: "Sukun Mahdhi", accent: "var(--teal)", desc: "Sukun semata-mata — huruf akhir dimatikan sepenuhnya tanpa sebarang baris." },
+  { name: "Raum", accent: "var(--amber)", desc: "Melafazkan baris dengan sebahagian kecil suara sahaja, lebih perlahan dan lemah daripada baris biasa." },
+  { name: "Isymam", accent: "var(--violet)", desc: "Memoncongkan kedua-dua bibir sebaik sahaja huruf akhir disukunkan, tanpa bersuara — hanya dapat dilihat, bukan didengar." }
+];
+
+const matrixRows = [
+  { baris: "Fathah", sukun: true, raum: false, isymam: false },
+  { baris: "Kasrah", sukun: true, raum: true, isymam: false },
+  { baris: "Dhammah", sukun: true, raum: true, isymam: true }
+];
+
+const keadaanBaris = [
+  { tag: "Fathah", color: "var(--coral-bg)", tagColor: "#B8402F",
+    rule: "Jika berbaris fathah, maka harus padanya Sukun Mahdhi sahaja.",
+    example: { arabic: "عَلَّمَهُ ٱلْبَيَانَ", ref: "Surah al-Rahman · ayat 4" } },
+  { tag: "Kasrah", color: "var(--amber-bg)", tagColor: "#A5701A",
+    rule: "Jika berbaris kasrah, maka harus padanya Sukun Mahdhi dan Raum sahaja.",
+    example: { arabic: "ٱلرَّحْمَٰنِ ٱلرَّحِيمِ", ref: "Surah al-Fatihah · ayat 3" } },
+  { tag: "Dhammah", color: "var(--emerald-bg)", tagColor: "#1B7A4E",
+    rule: "Jika berbaris dhammah, maka harus padanya Sukun Mahdhi, Raum dan Isymam.",
+    example: { arabic: "إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ", ref: "Surah al-Fatihah · ayat 5" } }
+];
+
+const peringatanList = [
+  { tag: "1. Ha' Ta'nith", color: "var(--rose-bg)", tagColor: "#C42553",
+    rule: "Waqaf pada Ha' Ta'nith yang ditulis dengan Ta' Marbutah.",
+    example: { arabic: "فَفِدْيَةٌ مِّن صِيَامٍ أَوْ صَدَقَةٍ", ref: "Surah al-Baqarah · ayat 196" } },
+  { tag: "2. Sukun Asli", color: "var(--rose-bg)", tagColor: "#C42553",
+    rule: "Waqaf pada huruf Sukun Asli.",
+    example: { arabic: "وَأَمَّا ٱلسَّآئِلَ فَلَا تَنْهَرْ", ref: "Surah al-Dhuha · ayat 10" } },
+  { tag: "3. Mim al-Jama'", color: "var(--rose-bg)", tagColor: "#C42553",
+    rule: "Waqaf pada Mim al-Jama' — baris dhammah padanya adalah baris yang mendatang (bukan asal).",
+    example: { arabic: "وَأَنتُمُ ٱلْأَعْلَوْنَ", ref: "Surah Ali 'Imran · ayat 139" } },
+  { tag: "4. Kasrah Mendatang", color: "var(--rose-bg)", tagColor: "#C42553",
+    rule: "Waqaf pada huruf berbaris kasrah yang mendatang (bukan asal).",
+    example: { arabic: "ثُمَّ يَسْتَغْفِرِ ٱللَّهَ", ref: "Surah al-Nisa' · ayat 110" } }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('method-grid').innerHTML = methods.map(m => `
+  <div class="method-card" style="--accent:${m.accent}">
+    <h4>${m.name}</h4>
+    <p>${m.desc}</p>
+  </div>
+`).join('');
+
+const matrixTable = document.getElementById('matrix-table');
+matrixTable.innerHTML = `
+  <tr>
+    <th style="text-align:left;">Baris Akhir</th>
+    <th>Sukun Mahdhi</th>
+    <th>Raum</th>
+    <th>Isymam</th>
+  </tr>
+  ${matrixRows.map(r => `
+    <tr>
+      <td class="baris-label">${r.baris}</td>
+      <td>${r.sukun ? '<span class="yes">✓</span>' : '<span class="no">✕</span>'}</td>
+      <td>${r.raum ? '<span class="yes">✓</span>' : '<span class="no">✕</span>'}</td>
+      <td>${r.isymam ? '<span class="yes">✓</span>' : '<span class="no">✕</span>'}</td>
+    </tr>
+  `).join('')}
+`;
+
+function keadaanCard(k){
+  return `
+    <div class="keadaan-card">
+      <span class="keadaan-tag" style="background:${k.color}; color:${k.tagColor};">${k.tag}</span>
+      <div class="rule">${k.rule}</div>
+      <div class="example">
+        <div class="arabic">${k.example.arabic}</div>
+        <div class="ref">${k.example.ref}</div>
+      </div>
+    </div>
+  `;
+}
+
+document.getElementById('keadaan-grid').innerHTML = keadaanBaris.map(keadaanCard).join('');
+document.getElementById('peringatan-grid').innerHTML = peringatanList.map(keadaanCard).join('');
+</script>
+
+</body>
+</html>
