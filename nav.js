@@ -45,6 +45,7 @@ const NAV_PAGES = [
         display:flex; flex-direction:column; align-items:center; justify-content:center;
         gap:4px; flex-shrink:0;
         transition:background .15s ease;
+        position:relative; z-index:301;
       }
       .nav-burger:hover{ background:rgba(255,255,255,0.16); }
       .nav-burger span{
@@ -56,6 +57,17 @@ const NAV_PAGES = [
       .nav-burger.open span:nth-child(3){ transform:translateY(-6px) rotate(-45deg); }
 
       .nav-wrap{ position:relative; display:flex; align-items:center; }
+
+      .nav-overlay{
+        position:fixed; inset:0;
+        background:rgba(11,45,40,0.35);
+        backdrop-filter:blur(5px);
+        -webkit-backdrop-filter:blur(5px);
+        opacity:0; visibility:hidden;
+        transition:opacity .2s ease, visibility .2s ease;
+        z-index:150;
+      }
+      .nav-overlay.open{ opacity:1; visibility:visible; }
 
       .nav-dropdown{
         position:absolute; top:calc(100% + 12px); left:0;
@@ -69,7 +81,7 @@ const NAV_PAGES = [
         box-shadow: 0 16px 36px -12px rgba(0,0,0,0.45);
         opacity:0; visibility:hidden; transform:translateY(-6px);
         transition: opacity .15s ease, transform .15s ease, visibility .15s ease;
-        z-index:200;
+        z-index:300;
       }
       .nav-dropdown.open{ opacity:1; visibility:visible; transform:translateY(0); }
 
@@ -90,7 +102,7 @@ const NAV_PAGES = [
       }
       .nav-search input::placeholder{ color:#8FADA4; }
 
-      .nav-list{ overflow-y:auto; display:flex; flex-direction:column; gap:3px; }
+      .nav-list{ overflow-y:auto; overscroll-behavior:contain; display:flex; flex-direction:column; gap:3px; }
       .nav-empty{
         padding:14px 12px; font-family:'Nunito', sans-serif; font-size:13px;
         color:#8FADA4; text-align:center;
@@ -154,9 +166,46 @@ const NAV_PAGES = [
     `).join("");
   }
 
+  const SCROLL_KEYS = ["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End", " "];
+  let scrollLockTarget = null;
+
+  function isInsideNavList(node){
+    return !!(scrollLockTarget && scrollLockTarget.contains(node));
+  }
+
+  function blockWheelTouch(e){
+    if (isInsideNavList(e.target)) return;
+    e.preventDefault();
+  }
+
+  function blockKeys(e){
+    if (!SCROLL_KEYS.includes(e.key)) return;
+    const active = document.activeElement;
+    if (active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA")) return;
+    if (isInsideNavList(e.target)) return;
+    e.preventDefault();
+  }
+
+  function lockBodyScroll(navListEl){
+    scrollLockTarget = navListEl;
+    document.addEventListener("wheel", blockWheelTouch, { passive: false });
+    document.addEventListener("touchmove", blockWheelTouch, { passive: false });
+    document.addEventListener("keydown", blockKeys, { passive: false });
+  }
+
+  function unlockBodyScroll(){
+    document.removeEventListener("wheel", blockWheelTouch, { passive: false });
+    document.removeEventListener("touchmove", blockWheelTouch, { passive: false });
+    document.removeEventListener("keydown", blockKeys, { passive: false });
+    scrollLockTarget = null;
+  }
+
   function buildMarkup(){
     const wrap = document.createElement("div");
     wrap.className = "nav-wrap";
+
+    const overlay = document.createElement("div");
+    overlay.className = "nav-overlay";
 
     const burger = document.createElement("button");
     burger.className = "nav-burger";
@@ -178,27 +227,46 @@ const NAV_PAGES = [
     searchInput.addEventListener("input", () => renderList(dropdown, searchInput.value));
     searchInput.addEventListener("click", (e) => e.stopPropagation());
 
-    wrap.appendChild(burger);
-    wrap.appendChild(dropdown);
+    function closeMenu(){
+      burger.classList.remove("open");
+      dropdown.classList.remove("open");
+      overlay.classList.remove("open");
+      unlockBodyScroll();
+    }
+
+    function openMenu(){
+      burger.classList.add("open");
+      dropdown.classList.add("open");
+      overlay.classList.add("open");
+      lockBodyScroll(dropdown.querySelector(".nav-list"));
+      searchInput.value = "";
+      renderList(dropdown, "");
+      setTimeout(() => searchInput.focus(), 50);
+    }
 
     burger.addEventListener("click", (e) => {
       e.stopPropagation();
       const willOpen = !burger.classList.contains("open");
-      burger.classList.toggle("open");
-      dropdown.classList.toggle("open");
-      if (willOpen){
-        searchInput.value = "";
-        renderList(dropdown, "");
-        setTimeout(() => searchInput.focus(), 50);
+      if (willOpen){ openMenu(); } else { closeMenu(); }
+    });
+
+    overlay.addEventListener("click", closeMenu);
+
+    document.addEventListener("click", (e) => {
+      if (!wrap.contains(e.target) && burger.classList.contains("open")){
+        closeMenu();
       }
     });
 
-    document.addEventListener("click", (e) => {
-      if (!wrap.contains(e.target)){
-        burger.classList.remove("open");
-        dropdown.classList.remove("open");
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && burger.classList.contains("open")){
+        closeMenu();
       }
     });
+
+    wrap.appendChild(overlay);
+    wrap.appendChild(burger);
+    wrap.appendChild(dropdown);
 
     return wrap;
   }
