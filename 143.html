@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Lam Sakinah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;   /* izhar qamari */
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;   /* idgham syamsi */
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;   /* lam ta'rif */
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;   /* lam fi'el */
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;   /* lam harf */
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;   /* lam isim */
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;   /* lam amr */
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:0;
+  }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; width:100%; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(26px, 3vw, 36px);
+    line-height:1.2;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:640px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:28px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:28px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:26px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+
+  /* legend */
+  .legend{
+    margin-top:30px;
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .chip{
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:7px 14px 7px 10px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid transparent;
+  }
+  .chip i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+
+  .chip.tarif{    background:var(--amber-bg);   color:#A5701A; } .chip.tarif i{ background:var(--amber); }
+  .chip.qamari{   background:var(--teal-bg);    color:#0B6459; } .chip.qamari i{ background:var(--teal); }
+  .chip.syamsi{   background:var(--coral-bg);   color:#B8402F; } .chip.syamsi i{ background:var(--coral); }
+  .chip.fiel{     background:var(--emerald-bg); color:#1B7A4E; } .chip.fiel i{ background:var(--emerald); }
+  .chip.harf{     background:var(--violet-bg);  color:#6236C9; } .chip.harf i{ background:var(--violet); }
+  .chip.isim{     background:var(--rose-bg);    color:#C42553; } .chip.isim i{ background:var(--rose); }
+  .chip.amr{      background:var(--blue-bg);    color:#215B8C; } .chip.amr i{ background:var(--blue); }
+
+  /* section headers */
+  .section-title{
+    font-family:'Fredoka', sans-serif;
+    font-size:21px;
+    margin:44px 0 6px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .section-sub{ color:var(--ink-soft); font-size:13.5px; margin-bottom:20px; line-height:1.6; }
+
+  /* page card - each page of the kitab becomes one card */
+  .page-card{
+    margin-top:26px;
+    background:#fff;
+    border-radius:20px;
+    border:1px solid var(--line);
+    box-shadow: var(--shadow);
+    overflow:hidden;
+  }
+  .page-card-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+    background: var(--paper-alt);
+    border-bottom:1px solid var(--line);
+  }
+  .page-badge{
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:700; letter-spacing:.5px;
+    color:#A5701A;
+    display:flex; align-items:center; gap:6px;
+  }
+  .page-card-body{ padding:24px 28px 26px; }
+
+  .rule-block{ margin-bottom:20px; }
+  .rule-block:last-child{ margin-bottom:0; }
+  .rule-num-tag{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:8px;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:13px;
+    color:#fff; margin-right:8px; flex-shrink:0;
+  }
+  .rule-heading{ display:flex; align-items:flex-start; gap:2px; font-size:15.5px; line-height:1.7; color:var(--ink); }
+  .rule-heading b{ color:var(--ink); }
+
+  .arabic-line{
+    font-family:'Amiri', serif; font-size:23px; direction:rtl;
+    color:var(--ink); line-height:2; margin:10px 0 2px;
+  }
+  .arabic-ref{ font-size:12.5px; color:var(--ink-soft); font-weight:700; margin-bottom:4px; }
+
+  .example-card{
+    background: var(--paper-alt);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 18px;
+    margin-top:10px;
+  }
+  .example-list{ display:flex; flex-direction:column; gap:12px; margin-top:10px; }
+
+  sup.fn{
+    font-size:11px; color:var(--coral); font-weight:700; cursor:pointer;
+    margin-left:1px;
+  }
+  sup.fn a{ color:inherit; text-decoration:none; }
+
+  .qtable-wrap{ overflow-x:auto; margin-top:14px; border-radius:14px; border:1px solid var(--line); }
+  table.qtable{ width:100%; border-collapse:collapse; background:#fff; }
+  table.qtable th{
+    font-family:'Fredoka', sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:.5px;
+    background: var(--paper-alt); color:var(--ink-soft); padding:10px 14px; text-align:left;
+    border-bottom:1px solid var(--line);
+  }
+  table.qtable td{
+    padding:12px 14px; border-bottom:1px solid var(--line); font-size:14.5px; vertical-align:middle;
+  }
+  table.qtable tr:last-child td{ border-bottom:none; }
+  table.qtable td.huruf{ font-family:'Amiri', serif; font-size:22px; direction:rtl; width:70px; text-align:center; color:var(--ink); }
+  table.qtable td.bil{ width:40px; color:var(--ink-soft); font-weight:700; font-size:13px; }
+  table.qtable td.contoh{ font-family:'Amiri', serif; font-size:21px; direction:rtl; }
+  table.qtable td.contoh small{
+    display:block; font-family:'Nunito', sans-serif; font-size:11.5px; direction:ltr; color:var(--ink-soft);
+    font-weight:600; margin-top:4px;
+  }
+
+  .footnotes{
+    margin-top:22px;
+    padding-top:14px;
+    border-top:1px dashed var(--line);
+    font-size:12.5px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  .footnotes .fn-title{
+    font-family:'Fredoka', sans-serif; font-size:11.5px; text-transform:uppercase;
+    letter-spacing:.8px; color:var(--ink-soft); margin-bottom:8px; font-weight:700;
+  }
+  .footnotes ol{ margin:0; padding-left:18px; }
+  .footnotes li{ margin-bottom:6px; }
+  .footnotes li:target, .footnotes li.highlight{ color:var(--coral); font-weight:700; }
+  .footnotes .arabic-inline{ font-family:'Amiri', serif; font-size:16px; direction:rtl; }
+
+  .nazam-card{
+    background: linear-gradient(120deg, #FFF6E5 0%, #FFF3DE 100%);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 24px;
+    margin:14px 0;
+  }
+  .nazam-card .arabic-line{ margin:6px 0; font-size:24px; }
+  .nazam-translation{
+    margin-top:12px;
+    font-size:14px;
+    font-style:italic;
+    color:var(--ink-soft);
+    line-height:1.7;
+    border-left:3px solid var(--amber);
+    padding-left:14px;
+  }
+
+  footer{
+    margin-top:60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    line-height:1.7;
+  }
+
+  /* mobile */
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .page-card-body{ padding:18px 16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 143 – 149</span>
+      <h2>Hukum Lam Sakinah</h2>
+      <p>Lam Sakinah terbahagi kepada lima jenis: Lam Ta'rif, Lam Fi'el, Lam Harf, Lam Isim dan Lam Amr — setiap satu membawa hukum bacaan tersendiri, sama ada Izhar atau Idgham, lengkap dengan contoh daripada ayat-ayat al-Quran.</p>
+      <div class="hero-arabic">قُلِ ٱللَّهُۖ ثُمَّ ذَرۡهُمۡ</div>
+    </div>
+
+    <div class="intro-card">
+      <b>Lam Sakinah</b> iaitu Lam yang tidak berbaris. Ia akan menerima baris jika bertemu dengan huruf yang sukun. Lam Sakinah ada lima jenis: <b>Lam Ta'rif</b>, <b>Lam Fi'el</b>, <b>Lam Harf</b>, <b>Lam Isim</b>, dan <b>Lam Amr</b>. Setiap jenis membawa hukum bacaan yang tersendiri sebagaimana dihuraikan pada muka surat berikut.
+    </div>
+
+    <div class="legend">
+      <span class="chip tarif"><i></i>Lam Ta'rif</span>
+      <span class="chip qamari"><i></i>Izhar Qamari</span>
+      <span class="chip syamsi"><i></i>Idgham Syamsi</span>
+      <span class="chip fiel"><i></i>Lam Fi'el</span>
+      <span class="chip harf"><i></i>Lam Harf</span>
+      <span class="chip isim"><i></i>Lam Isim</span>
+      <span class="chip amr"><i></i>Lam Amr</span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MUKA SURAT 143 -->
+    <!-- ============================================================ -->
+    <h3 class="section-title">📖 Pengenalan &amp; Lima Jenis Lam Sakinah</h3>
+    <p class="section-sub">Definisi Lam Sakinah dan pembahagiannya kepada lima jenis, serta pengenalan kepada Lam Ta'rif.</p>
+
+    <div class="page-card">
+      <div class="page-card-head"><span class="page-badge">📄 Muka Surat 143</span></div>
+      <div class="page-card-body">
+
+        <div class="rule-block">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--teal)">1</span>
+            <span><b>Lam Sakinah</b> iaitu Lam yang tidak berbaris. Ia akan menerima baris jika bertemu dengan huruf yang sukun.</span>
+          </div>
+          <div class="arabic-line">قُلِ ٱللَّهُۖ</div>
+          <div class="arabic-ref">Surah al-An'am · ayat 91</div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--amber)">2</span>
+            <span>Lam Sakinah ada lima jenis iaitu:</span>
+          </div>
+          <div class="example-list">
+            <div class="example-card"><b>(1) Lam Ta'rif</b> (لام تعريف). Contoh: <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:20px;direction:rtl;">ٱلۡحَقُّ</span> — Surah Hud · ayat 17</div>
+            <div class="example-card"><b>(2) Lam Fi'el</b> (لام فعل). Contoh: <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:20px;direction:rtl;">قُلۡ</span> — Surah al-Kafirun · ayat 1</div>
+            <div class="example-card"><b>(3) Lam Harf</b> (لام حرف). Contoh: <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:20px;direction:rtl;">هَلۡ</span> — Surah al-Insan · ayat 1</div>
+            <div class="example-card"><b>(4) Lam Isim</b> (لام اسم). Contoh: <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:20px;direction:rtl;">سُلۡطَـٰنٍ</span> — Surah Saba' · ayat 21</div>
+            <div class="example-card"><b>(5) Lam Amr</b> (لام أمر). Contoh: <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:20px;direction:rtl;">فَلۡیَرۡتَقُوا۟</span> — Surah Shad · ayat 10</div>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--amber)">3</span>
+            <span><b>Lam Ta'rif</b> iaitu Lam Sakinah yang masuk pada perkataan Kata Nama Am dan menjadikannya Kata Nama Khas<sup class="fn"><a href="#fn143-1">1</a></sup>. Kebiasaannya Lam Ta'rif didahului Hamzah Washal kecuali jika sebelumnya dimasuki salah satu daripada dua Lam berikut:</span>
+          </div>
+          <div class="example-list">
+            <div class="example-card"><b>(1) Lam Ta'kid.</b> Contoh: <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:20px;direction:rtl;">لَلَّذِی</span> — Surah Ali 'Imran · ayat 96</div>
+            <div class="example-card"><b>(2) Lam Jar.</b> Contoh: <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:20px;direction:rtl;">لِلنَّاسِ</span> — Surah Ali 'Imran · ayat 96</div>
+          </div>
+        </div>
+
+        <div class="footnotes">
+          <div class="fn-title">Nota Kaki · Muka Surat 143</div>
+          <ol>
+            <li id="fn143-1">Kata Nama Am yang dikenali sebagai <i>Isim Nakirah</i> (اسم نكرة). Contoh: <span class="arabic-inline">يَوْمَ</span> (hari) — Surah Ali 'Imran · ayat 106. Kata Nama Khas yang dikenali sebagai <i>Isim Ma'rifah</i> (اسم معرفة). Contoh: <span class="arabic-inline">اَلْيَوْمَ</span> (hari ini) — Surah al-Maidah · ayat 3.</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MUKA SURAT 144-145 : IZHAR QAMARI -->
+    <!-- ============================================================ -->
+    <h3 class="section-title">🟢 Lam Ta'rif — Izhar Qamari</h3>
+    <p class="section-sub">Lam Ta'rif ada dua hukum: Izhar dan Idgham. Bahagian pertama ialah Izhar apabila bertemu Huruf Qamariah.</p>
+
+    <div class="page-card">
+      <div class="page-card-head"><span class="page-badge">📄 Muka Surat 144</span></div>
+      <div class="page-card-body">
+
+        <div class="rule-block">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--amber)">4</span>
+            <span>Lam Ta'rif ada dua hukum iaitu Izhar dan Idgham:</span>
+          </div>
+        </div>
+
+        <div class="rule-block">
+          <div class="rule-heading"><span class="chip qamari" style="margin-right:8px"><i></i></span>
+            <span>(1) Diizharkan Lam Ta'rif apabila bertemu dengan mana-mana Huruf Qamariah<sup class="fn"><a href="#fn144-1">1</a></sup> (حروف قمرية). Huruf Qamariah ada empat belas iaitu Ba', Jim, Ha', Kha', 'Ain, Ghain, Fa', Qaf, Kaf, Mim, Wau, Ha', Hamzah dan Ya' yang terkandung dalam rangkaikata:</span>
+          </div>
+          <div class="arabic-line">اِبْغِ حَجَّكَ وَخَفْ عَقِيْمَهُ</div>
+
+          <p style="font-size:14.5px; line-height:1.7; margin-top:14px;">
+            Dinamakan <b>Izhar Qamari</b> (إظهار قمري) kerana diizharkan Lam tersebut kepada Huruf Qamariah.<br>
+            <b>Sebab Izhar:</b> Lam dan Huruf Qamariah adalah dua huruf <i>Mutaba'idan</i>.
+          </p>
+        </div>
+
+        <p class="section-sub" style="margin-top:8px;">Contoh-contoh Izhar Qamari:</p>
+        <div class="qtable-wrap">
+          <table class="qtable">
+            <thead><tr><th>Bil</th><th>Huruf Qamariah</th><th>Contoh</th></tr></thead>
+            <tbody>
+              <tr><td class="bil">1</td><td class="huruf">ب</td><td class="contoh">ٱلۡبَابِۚ<sup class="fn"><a href="#fn144-2">2</a></sup><small>Surah Yusuf · ayat 25</small></td></tr>
+              <tr><td class="bil">2</td><td class="huruf">ج</td><td class="contoh">ٱلۡجَبَّارُ<sup class="fn"><a href="#fn144-3">3</a></sup><small>Surah al-Hasyr · ayat 23</small></td></tr>
+              <tr><td class="bil">3</td><td class="huruf">ح</td><td class="contoh">ٱلۡحَیُّ<sup class="fn"><a href="#fn144-4">4</a></sup><small>Surah Ali 'Imran · ayat 2</small></td></tr>
+              <tr><td class="bil">4</td><td class="huruf">خ</td><td class="contoh">ٱلۡخَنَّاسِ<sup class="fn"><a href="#fn144-5">5</a></sup><small>Surah al-Nas · ayat 4</small></td></tr>
+              <tr><td class="bil">5</td><td class="huruf">ع</td><td class="contoh">ٱلۡعَزِیزُ<sup class="fn"><a href="#fn144-6">6</a></sup><small>Surah Ibrahim · ayat 4</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="footnotes">
+          <div class="fn-title">Nota Kaki · Muka Surat 144</div>
+          <ol>
+            <li id="fn144-1">Dinamakan Huruf Qamariah kerana ditasybihkan (diumpamakan) seperti Qamar (bulan). Apabila terbitnya bulan maka ia tidak menghilangkan fungsi (cahaya) bintang-bintang. Demikianlah apabila datang huruf tersebut maka ia tidak menghilangkan fungsi Lam Ta'rif.</li>
+            <li id="fn144-2">Surah Yusuf : ayat 25</li>
+            <li id="fn144-3">Surah al-Hasyr : ayat 23</li>
+            <li id="fn144-4">Surah Ali 'Imran : ayat 2</li>
+            <li id="fn144-5">Surah al-Nas : ayat 4</li>
+            <li id="fn144-6">Surah Ibrahim : ayat 4</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-card">
+      <div class="page-card-head"><span class="page-badge">📄 Muka Surat 145</span></div>
+      <div class="page-card-body">
+
+        <p class="section-sub" style="margin-top:0;">Sambungan contoh-contoh Izhar Qamari:</p>
+        <div class="qtable-wrap">
+          <table class="qtable">
+            <thead><tr><th>Bil</th><th>Huruf Qamariah</th><th>Contoh</th></tr></thead>
+            <tbody>
+              <tr><td class="bil">6</td><td class="huruf">غ</td><td class="contoh">اَلْغُرُوْرُ<sup class="fn"><a href="#fn145-1">1</a></sup><small>Surah Luqman · ayat 33</small></td></tr>
+              <tr><td class="bil">7</td><td class="huruf">ف</td><td class="contoh">اَلْفَتَّاحُ<sup class="fn"><a href="#fn145-2">2</a></sup><small>Surah Saba' · ayat 26</small></td></tr>
+              <tr><td class="bil">8</td><td class="huruf">ق</td><td class="contoh">اَلْقَيُّوْمُ<sup class="fn"><a href="#fn145-3">3</a></sup><small>Surah Ali 'Imran · ayat 2</small></td></tr>
+              <tr><td class="bil">9</td><td class="huruf">ك</td><td class="contoh">اَلْكَبِيْرُ<sup class="fn"><a href="#fn145-4">4</a></sup><small>Surah al-Ra'd · ayat 9</small></td></tr>
+              <tr><td class="bil">10</td><td class="huruf">م</td><td class="contoh">اَلْمِيْعَادَ<sup class="fn"><a href="#fn145-5">5</a></sup><small>Surah Ali 'Imran · ayat 9</small></td></tr>
+              <tr><td class="bil">11</td><td class="huruf">و</td><td class="contoh">اَلْوَهَّابُ<sup class="fn"><a href="#fn145-6">6</a></sup><small>Surah Ali 'Imran · ayat 8</small></td></tr>
+              <tr><td class="bil">12</td><td class="huruf">ه</td><td class="contoh">اَلْهُدَى<sup class="fn"><a href="#fn145-7">7</a></sup><small>Surah al-An'am · ayat 71</small></td></tr>
+              <tr><td class="bil">13</td><td class="huruf">ء</td><td class="contoh">اَلْأَوَّلُ<sup class="fn"><a href="#fn145-8">8</a></sup><small>Surah al-Hadid · ayat 3</small></td></tr>
+              <tr><td class="bil">14</td><td class="huruf">ي</td><td class="contoh">اَلْيَمُّ<sup class="fn"><a href="#fn145-9">9</a></sup><small>Surah Toha · ayat 39</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="rule-block" style="margin-top:24px;">
+          <div class="rule-heading"><span class="chip syamsi" style="margin-right:8px"><i></i></span>
+            <span>(2) Diidghamkan Lam Ta'rif apabila bertemu dengan mana-mana Huruf Syamsiah<sup class="fn"><a href="#fn145-10">10</a></sup> (حروف شمسية). Huruf Syamsiah ada empat belas iaitu Ta', Tha', Dal, Dzal, Ra', Zai, Sin, Syin, Shad, Dhad, To', Zha', Lam dan Nun. Huruf-huruf ini terdapat pada awal kalimah-kalimah sya'ir di bawah ini:</span>
+          </div>
+          <div class="arabic-line">طِبْ ثُمَّ صِلْ رَحْمًا تَفُزْ ضِفْ ذَا نِعَمْ دَعْ سُوْءَ ظَنٍّ زُرْ شَرِيْفًا لِلْكَرَمْ</div>
+        </div>
+
+        <div class="footnotes">
+          <div class="fn-title">Nota Kaki · Muka Surat 145</div>
+          <ol>
+            <li id="fn145-1">Surah Luqman : ayat 33</li>
+            <li id="fn145-2">Surah Saba' : ayat 26</li>
+            <li id="fn145-3">Surah Ali 'Imran : ayat 2</li>
+            <li id="fn145-4">Surah al-Ra'd : ayat 9</li>
+            <li id="fn145-5">Surah Ali 'Imran : ayat 9</li>
+            <li id="fn145-6">Surah Ali 'Imran : ayat 8</li>
+            <li id="fn145-7">Surah al-An'am : ayat 71</li>
+            <li id="fn145-8">Surah al-Hadid : ayat 3</li>
+            <li id="fn145-9">Surah Toha : ayat 39</li>
+            <li id="fn145-10">Dinamakan Huruf Syamsiah kerana ditasybihkan (diumpamakan) seperti Syams (matahari). Apabila terbitnya matahari maka ia akan menghilangkan fungsi (cahaya) bintang-bintang. Demikianlah apabila datang huruf tersebut maka ia akan menghilangkan fungsi Lam Ta'rif.</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MUKA SURAT 146-147 : IDGHAM SYAMSI -->
+    <!-- ============================================================ -->
+    <h3 class="section-title">🔴 Lam Ta'rif — Idgham Syamsi</h3>
+    <p class="section-sub">Bahagian kedua hukum Lam Ta'rif ialah Idgham apabila bertemu Huruf Syamsiah, terbahagi kepada Bi Ghunnah dan Bila Ghunnah.</p>
+
+    <div class="page-card">
+      <div class="page-card-head"><span class="page-badge">📄 Muka Surat 146</span></div>
+      <div class="page-card-body">
+
+        <p style="font-size:14.5px; line-height:1.75; margin-top:0;">
+          Dinamakan <b>Idgham Syamsi</b> (اِدغَام شَمسِي) kerana diidghamkan Lam tersebut kepada Huruf Syamsiah. Idgham Syamsi ada dua bahagian: Bi Ghunnah dan Bila Ghunnah;
+        </p>
+        <div class="example-list">
+          <div class="example-card"><b>(a) Idgham Syamsi Bi Ghunnah</b> (اِدغَام شَمسِي بِغُنَّة) iaitu Idgham Syamsi Dengan Dengung. Ia berlaku apabila Lam Ta'rif diidghamkan pada Nun.</div>
+          <div class="example-card"><b>(b) Idgham Syamsi Bila Ghunnah</b> (اِدغَام شَمسِي بِلَا غُنَّة) iaitu Idgham Syamsi Tanpa Dengung. Ia berlaku apabila Lam Ta'rif diidghamkan pada baki Huruf Syamsiah.</div>
+        </div>
+
+        <p style="font-size:14.5px; line-height:1.75; margin-top:16px;"><b>Sebab-sebab Idgham:</b></p>
+        <div class="example-list">
+          <div class="example-card">(a) Lam dengan Lam adalah dua huruf <i>Mutamathilan</i>.</div>
+          <div class="example-card">(b) Lam dengan baki Huruf Syamsiah adalah dua huruf <i>Mutaqariban</i>.</div>
+        </div>
+
+        <p class="section-sub" style="margin-top:20px;">Contoh-contoh Idgham Syamsi:</p>
+        <div class="qtable-wrap">
+          <table class="qtable">
+            <thead><tr><th>Bil</th><th>Huruf Syamsiah</th><th>Contoh</th></tr></thead>
+            <tbody>
+              <tr><td class="bil">1</td><td class="huruf">ت</td><td class="contoh">اَلتَّوَّابُ<sup class="fn"><a href="#fn146-1">1</a></sup><small>Surah al-Baqarah · ayat 37</small></td></tr>
+              <tr><td class="bil">2</td><td class="huruf">ث</td><td class="contoh">اَلثَّاقِبُ<sup class="fn"><a href="#fn146-2">2</a></sup><small>Surah al-Toriq · ayat 3</small></td></tr>
+              <tr><td class="bil">3</td><td class="huruf">د</td><td class="contoh">اَلدَّاعِىَ<sup class="fn"><a href="#fn146-3">3</a></sup><small>Surah Toha · ayat 108</small></td></tr>
+              <tr><td class="bil">4</td><td class="huruf">ذ</td><td class="contoh">اَلذُّكُوْرَ<sup class="fn"><a href="#fn146-4">4</a></sup><small>Surah al-Syura · ayat 49</small></td></tr>
+              <tr><td class="bil">5</td><td class="huruf">ر</td><td class="contoh">اَلرَّحِيْمِ<sup class="fn"><a href="#fn146-5">5</a></sup><small>Surah al-Fatihah · ayat 3</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="footnotes">
+          <div class="fn-title">Nota Kaki · Muka Surat 146</div>
+          <ol>
+            <li id="fn146-1">Surah al-Baqarah : ayat 37</li>
+            <li id="fn146-2">Surah al-Toriq : ayat 3</li>
+            <li id="fn146-3">Surah Toha : ayat 108</li>
+            <li id="fn146-4">Surah al-Syura : ayat 49</li>
+            <li id="fn146-5">Surah al-Fatihah : ayat 3</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="page-card">
+      <div class="page-card-head"><span class="page-badge">📄 Muka Surat 147</span></div>
+      <div class="page-card-body">
+
+        <p class="section-sub" style="margin-top:0;">Sambungan contoh-contoh Idgham Syamsi:</p>
+        <div class="qtable-wrap">
+          <table class="qtable">
+            <thead><tr><th>Bil</th><th>Huruf Syamsiah</th><th>Contoh</th></tr></thead>
+            <tbody>
+              <tr><td class="bil">6</td><td class="huruf">ز</td><td class="contoh">اَلزَّبَانِيَةَ<sup class="fn"><a href="#fn147-1">1</a></sup><small>Surah al-'Alaq · ayat 18</small></td></tr>
+              <tr><td class="bil">7</td><td class="huruf">س</td><td class="contoh">اَلسَّلَمَ<sup class="fn"><a href="#fn147-2">2</a></sup><small>Surah al-Nisa' · ayat 90</small></td></tr>
+              <tr><td class="bil">8</td><td class="huruf">ش</td><td class="contoh">اَلشِّمَالَ<sup class="fn"><a href="#fn147-3">3</a></sup><small>Surah al-Ma'arij · ayat 37</small></td></tr>
+              <tr><td class="bil">9</td><td class="huruf">ص</td><td class="contoh">اَلصَّمَدُ<sup class="fn"><a href="#fn147-4">4</a></sup><small>Surah al-Ikhlash · ayat 2</small></td></tr>
+              <tr><td class="bil">10</td><td class="huruf">ض</td><td class="contoh">اَلضَّرَرَ<sup class="fn"><a href="#fn147-5">5</a></sup><small>Surah al-Nisa' · ayat 95</small></td></tr>
+              <tr><td class="bil">11</td><td class="huruf">ط</td><td class="contoh">اَلطَّالِبُ<sup class="fn"><a href="#fn147-6">6</a></sup><small>Surah al-Hajj · ayat 73</small></td></tr>
+              <tr><td class="bil">12</td><td class="huruf">ظ</td><td class="contoh">اَلظَّهِيْرَةَ<sup class="fn"><a href="#fn147-7">7</a></sup><small>Surah al-Nur · ayat 58</small></td></tr>
+              <tr><td class="bil">13</td><td class="huruf">ل</td><td class="contoh">اَللَّطِيْفُ<sup class="fn"><a href="#fn147-8">8</a></sup><small>Surah al-An'am · ayat 103</small></td></tr>
+              <tr><td class="bil">14</td><td class="huruf">ن</td><td class="contoh">اَلنَّاسِ<sup class="fn"><a href="#fn147-9">9</a></sup><small>Surah al-Nas · ayat 1</small></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="nazam-card">
+          <p class="section-sub" style="margin-top:0; margin-bottom:10px;">Kata Syeikh Sulaiman al-Jamzuri:</p>
+          <div class="arabic-line">أُوْلاهُمَا إِظْهارُهَا فَلْتَعْرِفِ &nbsp;&nbsp; للاَمِ أَلْ حَالانِ قَبْلَ الأَحْرُفِ</div>
+          <div class="arabic-line">قَبْلَ أَرْبَعٍ مَعْ عَشَرَةٍ خُذْ عِلْمَهُ &nbsp;&nbsp; مِنِ ابْغِ حَجَّكَ وَخَفْ عَقِيْمَهُ</div>
+          <div class="arabic-line">ثَانِيْهِمَا إِدْغامُهَا فِي أَرْبَعِ &nbsp;&nbsp; وَعَشَرَةٍ أَيْضًا وَرَمْزُهَا فَعِ</div>
+          <div class="arabic-line">طِبْ ثُمَّ صِلْ رَحْمًا تَفُزْ ضِفْ ذَا نِعَمْ &nbsp;&nbsp; دَعْ سُوْءَ ظَنٍّ زُرْ شَرِيْفًا لِلْكَرَمْ</div>
+          <div class="arabic-line">وَالَّلامُ الأُوْلَى سَمِّهَا قَمَرِيَّهْ &nbsp;&nbsp; وَاللاَّمَ الأُخْرَى سَمِّهَا شَمْسِيَّةْ</div>
+        </div>
+
+        <div class="footnotes">
+          <div class="fn-title">Nota Kaki · Muka Surat 147</div>
+          <ol>
+            <li id="fn147-1">Surah al-'Alaq : ayat 18</li>
+            <li id="fn147-2">Surah al-Nisa' : ayat 90</li>
+            <li id="fn147-3">Surah al-Ma'arij : ayat 37</li>
+            <li id="fn147-4">Surah al-Ikhlash : ayat 2</li>
+            <li id="fn147-5">Surah al-Nisa' : ayat 95</li>
+            <li id="fn147-6">Surah al-Hajj : ayat 73</li>
+            <li id="fn147-7">Surah al-Nur : ayat 58</li>
+            <li id="fn147-8">Surah al-An'am : ayat 103</li>
+            <li id="fn147-9">Surah al-Nas : ayat 1</li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MUKA SURAT 148 : Terjemahan Nazam + Lam Fi'el -->
+    <!-- ============================================================ -->
+    <h3 class="section-title">💚 Lam Fi'el</h3>
+    <p class="section-sub">Terjemahan nazam mengenai Lam Ta'rif, diikuti hukum Lam Fi'el iaitu Lam Sakinah pada Kata Perbuatan.</p>
+
+    <div class="page-card">
+      <div class="page-card-head"><span class="page-badge">📄 Muka Surat 148</span></div>
+      <div class="page-card-body">
+
+        <div class="nazam-translation">
+          "Bagi Lam Ta'rif yang berada sebelum Huruf Hijaiyah ada dua keadaan (hukum), maka ketahuilah olehmu pertamanya izhar akan dia pada empat belas huruf, ambillah ia pada ungkapan <span class="arabic-inline">اِبْغِ حَجَّكَ وَخَفْ عَقِيْمَهُ</span>. Keduanya idgham akan dia pada empat belas huruf juga maka jagalah ia pada (awal setiap kalimah) <span class="arabic-inline">طِبْ ثُمَّ صِلْ رَحْمًا تَفُزْ ضِفْ ذَا نِعَمْ دَعْ سُوْءَ ظَنٍّ زُرْ شَرِيْفًا لِلْكَرَمْ</span> dan Lam yang pertama dinamakan Qamariah adapun Lam yang kedua dinamakan Syamsiah."
+        </div>
+
+        <div class="rule-block" style="margin-top:26px;">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--emerald)">5</span>
+            <span><b>Lam Fi'el</b> iaitu Lam Sakinah yang terdapat pada Kata Perbuatan (Fi'el). Ia terbahagi kepada dua hukum iaitu Izhar dan Idgham:</span>
+          </div>
+
+          <div class="example-list">
+            <div class="example-card">
+              <b>(1)</b> Diizharkan Lam Fi'el apabila bertemu dengan Huruf Hijaiyah selain Lam dan Ra'.
+              <div class="arabic-line">قُلْ سِيْرُوْا</div>
+              <div class="arabic-ref">Surah al-An'am · ayat 11</div>
+            </div>
+            <div class="example-card">
+              <b>(2)</b> Diidghamkan Lam Fi'el apabila bertemu dengan Lam atau Ra'.
+              <div class="arabic-line">قُل لَّمَنْ</div>
+              <div class="arabic-ref">Surah al-An'am · ayat 12</div>
+              <div class="arabic-line">قُل رَّبِّ</div>
+              <div class="arabic-ref">Surah al-Mu'minun · ayat 93</div>
+            </div>
+          </div>
+
+          <p style="font-size:14.5px; line-height:1.75; margin-top:14px;"><b>Sebab-sebab Idgham:</b></p>
+          <div class="example-list">
+            <div class="example-card">(a) Lam dengan Lam adalah dua huruf <i>Mutamathilan</i>.</div>
+            <div class="example-card">(b) Lam dengan Ra' adalah dua huruf <i>Mutaqariban</i>.</div>
+          </div>
+        </div>
+
+        <div class="nazam-card">
+          <p class="section-sub" style="margin-top:0; margin-bottom:10px;">Kata Syeikh Sulaiman al-Jamzuri:</p>
+          <div class="arabic-line">أَظْهِرَنْ لامَ فِعْلٍ فِي نَحْوِ قُلْ نَعَمْ &nbsp;&nbsp; وَقُلْنَ وَالْتَقَى مُطْلَقًا</div>
+          <div class="nazam-translation">
+            "Izharkanlah olehmu akan Lam Fi'el (sebagai Izhar) Mutlaq pada umpama <span class="arabic-inline">قُلْ نَعَمْ</span>, <span class="arabic-inline">قُلْنَ</span> dan <span class="arabic-inline">الْتَقَى</span>."
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- MUKA SURAT 149 : Lam Harf, Lam Isim, Lam Amr -->
+    <!-- ============================================================ -->
+    <h3 class="section-title">💜 Lam Harf, Lam Isim &amp; Lam Amr</h3>
+    <p class="section-sub">Tiga jenis Lam Sakinah yang terakhir, lengkap dengan hukum bacaan dan contoh masing-masing.</p>
+
+    <div class="page-card">
+      <div class="page-card-head"><span class="page-badge">📄 Muka Surat 149</span></div>
+      <div class="page-card-body">
+
+        <div class="rule-block">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--violet)">6</span>
+            <span><b>Lam Harf</b> iaitu Lam Sakinah yang terdapat pada Kata Sendi (Harf). Ia terbahagi kepada dua hukum iaitu Izhar dan Idgham:</span>
+          </div>
+
+          <div class="example-list">
+            <div class="example-card">
+              <b>(1)</b> Diizharkan Lam Harf apabila bertemu dengan Huruf Hijaiyah selain Lam dan Ra'.
+              <div class="arabic-line">كَلَّا بَلْ تُكَذِّبُوْنَ بِالدِّيْنِ</div>
+              <div class="arabic-ref">Surah al-Infitor · ayat 9</div>
+            </div>
+            <div class="example-card">
+              <b>(2)</b> Diidghamkan Lam Harf bila bertemu dengan Lam atau Ra'.
+              <div class="arabic-line">كَلَّا بَل لَّا تُكْرِمُوْنَ الْيَتِيْمَ</div>
+              <div class="arabic-ref">Surah al-Fajr · ayat 17</div>
+              <div class="arabic-line">بَلْ رَفَعَهُ اللّٰهُ إِلَيْهِ</div>
+              <div class="arabic-ref">Surah al-Nisa' · ayat 158</div>
+            </div>
+          </div>
+
+          <p style="font-size:14.5px; line-height:1.75; margin-top:14px;"><b>Sebab-sebab Idgham:</b></p>
+          <div class="example-list">
+            <div class="example-card">(a) Lam dengan Lam adalah dua huruf <i>Mutamathilan</i>.</div>
+            <div class="example-card">(b) Lam dengan Ra' adalah dua huruf <i>Mutaqariban</i>.</div>
+          </div>
+        </div>
+
+        <div class="rule-block" style="margin-top:26px;">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--rose)">7</span>
+            <span><b>Lam Isim</b> iaitu Lam Sakinah yang terdapat pada Kata Nama (Isim). Hukumnya wajib diizharkan.</span>
+          </div>
+          <div class="arabic-line">سَلْسَبِيْلًا</div>
+          <div class="arabic-ref">Surah al-Insan · ayat 18</div>
+        </div>
+
+        <div class="rule-block" style="margin-top:26px;">
+          <div class="rule-heading"><span class="rule-num-tag" style="background:var(--blue)">8</span>
+            <span><b>Lam Amr</b> iaitu Lam Sakinah yang masuk pada Fi'el Mudhari' (فعل مضارع) dan mengubah maknanya kepada perintah (Amr) (أمر). Lam Amr ini akan didahului oleh Fa' (ف) atau Wau (و) ataupun kalimah <span class="arabic-inline" style="font-family:'Amiri',serif;font-size:18px;direction:rtl;">ثُمَّ</span>. Hukumnya wajib diizharkan.</span>
+          </div>
+          <div class="example-list">
+            <div class="example-card">
+              <div class="arabic-line">فَلْتَقُمْ</div>
+              <div class="arabic-ref">Surah al-Nisa' · ayat 102</div>
+            </div>
+            <div class="example-card">
+              <div class="arabic-line">وَلْتَأْتِ</div>
+              <div class="arabic-ref">Surah al-Nisa' · ayat 102</div>
+            </div>
+            <div class="example-card">
+              <div class="arabic-line">ثُمَّ لْيَقْضُوْا</div>
+              <div class="arabic-ref">Surah al-Hajj · ayat 29</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+  // Highlight a footnote briefly when jumped to via a superscript link
+  document.querySelectorAll('sup.fn a').forEach(link => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if(!target) return;
+      document.querySelectorAll('.footnotes li.highlight').forEach(li => li.classList.remove('highlight'));
+      target.classList.add('highlight');
+      setTimeout(() => target.classList.remove('highlight'), 2500);
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -15,6 +15,7 @@ const NAV_PAGES = [
   { href: "110.html",   title: "Hukum Isti'adzah", pages: "ms. 110–114" },
   { href: "115.html",   title: "Hukum Basmalah", pages: "ms. 115–119" },
   { href: "135.html",   title: "Hukum Nun dan Mim Bertasydid", pages: "ms. 135–138" },
+  { href: "143.html",   title: "Hukum Lam Sakinah", pages: "ms. 143–149" },
   { href: "156.html",   title: "Idgham Mutamathilain, Mutaqaribain & Mutajanisain", pages: "ms. 156–163" },
   { href: "182.html", title: "Martabat Mad Far'ie", pages: "ms. 182–187" },
   { href: "index.html", title: "Qashr pada Mad Jaiz Munfashil", pages: "ms. 188–190" },
