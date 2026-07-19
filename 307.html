@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Sujud Tilawah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:22px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  .sunat-tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:12px; font-weight:700;
+    background:var(--emerald-bg); color:#1B7A4E; padding:4px 13px; border-radius:20px; margin-left:6px;
+  }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:48px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:19px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  sup.supref{
+    font-family:'Fredoka', sans-serif; font-size:9px; font-weight:700; color:#fff;
+    background:var(--coral); border-radius:50%; padding:1px 4px; margin-left:1px; vertical-align:super;
+  }
+
+  /* syarat chips */
+  .syarat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px; }
+  .syarat-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--teal);
+    border-radius:16px; padding:18px 20px; box-shadow:var(--shadow); font-size:14px; color:var(--ink); line-height:1.6;
+    display:flex; align-items:flex-start; gap:12px;
+  }
+  .syarat-num{
+    width:26px; height:26px; border-radius:8px; background:var(--teal); color:#fff; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:12px;
+  }
+
+  /* cara cards */
+  .cara-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; margin-top:18px; }
+  .cara-item{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--amber);
+    border-radius:16px; padding:18px 20px; box-shadow:var(--shadow);
+  }
+  .cara-item .tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700;
+    background:var(--amber-bg); color:#A5701A; padding:4px 12px; border-radius:20px; margin-bottom:10px;
+  }
+  .cara-item p{ font-size:13.5px; color:var(--ink-soft); line-height:1.65; margin:0; }
+
+  /* dalil / quote card */
+  .dalil-card{
+    background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+    padding:24px 26px; box-shadow:var(--shadow); margin-top:16px;
+  }
+  .dalil-arabic{ font-family:'Amiri', serif; font-size:22px; direction:rtl; text-align:center; line-height:2; color:var(--ink); margin-bottom:14px; }
+  .dalil-translation{ font-size:14px; font-style:italic; color:var(--ink-soft); text-align:center; line-height:1.7; }
+  .dalil-ref{ text-align:center; font-size:12.5px; color:var(--teal); font-weight:700; margin-top:10px; font-family:'Fredoka', sans-serif; }
+
+  /* ayat sajdah list */
+  .sajdah-grid{ display:flex; flex-direction:column; gap:12px; margin-top:18px; }
+  .sajdah-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:16px 20px; box-shadow:var(--shadow); display:grid; grid-template-columns:34px 1fr; gap:14px; align-items:center;
+  }
+  .sajdah-num{
+    width:34px; height:34px; border-radius:10px; background:var(--violet); color:#fff;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:13px;
+  }
+  .sajdah-ref{ font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700; color:var(--teal); margin-bottom:6px; }
+  .sajdah-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2; color:var(--ink); }
+  .sajdah-mark{ color:var(--violet); font-size:16px; margin:0 4px; }
+
+  .footnote-card{
+    margin-top:14px; background:var(--paper-alt); border:1px dashed var(--line);
+    border-radius:12px; padding:14px 18px; font-size:12.5px; color:var(--ink-soft); line-height:1.75;
+  }
+  .footnote-card .fn-head{ display:flex; align-items:center; gap:7px; margin-bottom:6px; }
+  .footnote-card .fn-num{
+    display:inline-flex; align-items:center; justify-content:center; width:19px; height:19px;
+    border-radius:50%; background:var(--coral); color:#fff; font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:10.5px; flex-shrink:0;
+  }
+
+  /* peringatan */
+  .peringatan-block{
+    margin-top:18px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--amber);
+    border-radius:14px; padding:20px 24px; box-shadow:var(--shadow);
+  }
+  .peringatan-block ol{ margin:0; padding-left:20px; }
+  .peringatan-block li{ font-size:14px; color:var(--ink-soft); line-height:1.75; margin-bottom:10px; }
+  .peringatan-block li:last-child{ margin-bottom:0; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 307 – 311</span>
+      <h2>Hukum Sujud Tilawah</h2>
+      <p>Sujud yang dilakukan dengan sebab membaca al-Quran atau mendengarnya — merangkumi hukumnya, syarat-syaratnya, cara melakukannya, bacaannya, serta empat belas tempat Ayat Sajdah dalam al-Quran.</p>
+      <div class="hero-arabic">سُجُود تِلَاوَة</div>
+    </div>
+
+    <!-- Makna & Hukum -->
+    <div class="intro-card">
+      <p><b>Sujud Tilawah</b> (<span class="term-arabic">سُجُود تِلَاوَة</span>) iaitu sujud yang dilakukan dengan sebab membaca al-Quran atau mendengarnya.</p>
+      <p>Hukum Sujud Tilawah <span class="sunat-tag">SUNAT MUAKKAD</span></p>
+    </div>
+
+    <div class="dalil-card">
+      <div class="dalil-arabic">إِذَا قَرَأَ ٱبْنُ ءَادَمَ ٱلسَّجْدَةَ فَسَجَدَ ٱعْتَزَلَ ٱلشَّيْطَٰنُ يَبْكِى يَقُولُ يَا وَيْلَهُ أُمِرَ بِٱلسُّجُودِ فَسَجَدَ فَلَهُ ٱلْجَنَّةُ وَأُمِرْتُ بِٱلسُّجُودِ فَعَصَيْتُ فَلِيَ ٱلنَّارُ</div>
+      <div class="dalil-translation">"Apabila anak Adam (manusia) membaca Ayat Sajdah lalu iapun sujud, maka tersingkirlah syaitan sambil berkata: Celakalah aku! Ia diperintahkan sujud lalu iapun sujud maka baginya syurga, sedangkan aku diperintahkan sujud tetapi aku menolaknya maka bagiku neraka"</div>
+      <div class="dalil-ref">Riwayat Muslim</div>
+    </div>
+
+    <!-- Syarat -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">①</div>
+      <div>
+        <h3>Syarat-Syarat Sujud Tilawah</h3>
+        <div class="sub">Ada tiga syarat.</div>
+      </div>
+    </div>
+
+    <div class="syarat-grid" id="syarat-list"></div>
+
+    <!-- Cara -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">②</div>
+      <div>
+        <h3>Cara-Cara Melakukan Sujud Tilawah</h3>
+        <div class="sub">Berbeza mengikut sama ada di dalam atau di luar sembahyang.</div>
+      </div>
+    </div>
+
+    <div class="cara-grid" id="cara-list"></div>
+
+    <!-- Bacaan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--emerald)">✦</div>
+      <div>
+        <h3>Bacaan Ketika Sujud</h3>
+      </div>
+    </div>
+
+    <div class="dalil-card">
+      <div class="dalil-arabic">سَجَدَ وَجْهِىَ لِلَّذِى خَلَقَهُۥ وَصَوَّرَهُۥ وَشَقَّ سَمْعَهُۥ وَبَصَرَهُۥ بِحَوْلِهِۦ وَقُوَّتِهِۦ فَتَبَارَكَ ٱللَّهُ أَحْسَنُ ٱلْخَٰلِقِينَ</div>
+      <div class="dalil-translation">"Sujudlah mukaku kepada Tuhan yang telah menciptakannya, dan juga telah mencipta pendengarannya dan penglihatannya dengan kekuasaanNya. Maka Maha Berkat Allah sebaik-baik Pencipta"</div>
+    </div>
+
+    <!-- 14 Ayat Sajdah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">۩</div>
+      <div>
+        <h3>Ayat Sajdah — Empat Belas<sup class="supref">1</sup> Tempat</h3>
+        <div class="sub">Empat belas tempat Ayat Sajdah dalam al-Quran.</div>
+      </div>
+    </div>
+
+    <div class="sajdah-grid" id="sajdah-list"></div>
+
+    <div class="footnote-card">
+      <div class="fn-head"><span class="fn-num">1</span><span>Tidak termasuk ayat 24 dalam Surah Shad, kerana ia dikira Sujud Syukur bagi Madzhab Syafie dan Madzhab Hanbali. Adapun dalam al-Quran diletakkan tanda sujud kerana ianya dikira Sujud Tilawah bagi Madzhab Hanafi dan Madzhab Maliki. Sila lihat al-Quran muka surat 454.</span></div>
+    </div>
+
+    <!-- Gantian -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--coral)">⚠</div>
+      <div>
+        <h3>Gantian Jika Tidak Dapat Sujud</h3>
+        <div class="sub">Jika tidak dapat melakukan sujud kerana sebab-sebab tertentu seperti tiada berwudhu', tidak menutup aurat, membaca dalam kenderaan dan sebagainya, maka sunat digantikan dengan tasbih berikut.</div>
+      </div>
+    </div>
+
+    <div class="dalil-card">
+      <div class="dalil-arabic">سُبْحَانَ ٱللَّهِ وَٱلْحَمْدُ لِلَّهِ وَلَآ إِلَٰهَ إِلَّا ٱللَّهُ وَٱللَّهُ أَكْبَرُ وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِٱللَّهِ ٱلْعَلِىِّ ٱلْعَظِيمِ</div>
+    </div>
+
+    <!-- Peringatan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--rose)">⚠</div>
+      <div>
+        <h3>Peringatan</h3>
+      </div>
+    </div>
+
+    <div class="peringatan-block">
+      <ol>
+        <li>Wajib bagi setiap makmum mengikut perbuatan imamnya, sama ada melakukan sujud atau meninggalkannya. Jika tidak, batallah sembahyangnya.</li>
+        <li>Apabila seseorang membaca Ayat Sajdah dalam sembahyang dengan niat untuk sujud lalu ia pun sujud, maka batallah sembahyangnya (kecuali sembahyang Subuh pada hari Jumaat, kerana ia disunatkan).</li>
+        <li>Tidak diharuskan sujud dalam sembahyang pada ayat yang terdapat dalam Surah Shad, kerana ia dikira sebagai Sujud Syukur pada Madzhab Syafie. Sekiranya seseorang itu sujud serta tahu akan hukumnya, maka batallah sembahyangnya; tetapi jika ia sujud dalam keadaan jahil atau terlupa bahawa ia sedang bersembahyang, maka tidak batal sembahyangnya, bahkan disunatkan ia Sujud Sahwi. Inilah pendapat yang lebih tepat.</li>
+      </ol>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Sujud Tilawah
+   ============================================================ */
+
+const syaratList = [
+  "Suci daripada hadas kecil, hadas besar dan najis yang tidak dimaafkan pada badan, pakaian dan tempat sujud.",
+  "Menutup aurat.",
+  "Mengadap qiblat."
+];
+
+const caraList = [
+  { tag: "Dalam Sembahyang", text: "Sunat takbir ketika hendak turun dan naik dari sujud, tanpa mengangkat kedua tangan, serta tiada duduk Istirahah." },
+  { tag: "Luar Sembahyang", text: "Niat, takbir (seperti Takbiratul Ihram) serta mengangkat kedua tangan, kemudian takbir lalu sujud, kemudian takbir lalu duduk untuk memberi salam." }
+];
+
+function sj(ref, arabic){ return { ref, arabic }; }
+
+const sajdahList = [
+  sj("Surah al-A'raf · ayat 206", "إِنَّ ٱلَّذِينَ عِندَ رَبِّكَ لَا يَسْتَكْبِرُونَ عَنْ عِبَادَتِهِۦ وَيُسَبِّحُونَهُۥ وَلَهُۥ يَسْجُدُونَ <span class='sajdah-mark'>۩</span> ﴿٢٠٦﴾"),
+  sj("Surah al-Ra'd · ayat 15", "وَلِلَّهِ يَسْجُدُ مَن فِى ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ طَوْعًا وَكَرْهًا وَظِلَٰلُهُم بِٱلْغُدُوِّ وَٱلْءَاصَالِ <span class='sajdah-mark'>۩</span> ﴿١٥﴾"),
+  sj("Surah al-Nahl · ayat 49–50", "وَلِلَّهِ يَسْجُدُ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ مِن دَآبَّةٍ وَٱلْمَلَٰٓئِكَةُ وَهُمْ لَا يَسْتَكْبِرُونَ ﴿٤٩﴾ يَخَافُونَ رَبَّهُم مِّن فَوْقِهِمْ وَيَفْعَلُونَ مَا يُؤْمَرُونَ <span class='sajdah-mark'>۩</span> ﴿٥٠﴾"),
+  sj("Surah al-Isra' · ayat 107–109", "قُلْ ءَامِنُوا۟ بِهِۦٓ أَوْ لَا تُؤْمِنُوٓا۟ ۚ إِنَّ ٱلَّذِينَ أُوتُوا۟ ٱلْعِلْمَ مِن قَبْلِهِۦٓ إِذَا يُتْلَىٰ عَلَيْهِمْ يَخِرُّونَ لِلْأَذْقَانِ سُجَّدًا ﴿١٠٧﴾ وَيَقُولُونَ سُبْحَٰنَ رَبِّنَآ إِن كَانَ وَعْدُ رَبِّنَا لَمَفْعُولًا ﴿١٠٨﴾ وَيَخِرُّونَ لِلْأَذْقَانِ يَبْكُونَ وَيَزِيدُهُمْ خُشُوعًا <span class='sajdah-mark'>۩</span> ﴿١٠٩﴾"),
+  sj("Surah Maryam · ayat 58", "أُو۟لَٰٓئِكَ ٱلَّذِينَ أَنْعَمَ ٱللَّهُ عَلَيْهِم مِّنَ ٱلنَّبِيِّـۧنَ مِن ذُرِّيَّةِ ءَادَمَ وَمِمَّنْ حَمَلْنَا مَعَ نُوحٍ وَمِن ذُرِّيَّةِ إِبْرَٰهِيمَ وَإِسْرَٰٓءِيلَ وَمِمَّنْ هَدَيْنَا وَٱجْتَبَيْنَآ ۚ إِذَا تُتْلَىٰ عَلَيْهِمْ ءَايَٰتُ ٱلرَّحْمَٰنِ خَرُّوا۟ سُجَّدًا وَبُكِيًّا <span class='sajdah-mark'>۩</span> ﴿٥٨﴾"),
+  sj("Surah al-Hajj · ayat 18", "أَلَمْ تَرَ أَنَّ ٱللَّهَ يَسْجُدُ لَهُۥ مَن فِى ٱلسَّمَٰوَٰتِ وَمَن فِى ٱلْأَرْضِ وَٱلشَّمْسُ وَٱلْقَمَرُ وَٱلنُّجُومُ وَٱلْجِبَالُ وَٱلشَّجَرُ وَٱلدَّوَآبُّ وَكَثِيرٌ مِّنَ ٱلنَّاسِ ۖ وَكَثِيرٌ حَقَّ عَلَيْهِ ٱلْعَذَابُ ۗ وَمَن يُهِنِ ٱللَّهُ فَمَا لَهُۥ مِن مُّكْرِمٍ ۚ إِنَّ ٱللَّهَ يَفْعَلُ مَا يَشَآءُ <span class='sajdah-mark'>۩</span> ﴿١٨﴾"),
+  sj("Surah al-Hajj · ayat 77", "يَٰٓأَيُّهَا ٱلَّذِينَ ءَامَنُوا۟ ٱرْكَعُوا۟ وَٱسْجُدُوا۟ وَٱعْبُدُوا۟ رَبَّكُمْ وَٱفْعَلُوا۟ ٱلْخَيْرَ لَعَلَّكُمْ تُفْلِحُونَ <span class='sajdah-mark'>۩</span> ﴿٧٧﴾"),
+  sj("Surah al-Furqan · ayat 60", "وَإِذَا قِيلَ لَهُمُ ٱسْجُدُوا۟ لِلرَّحْمَٰنِ قَالُوا۟ وَمَا ٱلرَّحْمَٰنُ أَنَسْجُدُ لِمَا تَأْمُرُنَا وَزَادَهُمْ نُفُورًا <span class='sajdah-mark'>۩</span> ﴿٦٠﴾"),
+  sj("Surah al-Naml · ayat 25–26", "أَلَّا يَسْجُدُوا۟ لِلَّهِ ٱلَّذِى يُخْرِجُ ٱلْخَبْءَ فِى ٱلسَّمَٰوَٰتِ وَٱلْأَرْضِ وَيَعْلَمُ مَا تُخْفُونَ وَمَا تُعْلِنُونَ ﴿٢٥﴾ ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ رَبُّ ٱلْعَرْشِ ٱلْعَظِيمِ <span class='sajdah-mark'>۩</span> ﴿٢٦﴾"),
+  sj("Surah al-Sajdah · ayat 15", "إِنَّمَا يُؤْمِنُ بِـَٔايَٰتِنَا ٱلَّذِينَ إِذَا ذُكِّرُوا۟ بِهَا خَرُّوا۟ سُجَّدًا وَسَبَّحُوا۟ بِحَمْدِ رَبِّهِمْ وَهُمْ لَا يَسْتَكْبِرُونَ <span class='sajdah-mark'>۩</span> ﴿١٥﴾"),
+  sj("Surah Fushshilat · ayat 37–38", "وَمِنْ ءَايَٰتِهِ ٱلَّيْلُ وَٱلنَّهَارُ وَٱلشَّمْسُ وَٱلْقَمَرُ ۚ لَا تَسْجُدُوا۟ لِلشَّمْسِ وَلَا لِلْقَمَرِ وَٱسْجُدُوا۟ لِلَّهِ ٱلَّذِى خَلَقَهُنَّ إِن كُنتُمْ إِيَّاهُ تَعْبُدُونَ ﴿٣٧﴾ فَإِنِ ٱسْتَكْبَرُوا۟ فَٱلَّذِينَ عِندَ رَبِّكَ يُسَبِّحُونَ لَهُۥ بِٱلَّيْلِ وَٱلنَّهَارِ وَهُمْ لَا يَسْـَٔمُونَ <span class='sajdah-mark'>۩</span> ﴿٣٨﴾"),
+  sj("Surah al-Najm · ayat 62", "فَٱسْجُدُوا۟ لِلَّهِ وَٱعْبُدُوا۟ <span class='sajdah-mark'>۩</span> ﴿٦٢﴾"),
+  sj("Surah al-Insyiqaq · ayat 21", "وَإِذَا قُرِئَ عَلَيْهِمُ ٱلْقُرْءَانُ لَا يَسْجُدُونَ <span class='sajdah-mark'>۩</span> ﴿٢١﴾"),
+  sj("Surah al-'Alaq · ayat 19", "كَلَّا لَا تُطِعْهُ وَٱسْجُدْ وَٱقْتَرِب <span class='sajdah-mark'>۩</span> ﴿١٩﴾")
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('syarat-list').innerHTML = syaratList.map((s, i) => `
+  <div class="syarat-card">
+    <span class="syarat-num">${i + 1}</span>
+    <span>${s}</span>
+  </div>
+`).join('');
+
+document.getElementById('cara-list').innerHTML = caraList.map(c => `
+  <div class="cara-item">
+    <span class="tag">${c.tag}</span>
+    <p>${c.text}</p>
+  </div>
+`).join('');
+
+document.getElementById('sajdah-list').innerHTML = sajdahList.map((s, i) => `
+  <div class="sajdah-card">
+    <div class="sajdah-num">${i + 1}</div>
+    <div>
+      <div class="sajdah-ref">${s.ref}</div>
+      <div class="sajdah-arabic">${s.arabic}</div>
+    </div>
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>
