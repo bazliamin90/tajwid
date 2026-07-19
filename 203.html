@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Ra'</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:22px 26px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+
+  /* section headers */
+  .cat-banner{
+    margin-top:50px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .cat-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:16px; color:#fff;
+  }
+  .cat-banner h3{ font-family:'Fredoka', sans-serif; font-size:19px; margin:0; }
+  .cat-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* keadaan cards */
+  .keadaan-grid{ display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+  .keadaan-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px 20px; box-shadow:var(--shadow);
+  }
+  .keadaan-top{ display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }
+  .keadaan-num{
+    width:26px; height:26px; border-radius:8px; flex-shrink:0; margin-top:1px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:12px; color:#fff;
+  }
+  .keadaan-rule{ font-size:13.5px; color:var(--ink); line-height:1.6; }
+  sup.supref{
+    font-family:'Fredoka', sans-serif; font-size:9px; font-weight:700; color:#fff;
+    background:var(--coral); border-radius:50%; padding:1px 4px; margin-left:1px; vertical-align:super;
+  }
+
+  .example-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:4px; }
+  .example-item{
+    background:var(--paper-alt); border-radius:10px; padding:9px 14px;
+    display:flex; align-items:center; gap:10px; flex:1 1 auto; min-width:170px;
+  }
+  .example-item .arabic{ font-family:'Amiri', serif; font-size:18px; direction:rtl; color:var(--ink); }
+  .example-item .ref{ font-size:10.5px; color:var(--teal); font-weight:700; font-family:'Fredoka', sans-serif; white-space:nowrap; margin-left:auto; }
+
+  /* small tempat grid for the 12-lokasi case */
+  .tempat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px; margin-top:10px; }
+  .tempat-chip{
+    background:var(--paper-alt); border-radius:10px; padding:8px 12px; text-align:center;
+  }
+  .tempat-chip .arabic{ font-family:'Amiri', serif; font-size:16px; direction:rtl; color:var(--ink); }
+  .tempat-chip .ref{ font-size:10px; color:var(--teal); font-weight:700; font-family:'Fredoka', sans-serif; margin-top:4px; }
+
+  /* footnote card */
+  .footnote-card{
+    margin-top:12px; background:var(--paper-alt); border:1px dashed var(--line);
+    border-radius:12px; padding:12px 16px; font-size:12px; color:var(--ink-soft); line-height:1.7;
+  }
+  .footnote-card .fn-head{ display:flex; align-items:center; gap:7px; margin-bottom:6px; }
+  .footnote-card .fn-num{
+    display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px;
+    border-radius:50%; background:var(--coral); color:#fff; font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:10px; flex-shrink:0;
+  }
+
+  /* quote */
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:16px; padding:18px 22px; margin-top:12px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:17px; direction:rtl; line-height:2.1; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:12.5px; color:#DFF3EE; margin-top:12px; font-style:italic; line-height:1.7; }
+  .quote-card .attribution{ margin-top:8px; font-size:11px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 203 – 211</span>
+      <h2>Hukum Ra'</h2>
+      <p>Ra' adalah huruf yang paling banyak sifatnya, dan dibahagikan kepada empat bahagian berdasarkan tafkhim (tebal) dan tarqiq (nipis).</p>
+    </div>
+
+    <div class="intro-card">
+      Ra' adalah huruf yang paling banyak sifatnya. Ra' juga dibahagikan kepada <b>empat bahagian</b> berdasarkan tafkhim dan tarqiq. Huraiannya seperti berikut.
+    </div>
+
+    <div id="sections"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Ra'
+   ============================================================ */
+
+function ex(arabic, ref){ return { arabic, ref }; }
+
+const section1 = {
+  title: "Ra' yang Wajib Dibaca Tebal (Tafkhim)",
+  color: "var(--coral)",
+  sub: "Berlaku dalam beberapa keadaan.",
+  keadaan: [
+    { rule: "Ra' berbaris fathah, sama ada di awal, di tengah atau di hujung kalimah.",
+      examples: [ex("رَجَعَ","al-A'raf · 150"), ex("ضَرَبَ","Ibrahim · 24"), ex("شَكَرَ","al-Qamar · 35")] },
+    { rule: "Ra' berbaris dhammah, sama ada di awal, di tengah atau di hujung kalimah.",
+      examples: [ex("رُوحَنَا","Maryam · 17"), ex("يُنظَرُونَ","al-Sajdah · 29"), ex("وَلَا تَزِرُ","al-Isra' · 15")] },
+    { rule: "Ra' sukun dan huruf sebelumnya berbaris fathah, sama ada di tengah atau di hujung kalimah.",
+      examples: [ex("وَمَرْيَمَ","al-Tahrim · 12"), ex("لَا يَسْخَرْ","al-Hujurat · 11")] },
+    { rule: "Ra' sukun dan huruf sebelumnya berbaris dhammah, sama ada di tengah atau di hujung kalimah.",
+      examples: [ex("لَنُرْسِلَنَّ","al-A'raf · 134"), ex("ٱنظُرْ","al-Furqan · 9")] },
+    { rule: "Ra' sukun, huruf sebelumnya berbaris kasrah, dan selepasnya Huruf Isti'la' berbaris fathah dalam satu kalimah.",
+      examples: [ex("فِرْقَةٍ","al-Taubah · 122")],
+      quote: { arabic: "وَمَا حَرْفُ ٱلِٱسْتِعْلَاءِ بَعْدُ ٱلتَّفْخِيمُ ۞ لِكُلِّهِمُ فَرَاوُهُ فِيهَا تَذَلَّلَا",
+        translation: "\"Dan Ra' (sukun) yang terdapat Huruf Isti'la' selepasnya, maka ditebalkan oleh mereka (Imam-imam al-Qurra') kerana lemah ia (berbanding Huruf Isti'la')\"",
+        attribution: "— Kata Imam al-Syatibi" } },
+    { rule: "Ra' sukun dan huruf sebelumnya berbaris Kasrah 'Aaridhah (kasrah yang mendatang), sama ada dalam satu kalimah atau kalimah yang berasingan.",
+      examples: [ex("ٱرْجِعِى","al-Fajr · 28"), ex("أَمِ ٱرْتَابُوا۟","al-Nur · 50")],
+      quote: { arabic: "وَمَا بَعْدَ كَسْرٍ عَارِضٍ أَوْ مُفَصَّلِ ۞ فَخِّمْ فَهَذَا حُكْمُهُ مُتَبَذَّلَا",
+        translation: "\"Dan Ra' sukun yang terdapat selepas baris kasrah yang mendatang (dalam satu kalimah) atau terpisah (dalam kalimah yang berasingan), maka tebalkanlah olehmu akannya. Maka inilah hukum yang diguna pakai\"",
+        attribution: "— Kata Imam al-Syatibi" } },
+    { rule: "Ra' sukun kerana waqaf (sama ada asalnya berbaris fathah, dhammah atau kasrah) dan huruf sebelumnya berbaris fathah.",
+      examples: [ex("ٱلْكَوْثَرَ","al-Naml · 40"), ex("ٱلْأَبْتَرَ","al-Kauthar · 3"), ex("ٱلْقَمَرَ","al-Syams · 2")] },
+    { rule: "Ra' sukun kerana waqaf (sama ada asalnya berbaris fathah, dhammah atau kasrah) dan huruf sebelumnya berbaris dhammah.",
+      examples: [ex("ٱلدُّبُرَ","al-Qamar · 45"), ex("ٱلنُّذُرَ","al-Qamar · 41"), ex("ٱلزُّبُرَ","al-Qamar · 43")] },
+    { rule: "Ra' sukun kerana waqaf, huruf sebelumnya juga sukun (selain daripada Ya') dan huruf sebelumnya lagi berbaris fathah.",
+      examples: [ex("ٱلْفَجْرَ","al-Qadr · 5")] },
+    { rule: "Ra' sukun kerana waqaf, huruf sebelumnya juga sukun (selain daripada Ya') dan huruf sebelumnya lagi berbaris dhammah.",
+      examples: [ex("ٱلنُّورَ","al-Baqarah · 257")] }
+  ]
+};
+
+const section2 = {
+  title: "Ra' yang Wajib Dibaca Nipis (Tarqiq)",
+  color: "var(--teal)",
+  sub: "Berlaku dalam beberapa keadaan.",
+  keadaan: [
+    { rule: "Ra' berbaris kasrah, sama ada di awal, di tengah atau di hujung kalimah.",
+      examples: [ex("رِسَالَتَهُۥ","al-Maidah · 67"), ex("بَرِقَ","al-Qiamah · 7"), ex("ٱلنَّارِ","Fushshilat · 19")],
+      quote: { arabic: "وَرَقِّقِ ٱلرَّاءَ إِذَا مَا كُسِرَتْ",
+        translation: "\"Dan tarqiqkanlah (nipiskanlah) olehmu akan Ra' apabila ia berbaris kasrah\"",
+        attribution: "— Kata Imam Ibnu al-Jazari" } },
+    { rule: "Ra' berbaris Kasrah 'Aaridhah (kasrah yang mendatang).",
+      examples: [ex("وَأَنذِرِ ٱلنَّاسَ","Ibrahim · 44")],
+      quote: { arabic: "أَوْ كَانَتِ ٱلْكَسْرَةُ لَيْسَتْ أَصْلَا",
+        translation: "\"Atau Ra' berbaris kasrah yang bukan asli (iaitu kasrah mendatang)\"",
+        attribution: "— Kata Imam Ibnu al-Jazari" } },
+    { rule: "Ra' sukun dan huruf sebelumnya berbaris kasrah, sama ada di tengah atau di hujung kalimah.",
+      examples: [ex("فِرْعَوْنَ","al-Fajr · 10"), ex("أَصْبِرْ","Shad · 17")],
+      quote: { arabic: "وَلَا بُدَّ مِن تَرْقِيقِهَا بَعْدَ كَسْرَةٍ ۞ إِذَا سَكَنَتْ",
+        translation: "\"Tidak dapat tidak, mesti dinipiskannya (Ra') selepas baris kasrah apabila ia sukun\"",
+        attribution: "— Kata Imam al-Syatibi" } },
+    { rule: "Ra' sukun, huruf sebelumnya berbaris kasrah, dan selepasnya Huruf Isti'la' dalam kalimah yang berasingan.",
+      examples: [ex("أَنْ أَنذِرْ قَوْمَكَ","Nuh · 1")] },
+    { rule: "Ra' sukun kerana waqaf, huruf sebelumnya juga sukun (selain daripada Ya', sama ada Ya' Mad atau Ya' Lin) serta huruf sebelumnya lagi berbaris kasrah.",
+      examples: [ex("ٱلسِّحْرَ","al-Baqarah · 102")] },
+    { rule: "Ra' sukun kerana waqaf dan sebelumnya Ya' Mad.",
+      examples: [ex("ٱلنَّصِيرَ","al-Anfal · 40")] },
+    { rule: "Ra' sukun kerana waqaf dan sebelumnya Ya' Lin.",
+      examples: [ex("ٱلطَّيْرَ","al-Naml · 20")] },
+    { rule: "Ra' yang diimalahkan.",
+      examples: [ex("مَجْرِيهَا","Hud · 41")],
+      quote: { arabic: "وَرَقِّقِ ٱلرَّا إِن تُمَلْ",
+        translation: "\"Dan tarqiqkanlah (nipiskanlah) olehmu akan Ra' jika ia diimalahkan\"",
+        attribution: "— Kata Imam Ibnu al-Jazari" } },
+    { rule: "Ra' yang diwaqafkan secara Raum.",
+      examples: [ex("ٱلْفَجْرَ","al-Qadr · 5")],
+      quote: { arabic: "وَإِن تَرُمْ فَمِثْلَ مَا تَصِلْ",
+        translation: "\"Dan sekiranya kamu waqaf (pada Ra') secara raum, maka bacaannya sepertimana kamu membacanya ketika washal\"",
+        attribution: "— Kata Imam Ibnu al-Jazari" } }
+  ]
+};
+
+/* ============================================================
+   RENDER HELPERS
+   ============================================================ */
+
+function exampleItem(e){
+  return `<div class="example-item"><span class="arabic">${e.arabic}</span><span class="ref">${e.ref}</span></div>`;
+}
+
+function quoteBlock(q){
+  return `
+    <div class="quote-card">
+      <div class="arabic">${q.arabic}</div>
+      <div class="translation">${q.translation}</div>
+      <div class="attribution">${q.attribution}</div>
+    </div>
+  `;
+}
+
+function footnoteBlock(fn){
+  let html = `<div class="footnote-card"><div class="fn-head"><span class="fn-num">${fn.num}</span><span>${fn.text}</span></div>`;
+  if (fn.example) html += `<div class="example-row">${exampleItem(fn.example)}</div>`;
+  html += `</div>`;
+  if (fn.quote) html += quoteBlock(fn.quote);
+  return html;
+}
+
+function keadaanCard(k, i, color){
+  return `
+    <div class="keadaan-card">
+      <div class="keadaan-top">
+        <span class="keadaan-num" style="background:${color}">${i + 1}</span>
+        <span class="keadaan-rule">${k.rule}</span>
+      </div>
+      <div class="example-row">${k.examples.map(exampleItem).join('')}</div>
+      ${k.quote ? quoteBlock(k.quote) : ''}
+    </div>
+  `;
+}
+
+function renderSection(sec){
+  return `
+    <div class="cat-banner">
+      <div class="num" style="background:${sec.color}">◆</div>
+      <div>
+        <h3>${sec.title}</h3>
+        <div class="sub">${sec.sub}</div>
+      </div>
+    </div>
+    <div class="keadaan-grid">
+      ${sec.keadaan.map((k, i) => keadaanCard(k, i, sec.color)).join('')}
+    </div>
+  `;
+}
+
+/* ============================================================
+   SECTION 3 & 4 (special cases with footnoted superscripts)
+   ============================================================ */
+
+const section3Html = `
+  <div class="cat-banner">
+    <div class="num" style="background:var(--amber)">◆</div>
+    <div>
+      <h3>Ra' yang Harus Dibaca Tebal atau Nipis <span style="font-weight:400; font-size:14px;">(Tebal Lebih Utama<sup class="supref">1</sup>)</span></h3>
+      <div class="sub">Ia berlaku pada Ra' sukun kerana waqaf (asalnya berbaris fathah), dan sebelumnya Huruf Isti'la' juga sukun serta sebelumnya lagi huruf berbaris kasrah — iaitu kalimah مِصْرَ<sup class="supref">2</sup>. Ada empat tempat dalam al-Quran.</div>
+    </div>
+  </div>
+  <div class="tempat-grid">
+    ${[ex("بِمِصْرَ","Yunus · 87"), ex("مِن مِّصْرَ","Yusuf · 21"), ex("ٱدْخُلُوا۟ مِصْرَ","Yusuf · 99"), ex("مُلْكُ مِصْرَ","al-Zukhruf · 51")]
+      .map(t => `<div class="tempat-chip"><div class="arabic">${t.arabic}</div><div class="ref">${t.ref}</div></div>`).join('')}
+  </div>
+  ${footnoteBlock({ num: 1, text: "Syeikh al-Mutawalli mengatakan bahawa bacaan tebal (tafkhim) lebih utama pada kalimah مِصْرَ, dan sebaliknya pada kalimah yang lain, adalah pandangan (madzhab) Imam Ibnu al-Jazari.",
+    quote: { arabic: "وَمِصْرَ فِيهِ ٱخْتِيَارُ أَنْ يُفَخَّمَا ۞ وَعَكْسُهُ فِى ٱلْقُطْرِ عَنْهُ فَٱعْلَمَا",
+      translation: "\"Dan kalimah مِصْرَ padanya pilihan untuk ditafkhimkan, dan sebaliknya (pilihan untuk ditarqiqkan) pada kalimah ٱلْقُطْر — inilah yang diambil daripadanya (Imam Ibnu al-Jazari), maka ketahuilah olehmu (akannya)\"",
+      attribution: "— Kata Syeikh Mutawalli" } })}
+  ${footnoteBlock({ num: 2, text: "Kata ulama bahawa kalimah مِصْرَ harus dibaca tebal kerana memandang kepada Huruf Isti'la' sebelumnya, dan harus dibaca nipis kerana memandang kepada baris kasrah yang terdapat pada huruf yang berada sebelum Huruf Isti'la' tersebut. Adapun bacaan tebal lebih utama kerana Ra' asalnya dibaca tebal (berbaris fathah) ketika washal. Kedua-dua jenis bacaan tersebut adalah sah (betul) kerana ia diambil daripada Rasulullah Shallallahu 'Alaihi Wasallam." })}
+  ${quoteBlock({ arabic: "وَٱخْتَيِرْ أَن يُوقَفَ مِثْلَ ٱلْوَصْلِ ۞ فِى رَاءِ مِصْرَ ٱلْقُطْرِ يَا ذَا ٱلْفَضْلِ",
+    translation: "\"Dan pilihlah olehmu untuk waqaf seperti (bacaan) washal, pada Ra' yang terdapat pada kalimah مِصْر dan ٱلْقُطْر, wahai orang yang mulia\"",
+    attribution: "— Kata Syeikh al-Mutawalli" })}
+`;
+
+const section4Html = `
+  <div class="cat-banner">
+    <div class="num" style="background:var(--violet)">◆</div>
+    <div>
+      <h3>Ra' yang Harus Dibaca Tebal atau Nipis <span style="font-weight:400; font-size:14px;">(Nipis Lebih Utama)</span></h3>
+      <div class="sub">Berlaku dalam beberapa keadaan.</div>
+    </div>
+  </div>
+  <div class="keadaan-grid">
+    <div class="keadaan-card">
+      <div class="keadaan-top">
+        <span class="keadaan-num" style="background:var(--violet)">1</span>
+        <span class="keadaan-rule">Ra' sukun, huruf sebelumnya berbaris kasrah, dan selepasnya Huruf Isti'la' juga berbaris kasrah dalam satu kalimah — iaitu kalimah فِرْقٍ<sup class="supref">1</sup> dalam Surah al-Syu'ara' · ayat 63.</span>
+      </div>
+      <div class="example-row">${exampleItem(ex("فَٱنفَلَقَ فَكَانَ كُلُّ فِرْقٍ كَٱلطَّوْدِ ٱلْعَظِيمِ","al-Syu'ara' · 63"))}</div>
+      ${quoteBlock({ arabic: "وَٱلْخُلْفُ فِى فِرْقٍ لِكَسْرٍ يُوجَدُ",
+        translation: "\"Dan khilaf (tebal atau nipis) pada kalimah فِرْقٍ, kerana terdapat baris kasrah (pada Huruf Isti'la')\"",
+        attribution: "— Kata Imam Ibnu al-Jazari" })}
+      ${footnoteBlock({ num: 1, text: "Kata ulama bahawa kalimah فِرْق dibaca tebal kerana memandang kepada Huruf Isti'la' (dalam satu kalimah) selepasnya, dan harus dibaca nipis kerana memandang kepada baris kasrah yang terdapat pada Huruf Isti'la' tersebut. Adapun bacaan nipis lebih utama kerana Ra' tersebut berada di antara dua unsur yang lemah, iaitu dua baris kasrah (sebelum dan selepasnya), berbanding satu unsur yang kuat iaitu Huruf Isti'la' dalam satu kalimah." })}
+    </div>
+
+    <div class="keadaan-card">
+      <div class="keadaan-top">
+        <span class="keadaan-num" style="background:var(--violet)">2</span>
+        <span class="keadaan-rule">Ra' sukun kerana waqaf (asalnya berbaris kasrah), dan sebelumnya Huruf Isti'la' juga sukun, dan sebelumnya lagi huruf berbaris kasrah — iaitu kalimah ٱلْقِطْرَ<sup class="supref">1</sup> pada firman Allah Ta'ala.</span>
+      </div>
+      <div class="example-row">${exampleItem(ex("وَأَسَلْنَا لَهُۥ عَيْنَ ٱلْقِطْرِ","Saba' · 12"))}</div>
+      ${quoteBlock({ arabic: "وَٱخْتَيِرْ أَن يُوقَفَ مِثْلَ ٱلْوَصْلِ ۞ فِى رَاءِ مِصْرَ ٱلْقُطْرِ يَا ذَا ٱلْفَضْلِ",
+        translation: "\"Dan pilihlah olehmu untuk waqaf seperti (keadaan) washal, pada Ra' yang terdapat pada kalimah مِصْر dan ٱلْقُطْر, wahai orang yang mulia\"",
+        attribution: "— Kata Syeikh al-Mutawalli" })}
+      ${footnoteBlock({ num: 1, text: "Kalimah ٱلْقِطْر harus dibaca tebal kerana memandang kepada Huruf Isti'la' sebelumnya, dan harus dibaca nipis kerana memandang kepada baris kasrah yang terdapat pada huruf yang berada sebelum Huruf Isti'la' tersebut. Adapun bacaan nipis lebih utama kerana Ra' asalnya dibaca nipis (berbaris kasrah)." })}
+    </div>
+
+    <div class="keadaan-card">
+      <div class="keadaan-top">
+        <span class="keadaan-num" style="background:var(--violet)">3</span>
+        <span class="keadaan-rule">Ra' sukun kerana waqaf (asalnya berbaris kasrah), dan selepasnya Ya' Mahdzufah (ياء محذوفة) — iaitu Ya' yang dibuang pada Rasm — iaitu kalimah أُسْرِ<sup class="supref">2</sup> dan kalimah نُذُرِ. Kesemuanya ada dua belas tempat dalam al-Quran.</span>
+      </div>
+      <div class="tempat-grid">
+        ${[
+          ex("فَأَسْرِ بِأَهْلِكَ","Hud · 81"),
+          ex("فَأَسْرِ بِأَهْلِكَ","al-Hijr · 65"),
+          ex("فَأَسْرِ بِعِبَادِى","al-Dukhan · 23"),
+          ex("أَنْ أَسْرِ بِعِبَادِى","Toha · 77"),
+          ex("أَنْ أَسْرِ بِعِبَادِى","al-Syu'ara' · 52"),
+          ex("وَٱلَّيْلِ إِذَا يَسْرِ","al-Fajr · 4"),
+          ex("فَكَيْفَ كَانَ عَذَابِى وَنُذُرِ","al-Qamar · 16"),
+          ex("فَكَيْفَ كَانَ عَذَابِى وَنُذُرِ","al-Qamar · 18"),
+          ex("فَكَيْفَ كَانَ عَذَابِى وَنُذُرِ","al-Qamar · 21"),
+          ex("فَكَيْفَ كَانَ عَذَابِى وَنُذُرِ","al-Qamar · 30"),
+          ex("فَذُوقُوا۟ عَذَابِى وَنُذُرِ","al-Qamar · 37"),
+          ex("فَذُوقُوا۟ عَذَابِى وَنُذُرِ","al-Qamar · 39")
+        ].map(t => `<div class="tempat-chip"><div class="arabic">${t.arabic}</div><div class="ref">${t.ref}</div></div>`).join('')}
+      </div>
+      ${footnoteBlock({ num: 2, text: "Kalimah أُسْرِ (asalnya أُسْرِى) harus dibaca tebal kerana memandang baris fathah sebelumnya, dan kalimah نُذُرِ (asalnya نُذُرِى) harus dibaca tebal kerana memandang kepada baris dhammah sebelumnya. Adapun kedua-duanya harus dibaca nipis kerana memandang kepada keadaan asalnya, dan inilah yang lebih utama." })}
+      ${quoteBlock({ arabic: "وَفِى إِذَا يَسْرِ ٱخْتِيَارُ ٱلْجَزَرِى ۞ تَرْقِيقُهُ وَهَكَذَا وَنُذُرِ",
+        translation: "\"Dan pada kalimah إِذَا يَسْرِ, pilihan Imam Ibnu al-Jazari menipiskannya; demikian juga kalimah وَنُذُرِ\"",
+        attribution: "— Kata Syeikh al-Mutawalli" })}
+    </div>
+  </div>
+`;
+
+/* ============================================================
+   RENDER ALL
+   ============================================================ */
+
+document.getElementById('sections').innerHTML =
+  renderSection(section1) +
+  renderSection(section2) +
+  section3Html +
+  section4Html;
+</script>
+
+</body>
+</html>
