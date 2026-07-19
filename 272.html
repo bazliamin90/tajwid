@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Waqaf pada Ha' Dhamir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(23px, 3vw, 32px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:22px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:48px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:16px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:19px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  sup.supref{
+    font-family:'Fredoka', sans-serif; font-size:9px; font-weight:700; color:#fff;
+    background:var(--coral); border-radius:50%; padding:1px 4px; margin-left:1px; vertical-align:super;
+  }
+
+  /* keadaan cards */
+  .keadaan-grid{ display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+  .keadaan-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px 20px; box-shadow:var(--shadow);
+  }
+  .keadaan-top{ display:flex; align-items:flex-start; gap:10px; margin-bottom:10px; }
+  .keadaan-num{
+    width:26px; height:26px; border-radius:8px; flex-shrink:0; margin-top:1px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:12px; color:#fff;
+  }
+  .keadaan-rule{ font-size:13.5px; color:var(--ink); line-height:1.6; }
+  .example-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .example-item{
+    background:var(--paper-alt); border-radius:10px; padding:9px 14px;
+    display:flex; align-items:center; gap:10px; flex:1 1 auto; min-width:170px;
+  }
+  .example-item .arabic{ font-family:'Amiri', serif; font-size:18px; direction:rtl; color:var(--ink); }
+  .example-item .ref{ font-size:10.5px; color:var(--teal); font-weight:700; font-family:'Fredoka', sans-serif; white-space:nowrap; margin-left:auto; }
+  .example-item .note{ font-size:10px; color:var(--ink-soft); font-style:italic; white-space:nowrap; }
+
+  .subheading{
+    font-family:'Fredoka', sans-serif; font-size:14px; font-weight:600; color:var(--ink);
+    margin:18px 0 10px; display:flex; align-items:center; gap:8px;
+  }
+
+  /* footnote card */
+  .footnote-card{
+    margin-top:12px; background:var(--paper-alt); border:1px dashed var(--line);
+    border-radius:12px; padding:14px 18px; font-size:12.5px; color:var(--ink-soft); line-height:1.75;
+  }
+  .footnote-card .fn-head{ display:flex; align-items:center; gap:7px; margin-bottom:8px; }
+  .footnote-card .fn-num{
+    display:inline-flex; align-items:center; justify-content:center; width:19px; height:19px;
+    border-radius:50%; background:var(--coral); color:#fff; font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:10.5px; flex-shrink:0;
+  }
+  .footnote-card .term-arabic{ font-family:'Amiri', serif; direction:rtl; font-size:17px; color:var(--ink); }
+
+  /* quote */
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:22px 26px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.15; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.75; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  /* tidak-ikut-asal list */
+  .khas-grid{ display:flex; flex-direction:column; gap:10px; margin-top:16px; }
+  .khas-item{
+    background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 18px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  }
+  .khas-num{
+    width:26px; height:26px; border-radius:8px; background:var(--rose-bg); color:#C42553; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:12px;
+  }
+  .khas-item .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; color:var(--ink); }
+  .khas-item .ref{ font-size:11.5px; color:var(--teal); font-weight:700; font-family:'Fredoka', sans-serif; }
+  .khas-item .note{
+    margin-left:auto; font-family:'Fredoka', sans-serif; font-size:10.5px; font-weight:700;
+    background:var(--rose-bg); color:#C42553; padding:3px 11px; border-radius:20px; white-space:nowrap;
+  }
+
+  /* pendapat */
+  .pendapat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:16px; }
+  .pendapat-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--violet);
+    border-radius:16px; padding:18px 20px; box-shadow:var(--shadow); font-size:13.5px; color:var(--ink-soft); line-height:1.6;
+  }
+  .pendapat-card.chosen{ border-top-color:var(--emerald); }
+  .pendapat-card .tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:10.5px; font-weight:700;
+    background:var(--violet-bg); color:#6236C9; padding:3px 11px; border-radius:20px; margin-bottom:8px;
+  }
+  .pendapat-card.chosen .tag{ background:var(--emerald-bg); color:#1B7A4E; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 272 – 276</span>
+      <h2>Hukum Waqaf pada Ha' Dhamir</h2>
+      <p>Ha' Dhamir — Ha' ganti nama diri ketiga — mempunyai kaedah tersendiri untuk baris, panjang bacaan, dan cara waqaf. Bab ini merangkumi kesemuanya, termasuk pilihan Imam Ibnu al-Jazari mengenai raum dan isymam.</p>
+      <div class="hero-arabic">هَاء ضَمِير ۚ هَاء كِنَايَة</div>
+    </div>
+
+    <!-- Makna -->
+    <div class="intro-card">
+      <p><b>Ha' Dhamir</b> (<span class="term-arabic">هَاء ضَمِير</span>) iaitu Ha' ganti nama diri ketiga. Ia juga dikenali sebagai <b>Ha' Kinayah</b> (<span class="term-arabic">هَاء كِنَايَة</span>). Ha' Dhamir berada di akhir kalimah, sama ada pada:</p>
+    </div>
+
+    <div class="example-row" style="margin-top:14px;">
+      <div class="example-item"><span class="arabic">قَرِينُهُۥ</span><span class="ref">Isim · Qaf : 23</span></div>
+      <div class="example-item"><span class="arabic">يُعِيدُهُۥ</span><span class="ref">Fi'el · Yunus : 4</span></div>
+      <div class="example-item"><span class="arabic">فِيهِ</span><span class="ref">Harf · al-Baqarah : 2</span></div>
+    </div>
+
+    <!-- Berbaris Dhammah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">①</div>
+      <div>
+        <h3>Ha' Dhamir<sup class="supref">1</sup> Berbaris Dhammah</h3>
+        <div class="sub">Jika huruf sebelumnya:</div>
+      </div>
+    </div>
+
+    <div class="keadaan-grid" id="dhammah-list"></div>
+
+    <div class="footnote-card">
+      <div class="fn-head"><span class="fn-num">1</span><span>Ha' Dhamir yang dimaksudkan iaitu <b>Ha' al-Dhamir al-Ghaib al-Mudzakkar</b> (<span class="term-arabic">هَاء ٱلضَّمِير ٱلْغَائِب ٱلْمُذَكَّر</span>). Adapun <b>Ha' al-Dhamir al-Ghaib al-Muannath</b> (<span class="term-arabic">هَاء ٱلضَّمِير ٱلْغَائِب ٱلْمُؤَنَّث</span>) hanya menerima baris fathah serta ditambah Alif selepasnya.</span></div>
+      <div class="example-row"><div class="example-item"><span class="arabic">وَفُومِهَا وَعَدَسِهَا وَبَصَلِهَا</span><span class="ref">al-Baqarah · 61</span></div></div>
+      <div style="margin-top:10px;">Kecuali pada tiga tempat berikut:</div>
+      <div class="example-row" style="margin-top:8px;">
+        <div class="example-item"><span class="arabic">أَيُّهَ ٱلْمُؤْمِنُونَ</span><span class="ref">al-Nur · 31</span></div>
+        <div class="example-item"><span class="arabic">يَٰٓأَيُّهَ ٱلسَّاحِرُ</span><span class="ref">al-Zukhruf · 49</span></div>
+        <div class="example-item"><span class="arabic">أَيُّهَ ٱلثَّقَلَانِ</span><span class="ref">al-Rahman · 31</span></div>
+      </div>
+    </div>
+
+    <!-- Berbaris Kasrah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">②</div>
+      <div>
+        <h3>Ha' Dhamir Berbaris Kasrah</h3>
+        <div class="sub">Jika huruf sebelumnya:</div>
+      </div>
+    </div>
+
+    <div class="keadaan-grid" id="kasrah-list"></div>
+
+    <!-- Empat Keadaan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">③</div>
+      <div>
+        <h3>Empat Keadaan Kedudukan Ha' Dhamir</h3>
+        <div class="sub">Ha' Dhamir datang dalam empat keadaan.</div>
+      </div>
+    </div>
+
+    <div class="keadaan-grid" id="empat-keadaan-list"></div>
+
+    <!-- Lima Tempat Khas -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--rose)">⚠</div>
+      <div>
+        <h3>Lima Tempat Ha' Dhamir Tidak Mengikut Kaedah Asal</h3>
+        <div class="sub">Bacaan pada lima tempat ini menyimpang daripada kaedah biasa.</div>
+      </div>
+    </div>
+
+    <div class="khas-grid" id="khas-list"></div>
+
+    <!-- Waqaf pada Ha Dhamir -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">⚖</div>
+      <div>
+        <h3>Waqaf pada Ha' Dhamir</h3>
+        <div class="sub">Ulama berselisih pendapat mengenai waqaf pada Ha' Dhamir.</div>
+      </div>
+    </div>
+
+    <div class="pendapat-grid" id="pendapat-list"></div>
+
+    <div class="subheading">📖 Huraian Berdasarkan Pilihan Imam Ibnu al-Jazari</div>
+
+    <div class="keadaan-grid" id="jazari-harus-list"></div>
+
+    <div class="subheading" style="margin-top:24px;">🚫 Tidak Harus Waqaf dengan Raum &amp; Isymam</div>
+
+    <div class="keadaan-grid" id="jazari-tidak-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَفِى ٱلْهَاءِ لِلْإِضْمَارِ قَوْمٌ أَبَوْهُمَا ۞ وَمَنْ قَبْلِهِ ضَمٌّ أَوِ ٱلْكَسْرُ مُثِّلَا
+أُوامَّا هُمَا وَاوٌ وَيَاءٌ وَبَعْضُهُمْ ۞ يَرَى لَهُمَا فِى كُلِّ حَالٍ مُحَلَّلَا</div>
+      <div class="translation">"Dan pada Ha' Dhamir itu ada golongan yang meninggalkan keduanya (isymam dan raum) jika sebelumnya dhammah atau kasrah, ataupun Wau dan Ya'. Dan di kalangan mereka ada yang mengamalkan keduanya (isymam dan raum) pada setiap keadaan yang dibenarkan"</div>
+      <div class="attribution">— Kata Imam al-Syatibi</div>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Waqaf pada Ha' Dhamir
+   ============================================================ */
+
+function ex(arabic, ref, note){ return { arabic, ref, note }; }
+
+const dhammahList = [
+  { rule: "Berbaris fathah.", examples: [ex("قَالَ لَهُۥ","al-Kahf · 37")] },
+  { rule: "Berbaris dhammah.", examples: [ex("صَاحِبُهُۥ","al-Kahf · 37")] },
+  { rule: "Sukun selain daripada Ya'.", examples: [ex("مِنْهُ","Hud · 63")] }
+];
+
+const kasrahList = [
+  { rule: "Berbaris kasrah.", examples: [ex("بِهِۦ","Yunus · 40")] },
+  { rule: "Ya' Lin.<sup class='supref'>1</sup>", examples: [ex("عَلَيْهِ","Hud · 123")],
+    footnote: { num: 1, text: "Kecuali kalimah عَلَيْهُ ٱللَّهُ — Surah al-Fath · ayat 10. Kata sebahagian ulama, dibariskan Ha' Dhamir tersebut dengan baris dhammah kerana membesarkan (memuliakan) Lafaz al-Jalalah." } },
+  { rule: "Ya' Mad.<sup class='supref'>2</sup>", examples: [ex("فِيهِ","al-Nisa' · 87")],
+    footnote: { num: 2, text: "Kecuali kalimah وَمَا أَنسَانِيهُ — Surah al-Kahf · ayat 63." } }
+];
+
+const empatKeadaan = [
+  { rule: "Ha' Dhamir berada di antara dua huruf yang berbaris. Dibaca panjang mengikut keadaannya:",
+    sub: [
+      { label: "(a) Wajib dibaca 2 harakat jika selepasnya bukan Hamzah — dinamakan Mad Shilah Qashirah.",
+        examples: [ex("فَسَنُيَسِّرُهُۥ لِلْيُسْرَىٰ","al-Lail · 7"), ex("فَوَسَطْنَ بِهِۦ جَمْعًا","al-'Aadiat · 5")] },
+      { label: "(b) Harus dibaca 4 atau 5 harakat jika selepasnya Hamzah — dinamakan Mad Shilah Towilah.",
+        examples: [ex("وَلَا يُوثِقُ وَثَاقَهُۥٓ أَحَدٌ","al-Fajr · 26"), ex("دَعَانَا لِجَنۢبِهِۦٓ أَوْ قَاعِدًا","Yunus · 12")] }
+    ]
+  },
+  { rule: "Ha' Dhamir berada di antara dua huruf sukun.",
+    examples: [ex("مِنْهُ ٱسْمُهُ ٱلْمَسِيحُ","Ali 'Imran · 45"), ex("أُنزِلَ فِيهِ ٱلْقُرْءَانُ","al-Baqarah · 185")] },
+  { rule: "Ha' Dhamir berada di antara huruf yang berbaris dan huruf sukun.",
+    examples: [ex("لَهُ ٱلْمُلْكُ","al-Taghabun · 1"), ex("بِهِ ٱلْأَقْدَامَ","al-Anfal · 11")] },
+  { rule: "Ha' Dhamir berada di antara huruf sukun dan huruf yang berbaris.",
+    examples: [ex("وَأَلْقُوهُ فِى","Yusuf · 10"), ex("فِيهِ هُدًى","al-Baqarah · 2")] }
+];
+
+const khasList = [
+  { arabic: "قَالُوۤا۟ أَرۡجِهۡ وَأَخَاهُ", ref: "al-A'raf · 111", note: "dibaca sukun" },
+  { arabic: "قَالُوۤا۟ أَرۡجِهۡ وَأَخَاهُ", ref: "al-Syu'ara' · 36", note: "dibaca sukun" },
+  { arabic: "فَأَلْقِهْ إِلَيْهِمْ", ref: "al-Naml · 28", note: "dibaca sukun" },
+  { arabic: "یَرۡضَهُ لَكُمۡۗ", ref: "al-Zumar · 7", note: "dibaca tanpa Mad" },
+  { arabic: "وَیَخۡلُدۡ فِیهِۦ مُهَانًا ", ref: "al-Furqan · 69", note: "dibaca 2 harakat" }
+];
+
+const pendapatList = [
+  { tag: "Pendapat 1", text: "Sebahagian ulama mengharuskan waqaf dengan Raum dan Isymam secara mutlak." },
+  { tag: "Pendapat 2", text: "Sebahagian ulama tidak mengharuskan waqaf dengan Raum dan Isymam secara mutlak." },
+  { tag: "Pendapat 3 — Dipilih", chosen: true, text: "Sebahagian ulama mengharuskan waqaf dengan Raum dan Isymam pada beberapa keadaan tertentu, dan sebaliknya pada keadaan yang lain. Inilah pendapat yang dipilih oleh Imam Ibnu al-Jazari." }
+];
+
+const jazariHarus = [
+  { rule: "Berbaris fathah.", examples: [ex("خَلَقَهُۥ","'Abasa · 18")] },
+  { rule: "Sukun selain daripada Wau (Mad atau Lin) dan Ya' (Mad atau Lin).", examples: [ex("عَنْهُ","al-Lail · 11")] },
+  { rule: "Alif.", examples: [ex("يَدَاهُ","al-Naba' · 40")] }
+];
+
+const jazariTidak = [
+  { rule: "Berbaris dhammah.", examples: [ex("یَرۡفَعُهُۥۚ","Fatir · 10")] },
+  { rule: "Wau Mad.", examples: [ex("عَقَلُوهُ","al-Baqarah · 75")] },
+  { rule: "Wau Lin.", examples: [ex("وَلِیَرۡضَوۡهُ","al-An'am · 113")] },
+  { rule: "Berbaris kasrah.", examples: [ex("بِهِۦ","Hud · 17")] },
+  { rule: "Ya' Mad.", examples: [ex("فِيهِ","al-Baqarah · 2")] },
+  { rule: "Ya' Lin.", examples: [ex("إِلَيْهِ","Hud · 61")] }
+];
+
+/* ============================================================
+   RENDER HELPERS
+   ============================================================ */
+
+function exampleItem(e){
+  return `<div class="example-item"><span class="arabic">${e.arabic}</span>${e.note ? `<span class="note">${e.note}</span>` : ''}<span class="ref">${e.ref}</span></div>`;
+}
+
+function footnoteBlock(fn){
+  return `<div class="footnote-card"><div class="fn-head"><span class="fn-num">${fn.num}</span><span>${fn.text}</span></div></div>`;
+}
+
+function keadaanCard(k, i, color){
+  if (k.sub) {
+    return `
+      <div class="keadaan-card">
+        <div class="keadaan-top">
+          <span class="keadaan-num" style="background:${color}">${i + 1}</span>
+          <span class="keadaan-rule">${k.rule}</span>
+        </div>
+        ${k.sub.map(s => `
+          <div style="font-size:13px; color:var(--ink-soft); margin:10px 0 8px;">${s.label}</div>
+          <div class="example-row">${s.examples.map(exampleItem).join('')}</div>
+        `).join('')}
+      </div>
+    `;
+  }
+  return `
+    <div class="keadaan-card">
+      <div class="keadaan-top">
+        <span class="keadaan-num" style="background:${color}">${i + 1}</span>
+        <span class="keadaan-rule">${k.rule}</span>
+      </div>
+      <div class="example-row">${k.examples.map(exampleItem).join('')}</div>
+      ${k.footnote ? footnoteBlock(k.footnote) : ''}
+    </div>
+  `;
+}
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('dhammah-list').innerHTML = dhammahList.map((k, i) => keadaanCard(k, i, "var(--teal)")).join('');
+document.getElementById('kasrah-list').innerHTML = kasrahList.map((k, i) => keadaanCard(k, i, "var(--amber)")).join('');
+document.getElementById('empat-keadaan-list').innerHTML = empatKeadaan.map((k, i) => keadaanCard(k, i, "var(--violet)")).join('');
+
+document.getElementById('khas-list').innerHTML = khasList.map((item, i) => `
+  <div class="khas-item">
+    <span class="khas-num">${i + 1}</span>
+    <span class="arabic">${item.arabic}</span>
+    <span class="ref">${item.ref}</span>
+    <span class="note">${item.note}</span>
+  </div>
+`).join('');
+
+document.getElementById('pendapat-list').innerHTML = pendapatList.map(p => `
+  <div class="pendapat-card ${p.chosen ? 'chosen' : ''}">
+    <span class="tag">${p.tag}</span>
+    <div>${p.text}</div>
+  </div>
+`).join('');
+
+document.getElementById('jazari-harus-list').innerHTML = jazariHarus.map((k, i) => keadaanCard(k, i, "var(--emerald)")).join('');
+document.getElementById('jazari-tidak-list').innerHTML = jazariTidak.map((k, i) => keadaanCard(k, i, "var(--coral)")).join('');
+</script>
+
+</body>
+</html>
