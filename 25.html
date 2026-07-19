@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rasm Othmani · Kaedah Penulisan al-Quran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;   /* pengertian & qiasi/istilahi */
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;   /* badal */
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;   /* maqtu' */
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;   /* ziadah */
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;   /* hadzaf */
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;   /* footnote marker */
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;   /* maushul */
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:0;
+  }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; width:100%; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 34px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:640px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:26px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .jumpnav{
+    margin-top:22px;
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .jumpnav a{
+    text-decoration:none;
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:8px 16px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    box-shadow:var(--shadow);
+    transition:transform .15s ease;
+  }
+  .jumpnav a:hover{ transform:translateY(-2px); }
+  .jumpnav a i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+  .jumpnav a.c-teal i{ background:var(--teal); }       .jumpnav a.c-teal{ color:#0B6459; }
+  .jumpnav a.c-coral i{ background:var(--coral); }     .jumpnav a.c-coral{ color:#B8402F; }
+  .jumpnav a.c-emerald i{ background:var(--emerald); } .jumpnav a.c-emerald{ color:#1B7A4E; }
+  .jumpnav a.c-violet i{ background:var(--violet); }   .jumpnav a.c-violet{ color:#6236C9; }
+  .jumpnav a.c-amber i{ background:var(--amber); }     .jumpnav a.c-amber{ color:#A5701A; }
+  .jumpnav a.c-blue i{ background:var(--blue); }       .jumpnav a.c-blue{ color:#215B8C; }
+
+  /* legend chips */
+  .legend{ margin-top:30px; display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:7px 14px 7px 10px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid transparent;
+  }
+  .chip i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+  .chip.badal{ background:var(--coral-bg); color:#B8402F; } .chip.badal i{ background:var(--coral); }
+  .chip.ziadah{ background:var(--emerald-bg); color:#1B7A4E; } .chip.ziadah i{ background:var(--emerald); }
+  .chip.hadzaf{ background:var(--violet-bg); color:#6236C9; } .chip.hadzaf i{ background:var(--violet); }
+  .chip.maqtu{ background:var(--amber-bg); color:#A5701A; } .chip.maqtu i{ background:var(--amber); }
+  .chip.maushul{ background:var(--blue-bg); color:#215B8C; } .chip.maushul i{ background:var(--blue); }
+
+  /* ---------- SECTIONS ---------- */
+  .section{ margin-top:52px; scroll-margin-top:100px; }
+
+  .section-head{
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:6px;
+  }
+  .section-num{
+    width:46px;height:46px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:19px; color:#fff;
+    flex-shrink:0;
+    box-shadow:var(--shadow);
+  }
+  .section-head h3{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(19px,2.4vw,24px);
+    margin:0;
+    line-height:1.3;
+  }
+  .section-page{
+    font-size:12px; font-weight:700; color:var(--ink-soft);
+    letter-spacing:.5px; text-transform:uppercase;
+  }
+
+  .intro-card{
+    margin-top:20px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 26px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+
+  .qiasi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:16px;
+    margin-top:20px;
+  }
+  .qiasi-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid var(--line);
+    border-top:4px solid var(--teal);
+    padding:20px;
+    box-shadow:var(--shadow);
+  }
+  .qiasi-card .label{
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:14.5px; color:var(--teal);
+    display:flex; align-items:center; gap:8px;
+  }
+  .qiasi-card .arabic{
+    font-family:'Amiri', serif; font-size:26px;
+    direction:rtl; margin:8px 0; color:var(--ink);
+  }
+  .qiasi-card .desc{ font-size:14px; color:var(--ink-soft); line-height:1.6; }
+
+  /* category block for Badal/Ziadah/Hadzaf/Maqtu'/Maushul */
+  .cat-block{
+    margin-top:26px;
+    background:#fff;
+    border-radius:18px;
+    border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+  .cat-head{
+    padding:18px 24px;
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fredoka', sans-serif;
+    font-size:16.5px; font-weight:700;
+    color:#fff;
+  }
+  .cat-head .arabic{ font-family:'Amiri', serif; font-size:20px; direction:rtl; opacity:.9; }
+  .cat-body{ padding:20px 24px 24px; }
+  .cat-desc{ font-size:14.5px; color:var(--ink-soft); line-height:1.7; margin-bottom:16px; }
+
+  .sub-items{ display:flex; flex-direction:column; gap:12px; }
+  .sub-card{
+    background:var(--paper-alt);
+    border-radius:14px;
+    padding:16px 18px;
+    display:grid;
+    grid-template-columns:32px 1fr;
+    gap:12px;
+    align-items:start;
+  }
+  .sub-letter{
+    width:28px; height:28px; border-radius:9px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:13px;
+    color:#fff; margin-top:2px;
+  }
+  .sub-text{ font-size:14px; color:var(--ink); line-height:1.65; }
+  .example-row{
+    margin-top:8px;
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:10px 14px;
+  }
+  .example-row .arabic{
+    font-family:'Amiri', serif; font-size:24px; direction:rtl; color:var(--ink);
+  }
+  .example-row .arabic sup a{
+    text-decoration:none;
+    font-weight:800;
+    color:#fff;
+    background:var(--coral);
+    padding:1px 6px;
+    border-radius:8px;
+    font-size:10px;
+    box-shadow:0 2px 6px -2px rgba(255,107,87,0.6);
+  }
+  .example-row .ref{ font-size:12.5px; color:var(--ink-soft); font-weight:700; white-space:nowrap; }
+
+  /* stats grid */
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:14px;
+    margin-top:20px;
+  }
+  .stat-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid var(--line);
+    padding:18px 16px;
+    text-align:center;
+    box-shadow:var(--shadow);
+    transition:transform .15s ease;
+  }
+  .stat-card:hover{ transform:translateY(-3px); }
+  .stat-card .num{
+    font-family:'Fredoka', sans-serif;
+    font-size:22px; font-weight:700; color:var(--teal);
+  }
+  .stat-card .arabic{ font-family:'Amiri', serif; font-size:16px; color:var(--ink-soft); margin:2px 0; direction:rtl; }
+  .stat-card .name{ font-size:12px; color:var(--ink-soft); font-weight:600; }
+
+  /* footnotes */
+  .footnotes{
+    margin-top:22px;
+    background:var(--paper-alt);
+    border:1px dashed var(--line);
+    border-radius:16px;
+    padding:18px 22px;
+  }
+  .footnotes-title{
+    font-family:'Fredoka', sans-serif;
+    font-size:13px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.8px;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .footnotes ol{ margin:0; padding-left:20px; }
+  .footnotes li{
+    font-size:13px; line-height:1.7; color:var(--ink-soft);
+    margin-bottom:8px;
+    scroll-margin-top:100px;
+  }
+  .footnotes li .arabic{ font-family:'Amiri', serif; font-size:16px; direction:rtl; color:var(--ink); }
+  .footnotes li:target{ color:var(--ink); font-weight:700; }
+  .footnotes a.back{
+    text-decoration:none;
+    font-weight:800;
+    color:var(--teal);
+    margin-left:4px;
+  }
+
+  .timeline-strip{
+    display:flex; align-items:center; justify-content:center;
+    gap:8px; margin:36px 0;
+    color:var(--ink-soft);
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:.5px; text-transform:uppercase;
+  }
+  .timeline-strip .dash{ flex:1; height:2px; background:var(--line); max-width:120px; }
+
+  footer{
+    margin-top:60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    line-height:1.7;
+  }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .section-head{ gap:10px; }
+    .section-num{ width:38px;height:38px;font-size:16px; }
+    .sub-card{ grid-template-columns:26px 1fr; }
+    .cat-head{ padding:16px 18px; }
+    .cat-body{ padding:16px 18px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📖 Muka Surat 25 – 28</span>
+      <h2>Rasm Othmani: Kaedah Penulisan al-Quran pada Zaman Othman bin 'Affan</h2>
+      <p>Suatu kaedah penulisan ayat-ayat al-Quran yang diketuai oleh Zaid bin Thabit bertujuan menyatukan perbezaan bacaan di kalangan Umat Islam ketika itu — merangkumi kaedah Qiasi dan Istilahi, serta lima jenis penulisan Istilahi: Badal, Ziadah, Hadzaf, Maqtu' dan Maushul.</p>
+      <div class="hero-arabic">رسم عثماني</div>
+      <div class="jumpnav">
+        <a class="c-teal" href="#pengertian"><i></i>Pengertian</a>
+        <a class="c-teal" href="#qiasi-istilahi"><i></i>Qiasi &amp; Istilahi</a>
+        <a class="c-coral" href="#badal"><i></i>Badal</a>
+        <a class="c-emerald" href="#ziadah"><i></i>Ziadah</a>
+        <a class="c-violet" href="#hadzaf"><i></i>Hadzaf</a>
+        <a class="c-amber" href="#maqtu"><i></i>Maqtu'</a>
+        <a class="c-blue" href="#maushul"><i></i>Maushul</a>
+        <a class="c-teal" href="#statistik"><i></i>Statistik al-Quran</a>
+      </div>
+    </div>
+
+    <!-- ================= 1. PENGERTIAN ================= -->
+    <section class="section" id="pengertian">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--teal)">1</div>
+        <div>
+          <h3>Pengertian Rasm Othmani</h3>
+          <div class="section-page">Muka Surat 25</div>
+        </div>
+      </div>
+      <div class="intro-card">
+        Suatu <b>kaedah penulisan</b> ayat-ayat al-Quran yang berlaku pada zaman Khalifah Othman bin 'Affan yang diketuai oleh <b>Zaid bin Thabit</b>, bertujuan menyatukan perbezaan bacaan yang berlaku ketika itu.
+      </div>
+    </section>
+
+    <!-- ================= 2. QIASI & ISTILAHI ================= -->
+    <section class="section" id="qiasi-istilahi">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--teal)">2</div>
+        <div>
+          <h3>Dua Kaedah Penulisan Rasm Othmani</h3>
+          <div class="section-page">Muka Surat 25</div>
+        </div>
+      </div>
+      <p style="color:var(--ink-soft); font-size:13.5px; margin:8px 0 0;">Kaedah penulisan Rasm Othmani ada dua iaitu Qiasi dan Istilahi. Huraiannya seperti berikut:</p>
+      <div class="qiasi-grid">
+        <div class="qiasi-card">
+          <div class="label">① Qiasi</div>
+          <div class="arabic">قِيَاسِي</div>
+          <div class="desc">Iaitu yang bersamaan dengan penulisan biasa ataupun yang mengikut kelaziman pengucapan.</div>
+        </div>
+        <div class="qiasi-card" style="border-top-color:var(--rose)">
+          <div class="label" style="color:#C42553">② Istilahi</div>
+          <div class="arabic">اِصْطِلَاحِي</div>
+          <div class="desc">Iaitu yang menyalahi penulisan biasa ataupun yang mengikut penulisan kaedah tertentu.</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="timeline-strip"><span class="dash"></span> Kaedah Istilahi Terbahagi kepada Lima Jenis <span class="dash"></span></div>
+
+    <!-- Legend -->
+    <div class="legend">
+      <span class="chip badal"><i></i>Badal (Penukaran)</span>
+      <span class="chip ziadah"><i></i>Ziadah (Penambahan)</span>
+      <span class="chip hadzaf"><i></i>Hadzaf (Pembuangan)</span>
+      <span class="chip maqtu"><i></i>Maqtu' (Pemisahan)</span>
+      <span class="chip maushul"><i></i>Maushul (Penggabungan)</span>
+    </div>
+
+    <!-- ================= 3. BADAL ================= -->
+    <section class="section" id="badal">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--coral)">3.1</div>
+        <div>
+          <h3>Badal — Penukaran Huruf</h3>
+          <div class="section-page">Muka Surat 25 – 26</div>
+        </div>
+      </div>
+
+      <div class="cat-block">
+        <div class="cat-head" style="background:var(--coral)">
+          <span class="arabic">بَدَل</span> Badal (Penukaran Huruf kepada Huruf Lain)
+        </div>
+        <div class="cat-body">
+          <div class="cat-desc">Badal iaitu penukaran huruf kepada huruf lain. Badal terbahagi kepada tiga bahagian iaitu:</div>
+          <div class="sub-items">
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--coral)">a</div>
+              <div class="sub-text">
+                Badal serta sepakat dibaca dengannya oleh semua Imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">ٱصۡطَبِرۡ<sup><a href="#fn1-1" id="fnref1-1">1</a></sup></span>
+                  <span class="ref">Surah Maryam · ayat 65</span>
+                </div>
+              </div>
+            </div>
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--coral)">b</div>
+              <div class="sub-text">
+                Badal serta sepakat tidak dibaca dengannya oleh semua Imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">ٱلزَّكَوٰةَ<sup><a href="#fn1-2" id="fnref1-2">2</a></sup></span>
+                  <span class="ref">Surah al-Taubah · ayat 71</span>
+                </div>
+              </div>
+            </div>
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--coral)">c</div>
+              <div class="sub-text">
+                Badal tetapi berselisihan padanya (dibaca atau tidak) antara Imam-imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">بِٱلۡغَدَوٰةِ<sup><a href="#fn2-1" id="fnref2-1">1</a></sup></span>
+                  <span class="ref">Surah al-Kahf · ayat 28</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footnotes">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 25</div>
+        <ol>
+          <li id="fn1-1">Asalnya dengan Ta' <span class="arabic">ٱصۡتَبِرۡ</span> ditukarkan kepada To' menjadi <span class="arabic">ٱصۡطَبِرۡ</span>. <a class="back" href="#fnref1-1">↩</a></li>
+          <li id="fn1-2">Asalnya dengan Alif <span class="arabic">اَلزَّكَاة</span> ditukarkan kepada Wau menjadi <span class="arabic">اَلزَّكَوٰة</span>. <a class="back" href="#fnref1-2">↩</a></li>
+        </ol>
+      </div>
+
+      <div class="footnotes" style="margin-top:16px;">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 26 (sambungan Badal)</div>
+        <ol>
+          <li id="fn2-1">Asalnya dengan Alif <span class="arabic">بِالْغَداة</span> ditukarkan kepada Wau menjadi <span class="arabic">بِٱلۡغَدَوٰةِ</span>. Adapun Imam Ibnu 'Aamir membaca dengan Wau <span class="arabic">(بِالْغُدْوَة)</span>. <a class="back" href="#fnref2-1">↩</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= 4. ZIADAH ================= -->
+    <section class="section" id="ziadah">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--emerald)">3.2</div>
+        <div>
+          <h3>Ziadah — Penambahan Huruf</h3>
+          <div class="section-page">Muka Surat 26 – 27</div>
+        </div>
+      </div>
+
+      <div class="cat-block">
+        <div class="cat-head" style="background:var(--emerald)">
+          <span class="arabic">زِيَادَة</span> Ziadah (Penambahan Huruf)
+        </div>
+        <div class="cat-body">
+          <div class="cat-desc">Ziadah iaitu penambahan huruf. Ziadah terbahagi kepada tiga bahagian iaitu:</div>
+          <div class="sub-items">
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--emerald)">a</div>
+              <div class="sub-text">
+                Ziadah serta sepakat dibaca dengannya oleh semua Imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">حِسَابِیَهۡ<sup><a href="#fn2-2" id="fnref2-2">2</a></sup></span>
+                  <span class="ref">Surah al-Haqqah · ayat 26</span>
+                </div>
+              </div>
+            </div>
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--emerald)">b</div>
+              <div class="sub-text">
+                Ziadah serta sepakat tidak dibaca dengannya oleh semua Imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">أُو۟لَاۤءِ<sup><a href="#fn2-3" id="fnref2-3">3</a></sup></span>
+                  <span class="ref">Surah Ali 'Imran · ayat 119</span>
+                </div>
+              </div>
+            </div>
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--emerald)">c</div>
+              <div class="sub-text">
+                Ziadah tetapi berselisihan padanya (dibaca atau tidak) antara Imam-imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">سُلۡطَـٰنِیَهۡ<sup><a href="#fn3-1" id="fnref3-1">1</a></sup></span>
+                  <span class="ref">Surah al-Haqqah · ayat 29</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footnotes">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 26 (sambungan Ziadah)</div>
+        <ol>
+          <li id="fn2-2">Asalnya tanpa Ha' <span class="arabic">حِسَابِي</span> kemudian ditambah Ha' menjadi <span class="arabic">حِسَابِيَة</span>. <a class="back" href="#fnref2-2">↩</a></li>
+          <li id="fn2-3">Sepakat Ulama' al-Rasm menambah Wau selepas Hamzah berbaris dhammah pada empat jenis kalimah (semua tempat dalam al-Quran) iaitu kalimah <span class="arabic">أُو۟لِی</span>, kalimah <span class="arabic">أُو۟لُوا۟</span>, kalimah <span class="arabic">أُو۟لَـٰتُ</span> dan kalimah <span class="arabic">أُو۟لَـٰٓئِ</span> walaupun dimasuki Dhamir Mukhatab (ganti nama diri kedua) di hujungnya seperti <span class="arabic">أُو۟لَـٰٓئِكُمْ</span> dan <span class="arabic">أُو۟لَـٰٓئِكَ</span>, tetapi mereka berbeza pendapat pada kalimah <span class="arabic">سَأُوْرِيكُمْ</span> (Surah al-A'raf · ayat 145 dan Surah al-Anbia' · ayat 37) dan kalimah <span class="arabic">وَلَأُصَلِّبَنَّكُمْ</span> (Surah Toha · ayat 71 dan Surah al-Syu'ara' · ayat 49). Adapun yang terpilih sebagaimana yang terdapat dalam Mushhaf iaitu kalimah <span class="arabic">سَأُوْرِيكُمْ</span> ditulis dengan Wau Ziadah manakala kalimah <span class="arabic">وَلَأُصَلِّبَنَّكُمْ</span> ditulis tanpa Wau Ziadah. <a class="back" href="#fnref2-3">↩</a></li>
+        </ol>
+      </div>
+
+      <div class="footnotes" style="margin-top:16px;">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 27 (sambungan Ziadah)</div>
+        <ol>
+          <li id="fn3-1">Asalnya tanpa Ha' <span class="arabic">سُلۡطَـٰنِي</span> kemudian ditambah Ha' menjadi <span class="arabic">سُلۡطَـٰنِیَهۡ</span>. Adapun Imam Hamzah membuang Ha' tersebut ketika washal. <a class="back" href="#fnref3-1">↩</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= 5. HADZAF ================= -->
+    <section class="section" id="hadzaf">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--violet)">3.3</div>
+        <div>
+          <h3>Hadzaf — Pembuangan Huruf</h3>
+          <div class="section-page">Muka Surat 27</div>
+        </div>
+      </div>
+
+      <div class="cat-block">
+        <div class="cat-head" style="background:var(--violet)">
+          <span class="arabic">حَذْف</span> Hadzaf (Pembuangan Huruf)
+        </div>
+        <div class="cat-body">
+          <div class="cat-desc">Hadzaf iaitu pembuangan huruf. Hadzaf terbahagi kepada tiga bahagian iaitu:</div>
+          <div class="sub-items">
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--violet)">a</div>
+              <div class="sub-text">
+                Hadzaf serta sepakat dibaca dengannya oleh semua Imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">ٱللَّهُ<sup><a href="#fn3-2" id="fnref3-2">2</a></sup></span>
+                  <span class="ref">Surah al-Baqarah · ayat 255</span>
+                </div>
+              </div>
+            </div>
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--violet)">b</div>
+              <div class="sub-text">
+                Hadzaf serta sepakat tidak dibaca dengannya oleh semua Imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">رَّبِّ<sup><a href="#fn3-3" id="fnref3-3">3</a></sup></span>
+                  <span class="ref">Surah Toha · ayat 114</span>
+                </div>
+              </div>
+            </div>
+            <div class="sub-card">
+              <div class="sub-letter" style="background:var(--violet)">c</div>
+              <div class="sub-text">
+                Hadzaf tetapi berselisihan padanya (dibaca atau tidak) antara Imam-imam al-Qurra' Tujuh yang masyhur.
+                <div class="example-row">
+                  <span class="arabic">یَدۡعُ ٱلدَّاعِ<sup><a href="#fn3-4" id="fnref3-4">4</a></sup></span>
+                  <span class="ref">Surah al-Qamar · ayat 6</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footnotes">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 27</div>
+        <ol>
+          <li id="fn3-2">Sila lihat keterangan pada hukum Lam Lafaz al-Jalalah muka surat 201. <a class="back" href="#fnref3-2">↩</a></li>
+          <li id="fn3-3">Asalnya ada Ya' <span class="arabic">رَبِي</span> kemudian dibuang Ya' menjadi <span class="arabic">رَّبِّ</span>. <a class="back" href="#fnref3-3">↩</a></li>
+          <li id="fn3-4">Asalnya ada Ya' <span class="arabic">يَدْعُ الدَّاعِي</span> kemudian dibuang Ya' menjadi <span class="arabic">يَدْعُ الدَّاع</span>. Adapun Imam Abu 'Amru dan Warsy membaca dengan Ya' ketika washal sahaja dan al-Bazzi pula membaca dengan Ya' ketika washal dan waqaf. <a class="back" href="#fnref3-4">↩</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= 6. MAQTU' ================= -->
+    <section class="section" id="maqtu">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--amber)">3.4</div>
+        <div>
+          <h3>Maqtu' — Pemisahan Antara Dua Kalimah</h3>
+          <div class="section-page">Muka Surat 28</div>
+        </div>
+      </div>
+
+      <div class="cat-block">
+        <div class="cat-head" style="background:var(--amber)">
+          <span class="arabic">مَقْطُوع</span> Maqtu' (Pemisahan)
+        </div>
+        <div class="cat-body">
+          <div class="cat-desc">Maqtu' iaitu pemisahan antara dua kalimah (mengikut penulisan biasa).</div>
+          <div class="example-row">
+            <span class="arabic">إِنَّ مَا تُوعَدُونَ لَآتٍ</span>
+            <span class="ref">Surah al-An'am · ayat 134</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. MAUSHUL ================= -->
+    <section class="section" id="maushul">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--blue)">3.5</div>
+        <div>
+          <h3>Maushul — Penggabungan Antara Dua Kalimah</h3>
+          <div class="section-page">Muka Surat 28</div>
+        </div>
+      </div>
+
+      <div class="cat-block">
+        <div class="cat-head" style="background:var(--blue)">
+          <span class="arabic">مَوْصُول</span> Maushul (Penggabungan)
+        </div>
+        <div class="cat-body">
+          <div class="cat-desc">Maushul iaitu penggabungan antara dua kalimah sehingga menjadi satu perkataan.</div>
+          <div class="example-row">
+            <span class="arabic">إِنَّمَا تُوعَدُونَ لَوَاقِعٌ</span>
+            <span class="ref">Surah al-Mursalat · ayat 7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="timeline-strip"><span class="dash"></span> Statistik al-Quran Rasm Othmani <span class="dash"></span></div>
+
+    <!-- ================= 8. STATISTIK ================= -->
+    <section class="section" id="statistik">
+      <div class="section-head">
+        <div class="section-num" style="background:var(--teal)">4</div>
+        <div>
+          <h3>Statistik al-Quran Rasm Othmani</h3>
+          <div class="section-page">Muka Surat 28</div>
+        </div>
+      </div>
+      <div class="intro-card">
+        Mengikut kiraan <b>Hakim Muhammad 'Auwad</b> (berbangsa Mesir), bahawa al-Quran Rasm Othmani yang kita miliki pada hari ini mempunyai jumlah berikut:
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><div class="num">30</div><div class="arabic">جُزْء</div><div class="name">Juz'</div></div>
+        <div class="stat-card"><div class="num">60</div><div class="arabic">حِزْب</div><div class="name">Hizb</div></div>
+        <div class="stat-card"><div class="num">240</div><div class="arabic">رُبْع</div><div class="name">Rub'</div></div>
+        <div class="stat-card"><div class="num">114</div><div class="arabic">سُورَة</div><div class="name">Surah</div></div>
+        <div class="stat-card"><div class="num">6,236</div><div class="arabic">آيَة</div><div class="name">Ayat</div></div>
+        <div class="stat-card"><div class="num">77,437</div><div class="arabic">كَلِمَة</div><div class="name">Kalimah</div></div>
+        <div class="stat-card"><div class="num">323,671</div><div class="arabic">حَرْف</div><div class="name">Huruf</div></div>
+        <div class="stat-card"><div class="num">50,681</div><div class="arabic">نُقْطَة</div><div class="name">Titik</div></div>
+        <div class="stat-card"><div class="num">19,253</div><div class="arabic">تَشْدِيد</div><div class="name">Tanda Tasydid</div></div>
+        <div class="stat-card"><div class="num">1,771</div><div class="arabic">مَدّ</div><div class="name">Tanda Mad</div></div>
+        <div class="stat-card"><div class="num">94,243</div><div class="arabic">فَتْحَة</div><div class="name">Baris Fathah</div></div>
+        <div class="stat-card"><div class="num">38,886</div><div class="arabic">كَسْرَة</div><div class="name">Baris Kasrah</div></div>
+        <div class="stat-card"><div class="num">40,804</div><div class="arabic">ضَمَّة</div><div class="name">Baris Dhammah</div></div>
+        <div class="stat-card"><div class="num">2,664</div><div class="arabic">لَفْظ الجَلَالَة</div><div class="name">Lafaz al-Jalalah</div></div>
+      </div>
+    </section>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+</body>
+</html>

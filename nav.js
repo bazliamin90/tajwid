@@ -11,6 +11,7 @@
 
 const NAV_PAGES = [
   { href: "21.html",   title: "Sejarah Pengumpulan dan Penulisan Al-Quran", pages: "ms. 21-24" },
+  { href: "25.html",   title: "Rasm Uthmani", pages: "ms. 25-28" },
   { href: "46.html",   title: "Hukum Membaca al-Quran atas Orang yang Berhadas", pages: "ms. 46-48" },
   { href: "49.html",   title: "Hukum Menyentuh al-Quran atas Orang yang Berhadas", pages: "ms. 49-51" },
   { href: "110.html",   title: "Hukum Isti'adzah", pages: "ms. 110–114" },
