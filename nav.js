@@ -22,6 +22,7 @@ const NAV_PAGES = [
   { href: "257.html", title: "Hukum Waqaf pada Akhir Kalimah", pages: "ms. 257-258" },
   { href: "259.html", title: "Kesimpulan Wajah-Wajah Waqaf", pages: "ms. 259-265" },
   { href: "284.html", title: "Hukum Kalimah-Kalimah Khas", pages: "ms. 284-285" },
+  { href: "312.html", title: "Hukum Takbir", pages: "ms. 312-315" },
 ];
 
 (function(){

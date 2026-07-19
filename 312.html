@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Takbir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:24px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:48px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:20px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* lafaz cards */
+  .lafaz-grid{ display:flex; flex-direction:column; gap:12px; margin-top:18px; }
+  .lafaz-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px 22px; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:16px;
+  }
+  .lafaz-card.featured{ border:2px solid var(--amber); }
+  .lafaz-num{
+    width:30px; height:30px; border-radius:10px; background:var(--teal); color:#fff; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:13px;
+  }
+  .lafaz-card .arabic{ font-family:'Amiri', serif; font-size:21px; direction:rtl; color:var(--ink); flex:1; }
+  .featured-tag{
+    font-family:'Fredoka', sans-serif; font-size:10.5px; font-weight:700; color:#fff;
+    background:var(--amber); padding:4px 11px; border-radius:20px; white-space:nowrap;
+  }
+
+  /* pendapat grid */
+  .pendapat-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:14px; margin-top:18px; }
+  .pendapat-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--violet);
+    border-radius:16px; padding:20px; box-shadow:var(--shadow); font-size:14px; color:var(--ink-soft); line-height:1.65;
+  }
+  .pendapat-card .tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11px; font-weight:700;
+    background:var(--violet-bg); color:#6236C9; padding:4px 12px; border-radius:20px; margin-bottom:10px;
+  }
+
+  /* quote */
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:22px 26px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.15; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.75; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  /* cara membaca (waqaf/washal combos) */
+  .cara-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:20px 24px; box-shadow:var(--shadow); margin-top:14px;
+  }
+  .cara-card.forbidden{ border:2px solid var(--coral); background:linear-gradient(180deg,#FFF6F4 0%,#FFFFFF 100%); }
+  .cara-title{ font-family:'Fredoka', sans-serif; font-weight:600; font-size:14px; color:var(--ink); margin-bottom:12px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .cara-num{
+    width:26px; height:26px; border-radius:8px; background:var(--teal-bg); color:#0B6459;
+    display:flex; align-items:center; justify-content:center; font-family:'Fredoka', sans-serif; font-weight:700; font-size:12px; flex-shrink:0;
+  }
+  .cara-num.forbidden-num{ background:var(--coral-bg); color:#B8402F; }
+  .cara-line{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.2; color:var(--ink); text-align:center; }
+  .cara-mark{ font-family:'Nunito', sans-serif; font-weight:800; font-size:13px; }
+  .forbidden-tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11px; font-weight:700;
+    background:var(--coral-bg); color:#B8402F; padding:3px 10px; border-radius:20px;
+  }
+  .cara-legend{ display:flex; gap:18px; flex-wrap:wrap; margin-top:16px; font-size:12px; color:var(--ink-soft); }
+  .cara-legend b.waqaf{ color:var(--coral); } .cara-legend b.washal{ color:var(--emerald); }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+    .lafaz-card{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 312 – 315</span>
+      <h2>Hukum Takbir</h2>
+      <p>Takbir ialah lafaz zikir yang dibaca ketika hendak khatam al-Quran. Bab ini merangkumi maknanya, lafaz-lafaznya, hukumnya, sebab ia disyariatkan, tempat bermula dan berakhirnya, serta tujuh cara membacanya antara dua surah.</p>
+      <div class="hero-arabic">ٱللَّهُ أَكْبَرُ</div>
+    </div>
+
+    <!-- Makna -->
+    <div class="intro-card">
+      <p><b>Takbir</b> (<span class="term-arabic">تَكْبِير</span>) iaitu lafaz (zikir) yang dibaca ketika hendak khatam al-Quran. Ia bukanlah sebahagian daripada ayat al-Quran, dan tidak ditulis dalam Mushhaf.</p>
+    </div>
+
+    <!-- Lafaz-lafaz -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">﴾﴿</div>
+      <div>
+        <h3>Lafaz-Lafaz Takbir</h3>
+        <div class="sub">Ada tiga jenis lafaz Takbir.</div>
+      </div>
+    </div>
+
+    <div class="lafaz-grid" id="lafaz-list"></div>
+
+    <div class="intro-card">
+      <p>Kebanyakan ulama mengatakan bahawa lafaz Takbir iaitu <b>Allahu Akbar</b> (<span class="term-arabic">ٱللَّهُ أَكْبَرُ</span>). Namun sebahagian ulama mengatakan harus menambah <b>Tahlil</b> (<span class="term-arabic">تَهْلِيل</span>) iaitu <i>La Ilaha Illallah</i> (<span class="term-arabic">لَا إِلَٰهَ إِلَّا ٱللَّهُ</span>) sebelum Takbir. Ada juga di kalangan mereka mengatakan harus menambah <b>Tahmid</b> (<span class="term-arabic">تَحْمِيد</span>) iaitu <i>Lillahil Hamd</i> (<span class="term-arabic">لِلَّهِ ٱلْحَمْدُ</span>) selepas keduanya (Tahlil dan Takbir).</p>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَقَبْلُ إِنْ .................... هَلِّـلْ وَبَعْضُ لِلَّـهِ حَمَدْ</div>
+      <div class="translation">"Dan sebelumnya (takbir) bacalah tahlil jika dikehendaki. Dan sebahagian mereka menambah tahmid selepas keduanya (tahlil dan takbir)"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <!-- Hukum -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--emerald)">✦</div>
+      <div>
+        <h3>Hukum Takbir</h3>
+        <div class="sub">Hukum Takbir adalah sunat.</div>
+      </div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">إِنْ تَرَكْتَ ٱلتَّكْبِيرَ فَقَدْ تَرَكْتَ سُنَّةً مِنْ سُنَنِ رَسُولِ ٱللَّهِ صَلَّى ٱللَّهُ عَلَيْهِ وَسَلَّمَ</div>
+      <div class="translation">"Jika kamu meninggalkan takbir maka sesungguhnya kamu telah meninggalkan satu sunnah daripada sunnah-sunnah Rasulullah Shallallahu 'Alaihi Wasallam"</div>
+      <div class="attribution">— Al-Bazzi meriwayatkan bahawa Imam Syafie pernah berkata kepadanya</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَسُنَّةُ ٱلتَّكْبِيرِ عَنِ ٱلْمَكِّيِّينْ ۞ صَحَّتْ عِندَ أَهْلِ ٱلْعِلْمِ</div>
+      <div class="translation">"Dan sunat membaca takbir ketika khatam al-Quran telah thabit (sah) daripada para ulama (Fuqaha', Mufassirin, Muhaddisin dan Qurra') di Mekah"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <!-- Sebab -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">◆</div>
+      <div>
+        <h3>Sebab Berlakunya Takbir</h3>
+        <div class="sub">Kisah di sebalik disyariatkannya Takbir.</div>
+      </div>
+    </div>
+
+    <div class="intro-card">
+      <p>Kebanyakan ulama berkata bahawa wahyu lewat diturunkan kepada Rasulullah Shallallahu 'Alaihi Wasallam dalam beberapa hari. Ada yang mengatakan 12 hari atau 15 hari, dan ada juga yang mengatakan 40 hari, sehingga berkatalah kaum musyrikin bahawa Allah telah murka dan membiarkan Muhammad.</p>
+      <p>Maka turunlah Jibril 'Alaihis Salam dengan membawa Surah al-Dhuha hingga akhirnya, lalu Baginda Shallallahu 'Alaihi Wasallam mengucapkan takbir kerana membenarkan apa yang berlaku padanya (menunggu wahyu) dan mendustakan kenyataan kaum musyrikin.</p>
+      <p>Kemudian Rasulullah Shallallahu 'Alaihi Wasallam mengulangi takbir hinggalah ke akhir Surah al-Nas, dengan tujuan membesarkan Allah Ta'ala serta membenarkan perkara yang berlaku atasnya (menunggu wahyu).</p>
+    </div>
+
+    <!-- Tempat bermula -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">⚖</div>
+      <div>
+        <h3>Tempat Bermula &amp; Berakhirnya Takbir</h3>
+        <div class="sub">Para ulama berselisih pendapat mengenainya.</div>
+      </div>
+    </div>
+
+    <div class="pendapat-grid" id="pendapat-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَقَالَ بِهِ ٱلْبَزِّىُّ مِنْ آخِرِ ٱلضُّحَىٰ ۞ وَبَعْضٌ لَهُۥ مِنْ آخِرِ ٱللَّيْلِ وَصَّلَا</div>
+      <div class="translation">"Dan berkata al-Bazzi (membaca al-Quran) dengan takbir itu dari akhir Surah al-Dhuha, dan setengah yang lain membacanya dari akhir Surah al-Lail (awal Surah al-Dhuha)"</div>
+      <div class="attribution">— Kata Imam al-Syatibi</div>
+    </div>
+
+    <!-- Tujuh Cara -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">۞</div>
+      <div>
+        <h3>Tujuh Cara Membaca Takbir Antara Dua Surah</h3>
+        <div class="sub">(−) menandakan waqaf/berhenti · (+) menandakan washal/menyambung</div>
+      </div>
+    </div>
+
+    <div id="cara-list"></div>
+
+    <div class="cara-card forbidden">
+      <div class="cara-title"><span class="cara-num forbidden-num">✕</span>Dilarang: menyambung akhir surah pertama dengan Takbir serta Basmalah dan berhenti padanya, kemudian membaca awal surah kedua <span class="forbidden-tag">Tidak Diharuskan</span></div>
+      <div class="cara-line">وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class="cara-mark" style="color:var(--emerald)">(+)</span> ٱللَّهُ أَكْبَرُ <span class="cara-mark" style="color:var(--emerald)">(+)</span></div>
+      <div class="cara-line">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class="cara-mark" style="color:var(--coral)">(−)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ</div>
+    </div>
+
+    <div class="cara-legend">
+      <span><b class="waqaf">(−)</b> = waqaf / berhenti</span>
+      <span><b class="washal">(+)</b> = washal / menyambung</span>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَٱمْنَعْ عَلَى ٱلرَّحِيمِ وَقْفًا إِنْ تَصِلْ ۞ كُلًّا وَغَيْرَ ذَا أَجِزْ مَا يُحْتَمَلْ</div>
+      <div class="translation">"Dan ditegah waqaf pada ٱلرَّحِيمِ jika disambung kesemuanya. Dan selain daripada (wajah) ini harus, kerana tertanggung ia (padanya)"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Takbir
+   ============================================================ */
+
+const lafazList = [
+  { arabic: "ٱللَّهُ أَكْبَرُ", featured: true, tag: "Lafaz Masyhur" },
+  { arabic: "لَا إِلَٰهَ إِلَّا ٱللَّهُ وَٱللَّهُ أَكْبَرُ" },
+  { arabic: "لَا إِلَٰهَ إِلَّا ٱللَّهُ وَٱللَّهُ أَكْبَرُ وَلِلَّهِ ٱلْحَمْدُ" }
+];
+
+const pendapatList = [
+  { tag: "Pendapat Pertama", text: "Setengah ulama mengatakan bermula Takbir di awal Surah al-Dhuha dan berakhir di awal Surah al-Nas." },
+  { tag: "Pendapat Masyhur", text: "Pendapat yang masyhur mengatakan bermula Takbir di akhir Surah al-Dhuha dan berakhir di akhir Surah al-Nas." }
+];
+
+const caraList = [
+  { title: "Berhenti pada akhir surah pertama, pada Takbir dan pada Basmalah, kemudian membaca awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--coral)'>(−)</span> ٱللَّهُ أَكْبَرُ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Berhenti pada akhir surah pertama dan Takbir, kemudian membaca Basmalah serta disambungkan dengan awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--coral)'>(−)</span> ٱللَّهُ أَكْبَرُ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Berhenti pada akhir surah pertama, kemudian membaca Takbir serta disambungkan dengan Basmalah dan awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--coral)'>(−)</span> ٱللَّهُ أَكْبَرُ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Berhenti pada akhir surah pertama, kemudian membaca Takbir serta disambungkan dengan Basmalah dan berhenti padanya, kemudian membaca awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--coral)'>(−)</span> ٱللَّهُ أَكْبَرُ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Menyambung akhir surah pertama dengan Takbir dan berhenti padanya, kemudian membaca Basmalah serta disambungkan dengan awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> ٱللَّهُ أَكْبَرُ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Menyambung akhir surah pertama dengan Takbir dan berhenti padanya, kemudian membaca Basmalah dan berhenti padanya, seterusnya membaca awal surah kedua",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> ٱللَّهُ أَكْبَرُ <span class='cara-mark' style='color:var(--coral)'>(−)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--coral)'>(−)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" },
+  { title: "Menyambungkan kesemuanya sekali",
+    line1: "وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> ٱللَّهُ أَكْبَرُ <span class='cara-mark' style='color:var(--emerald)'>(+)</span>",
+    line2: "بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ <span class='cara-mark' style='color:var(--emerald)'>(+)</span> قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ" }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+document.getElementById('lafaz-list').innerHTML = lafazList.map((l, i) => `
+  <div class="lafaz-card ${l.featured ? 'featured' : ''}">
+    <div class="lafaz-num">${i + 1}</div>
+    <div class="arabic">${l.arabic}</div>
+    ${l.tag ? `<span class="featured-tag">${l.tag}</span>` : ''}
+  </div>
+`).join('');
+
+document.getElementById('pendapat-list').innerHTML = pendapatList.map(p => `
+  <div class="pendapat-card">
+    <span class="tag">${p.tag}</span>
+    <div>${p.text}</div>
+  </div>
+`).join('');
+
+document.getElementById('cara-list').innerHTML = caraList.map((c, i) => `
+  <div class="cara-card">
+    <div class="cara-title"><span class="cara-num">${i + 1}</span>${c.title}</div>
+    <div class="cara-line">${c.line1}</div>
+    <div class="cara-line">${c.line2}</div>
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>
