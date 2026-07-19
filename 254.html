@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Waqaf Jibril</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:22px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  .sunat-tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:12px; font-weight:700;
+    background:var(--emerald-bg); color:#1B7A4E; padding:4px 13px; border-radius:20px; margin-left:6px;
+  }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:48px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:19px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  /* waqaf item cards */
+  .waqaf-list{ display:flex; flex-direction:column; gap:12px; margin-top:18px; }
+  .waqaf-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px;
+    padding:18px 22px; box-shadow:var(--shadow); display:grid; grid-template-columns:36px 1fr; gap:16px; align-items:center;
+  }
+  .waqaf-num{
+    width:36px; height:36px; border-radius:11px; display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:14px; color:#fff;
+  }
+  .waqaf-ref{ font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700; color:var(--teal); margin-bottom:6px; }
+  .waqaf-arabic{ font-family:'Amiri', serif; font-size:20px; direction:rtl; line-height:2.1; color:var(--ink); }
+  .waqaf-pause{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:22px; height:22px; border-radius:50%; background:var(--coral-bg); color:#B8402F;
+    font-size:11px; margin:0 4px; vertical-align:middle;
+  }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .waqaf-card{ grid-template-columns:30px 1fr; padding:14px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 254 – 256</span>
+      <h2>Waqaf Jibril</h2>
+      <p>Waqaf yang dilakukan oleh Malaikat Jibril 'Alaihis Salam sewaktu membacakan al-Quran kepada Rasulullah Shallallahu 'Alaihi Wasallam, lalu baginda turut mengikut perbuatan tersebut — juga dikenali sebagai Waqaf Nabawi.</p>
+      <div class="hero-arabic">وَقْف جِبْرِيل ۚ وَقْف نَبَوِى</div>
+    </div>
+
+    <div class="intro-card">
+      <p><b>Waqaf Jibril</b> (<span class="term-arabic">وَقْف جِبْرِيل</span>) iaitu waqaf yang dilakukan oleh Jibril 'Alaihis Salam sewaktu beliau membacakan (al-Quran) kepada Rasulullah Shallallahu 'Alaihi Wasallam, dan baginda mengikut perbuatan Jibril tersebut. Waqaf ini juga dikenali sebagai <b>Waqaf Nabawi</b> (<span class="term-arabic">وَقْف نَبَوِى</span>).</p>
+      <p>Hukum waqaf pada Waqaf Jibril adalah <span class="sunat-tag">SUNAT</span> kerana ia sunah Rasulullah Shallallahu 'Alaihi Wasallam.</p>
+    </div>
+
+    <!-- 10 tempat -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">۞</div>
+      <div>
+        <h3>Sepuluh Tempat Waqaf Jibril</h3>
+        <div class="sub">Tanda <span class="waqaf-pause">⏸</span> menunjukkan kedudukan waqaf dalam ayat.</div>
+      </div>
+    </div>
+
+    <div class="waqaf-list" id="waqaf-jibril-list"></div>
+
+    <!-- 10 tempat digalakkan -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">✦</div>
+      <div>
+        <h3>Tempat-Tempat Lain yang Digalakkan Waqaf</h3>
+        <div class="sub">Sebahagian ulama mengatakan bahawa Rasulullah Shallallahu 'Alaihi Wasallam menggalakkan waqaf pada beberapa tempat berikut.</div>
+      </div>
+    </div>
+
+    <div class="waqaf-list" id="waqaf-galak-list"></div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Waqaf Jibril
+   ============================================================ */
+
+function w(ref, arabic){ return { ref, arabic }; }
+
+const waqafJibril = [
+  w("Surah al-Baqarah · ayat 148", "فَٱسْتَبِقُوا۟ ٱلْخَيْرَٰتِ ۚ ⏸ أَيْنَ مَا تَكُونُوا۟ يَأْتِ بِكُمُ ٱللَّهُ جَمِيعًا"),
+  w("Surah Ali 'Imran · ayat 95", "قُلْ صَدَقَ ٱللَّهُ ۗ ⏸ فَٱتَّبِعُوا۟ مِلَّةَ إِبْرَٰهِيمَ حَنِيفًا"),
+  w("Surah al-Maidah · ayat 48", "فَٱسْتَبِقُوا۟ ٱلْخَيْرَٰتِ ۚ ⏸ إِلَى ٱللَّهِ مَرْجِعُكُمْ جَمِيعًا"),
+  w("Surah al-Maidah · ayat 116", "قَالَ سُبْحَٰنَكَ مَا يَكُونُ لِىٓ أَنْ أَقُولَ مَا لَيْسَ لِى بِحَقٍّ ⏸ إِن كُنتُ قُلْتُهُۥ فَقَدْ عَلِمْتَهُۥ"),
+  w("Surah Yusuf · ayat 108", "قُلْ هَٰذِهِۦ سَبِيلِىٓ أَدْعُوٓا۟ إِلَى ٱللَّهِ ⏸ عَلَىٰ بَصِيرَةٍ أَنَا۠ وَمَنِ ٱتَّبَعَنِى"),
+  w("Surah al-Ra'd · ayat 17–18", "كَذَٰلِكَ يَضْرِبُ ٱللَّهُ ٱلْأَمْثَالَ ⏸ لِلَّذِينَ ٱسْتَجَابُوا۟ لِرَبِّهِمُ ٱلْحُسْنَىٰ"),
+  w("Surah al-Nahl · ayat 5", "وَٱلْأَنْعَٰمَ خَلَقَهَا ⏸ لَكُمْ فِيهَا دِفْءٌ وَمَنَٰفِعُ وَمِنْهَا تَأْكُلُونَ"),
+  w("Surah al-Sajdah · ayat 18", "أَفَمَن كَانَ مُؤْمِنًا كَمَن كَانَ فَاسِقًا ⏸ لَّا يَسْتَوُۥنَ"),
+  w("Surah al-Nazi'at · ayat 23", "فَحَشَرَ ⏸ فَنَادَىٰ"),
+  w("Surah al-Qadr · ayat 3–4", "لَيْلَةُ ٱلْقَدْرِ خَيْرٌ مِّنْ أَلْفِ شَهْرٍ ⏸ تَنَزَّلُ ٱلْمَلَٰٓئِكَةُ")
+];
+
+const waqafGalakkan = [
+  w("Surah al-Baqarah · ayat 197", "وَمَا تَفْعَلُوا۟ مِنْ خَيْرٍ يَعْلَمْهُ ٱللَّهُ ⏸ وَتَزَوَّدُوا۟"),
+  w("Surah Ali 'Imran · ayat 7", "وَمَا يَعْلَمُ تَأْوِيلَهُۥٓ إِلَّا ٱللَّهُ ⏸ وَٱلرَّٰسِخُونَ فِى ٱلْعِلْمِ"),
+  w("Surah al-Maidah · ayat 32", "مِنْ أَجْلِ ذَٰلِكَ ⏸ كَتَبْنَا عَلَىٰ بَنِىٓ إِسْرَٰٓءِيلَ"),
+  w("Surah Yunus · ayat 2", "أَنْ أَنذِرِ ٱلنَّاسَ ⏸ وَبَشِّرِ ٱلَّذِينَ ءَامَنُوٓا۟"),
+  w("Surah Yunus · ayat 53", "قُلْ إِى وَرَبِّىٓ إِنَّهُۥ لَحَقٌّ ⏸ وَمَآ أَنتُم بِمُعْجِزِينَ"),
+  w("Surah Yunus · ayat 65", "وَلَا يَحْزُنكَ قَوْلُهُمْ ⏸ إِنَّ ٱلْعِزَّةَ لِلَّهِ جَمِيعًا ۚ هُوَ ٱلسَّمِيعُ ٱلْعَلِيمُ"),
+  w("Surah al-Nahl · ayat 103", "إِنَّمَا يُعَلِّمُهُۥ بَشَرٌ ⏸ لِّسَانُ ٱلَّذِى يُلْحِدُونَ إِلَيْهِ أَعْجَمِىٌّ"),
+  w("Surah Luqman · ayat 13", "يَٰبُنَىَّ لَا تُشْرِكْ بِٱللَّهِ ⏸ إِنَّ ٱلشِّرْكَ لَظُلْمٌ عَظِيمٌ"),
+  w("Surah Ghafir · ayat 6–7", "أَنَّهُمْ أَصْحَٰبُ ٱلنَّارِ ⏸ ٱلَّذِينَ يَحْمِلُونَ ٱلْعَرْشَ"),
+  w("Surah al-Nashr · ayat 3", "فَسَبِّحْ بِحَمْدِ رَبِّكَ وَٱسْتَغْفِرْهُ ⏸ إِنَّهُۥ كَانَ تَوَّابًا")
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+function renderWaqafList(list, color){
+  return list.map((item, i) => `
+    <div class="waqaf-card">
+      <div class="waqaf-num" style="background:${color}">${i + 1}</div>
+      <div>
+        <div class="waqaf-ref">${item.ref}</div>
+        <div class="waqaf-arabic">${item.arabic.replace('⏸', "<span class='waqaf-pause'>⏸</span>")}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('waqaf-jibril-list').innerHTML = renderWaqafList(waqafJibril, "var(--teal)");
+document.getElementById('waqaf-galak-list').innerHTML = renderWaqafList(waqafGalakkan, "var(--amber)");
+</script>
+
+</body>
+</html>
