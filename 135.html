@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kitab Tajwid · Hukum Nun dan Mim Bertasydid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 33px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:660px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:24px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  .intro-card{
+    margin-top:22px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 28px;
+    box-shadow:var(--shadow);
+    line-height:1.75;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+  .intro-card b{ color:var(--teal); }
+  .intro-card p{ margin:0 0 10px; }
+  .intro-card p:last-child{ margin-bottom:0; }
+  .intro-card .term-arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; }
+
+  .example-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+  .example-item{
+    background:var(--paper-alt); border-radius:10px; padding:9px 14px;
+    display:flex; align-items:center; gap:10px; flex:1 1 auto; min-width:170px;
+  }
+  .example-item .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; color:var(--ink); }
+  .example-item .ref{ font-size:10.5px; color:var(--teal); font-weight:700; font-family:'Fredoka', sans-serif; white-space:nowrap; margin-left:auto; }
+
+  /* section headers */
+  .chapter-banner{
+    margin-top:48px;
+    display:flex; align-items:center; gap:16px;
+    padding-bottom:14px;
+    border-bottom:2px dashed var(--line);
+  }
+  .chapter-banner .num{
+    width:44px; height:44px; border-radius:14px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:17px; color:#fff;
+  }
+  .chapter-banner h3{ font-family:'Fredoka', sans-serif; font-size:19px; margin:0; }
+  .chapter-banner .sub{ font-size:13px; color:var(--ink-soft); margin-top:2px; }
+
+  sup.supref{
+    font-family:'Fredoka', sans-serif; font-size:9px; font-weight:700; color:#fff;
+    background:var(--coral); border-radius:50%; padding:1px 4px; margin-left:1px; vertical-align:super;
+  }
+
+  /* pendapat cards */
+  .pendapat-grid{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+  .pendapat-card{
+    background:#fff; border:1px solid var(--line); border-top:4px solid var(--violet);
+    border-radius:16px; padding:20px 24px; box-shadow:var(--shadow);
+  }
+  .pendapat-card .tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700;
+    background:var(--violet-bg); color:#6236C9; padding:4px 12px; border-radius:20px; margin-bottom:10px;
+  }
+  .pendapat-card.chosen{ border-top-color:var(--emerald); }
+  .pendapat-card.chosen .tag{ background:var(--emerald-bg); color:#1B7A4E; }
+  .pendapat-card p{ font-size:14px; color:var(--ink-soft); line-height:1.7; margin:0; }
+
+  .footnote-card{
+    margin-top:12px; background:var(--paper-alt); border:1px dashed var(--line);
+    border-radius:12px; padding:12px 16px; font-size:12.5px; color:var(--ink-soft); line-height:1.7;
+  }
+  .footnote-card .fn-head{ display:flex; align-items:center; gap:7px; }
+  .footnote-card .fn-num{
+    display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px;
+    border-radius:50%; background:var(--coral); color:#fff; font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:10px; flex-shrink:0;
+  }
+
+  /* quote */
+  .quote-card{
+    background: linear-gradient(120deg,#123B35,#0B2D28);
+    color:#EFF7F3; border-radius:18px; padding:22px 26px; margin-top:18px; box-shadow:var(--shadow);
+  }
+  .quote-card .arabic{ font-family:'Amiri', serif; font-size:19px; direction:rtl; line-height:2.15; text-align:center; color:#FFE9C7; white-space:pre-line; }
+  .quote-card .translation{ font-size:13.5px; color:#DFF3EE; margin-top:14px; font-style:italic; line-height:1.75; }
+  .quote-card .attribution{ margin-top:10px; font-size:12px; color:#9FCBBE; font-family:'Fredoka', sans-serif; font-weight:600; }
+
+  /* martabat */
+  .martabat-list{ display:flex; flex-direction:column; gap:14px; margin-top:18px; }
+  .martabat-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px 24px; box-shadow:var(--shadow);
+  }
+  .martabat-top{ display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+  .martabat-rank{
+    width:32px; height:32px; border-radius:10px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka', sans-serif; font-weight:700; font-size:14px; color:#fff;
+  }
+  .martabat-title{ font-family:'Fredoka', sans-serif; font-size:15px; font-weight:600; color:var(--ink); }
+  .sub-item{ margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); }
+  .sub-item:first-child{ margin-top:0; padding-top:0; border-top:none; }
+  .sub-label{ font-size:13px; color:var(--ink-soft); margin-bottom:8px; }
+
+  /* nipis/tebal */
+  .kadar-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:18px; }
+  .kadar-card{
+    background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow);
+  }
+  .kadar-card .tag{
+    display:inline-block; font-family:'Fredoka', sans-serif; font-size:11.5px; font-weight:700;
+    padding:4px 12px; border-radius:20px; margin-bottom:10px;
+  }
+  .kadar-card.nipis .tag{ background:var(--teal-bg); color:#0B6459; }
+  .kadar-card.tebal .tag{ background:var(--coral-bg); color:#B8402F; }
+
+  footer{ margin-top:60px; text-align:center; color:var(--ink-soft); font-size:12.5px; line-height:1.7; }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .hero{ padding:26px 22px; }
+    .chapter-banner{ flex-wrap:wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📄 Muka Surat 135 – 138</span>
+      <h2>Hukum Nun dan Mim Bertasydid</h2>
+      <p>Nun dan Mim yang bertasydid wajib dibaca dengan ghunnah (dengung). Bab ini merangkumi maknanya, asal pembentukannya, sejarah tanda tasydid, kadar bacaannya, serta lima martabat ghunnah daripada yang paling kuat hingga yang paling lemah.</p>
+      <div class="hero-arabic">حَرْف غُنَّة</div>
+    </div>
+
+    <!-- Makna -->
+    <div class="intro-card">
+      <p><b>Nun dan Mim bertasydid</b> adalah Nun dan Mim yang diletakkan tanda tasydid di atas keduanya.</p>
+    </div>
+
+    <div class="example-row">
+      <div class="example-item"><span class="arabic">أَنَّهُۥ</span><span class="ref">Surah al-Maidah · ayat 32</span></div>
+    </div>
+
+    <div class="intro-card" style="margin-top:14px;">
+      <p>Huruf bertasydid asalnya adalah <b>dua huruf</b> — huruf pertama sukun dan huruf kedua berbaris — maka diidghamkan menjadi satu huruf yang bertasydid.</p>
+    </div>
+
+    <div class="example-row">
+      <div class="example-item"><span class="arabic">إِنَّ <span style="font-size:13px; color:var(--ink-soft);">(asalnya إِنْ نَ)</span></span><span class="ref">Surah al-Kauthar · ayat 3</span></div>
+    </div>
+
+    <!-- Tanda Tasydid -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--violet)">⚖</div>
+      <div>
+        <h3>Perselisihan Mengenai Tanda Tasydid</h3>
+        <div class="sub">Ulama al-Dhabt berselisih pendapat mengenainya.</div>
+      </div>
+    </div>
+
+    <div class="pendapat-grid">
+      <div class="pendapat-card chosen">
+        <span class="tag">Pendapat Terpilih</span>
+        <p>Al-Khalil bin Ahmad dan para sahabatnya mengatakan tanda tasydid adalah kepala Syin yang dibuang titiknya (<span style="font-family:'Amiri',serif;">ﹲ</span>), diambil daripada perkataan <i>Syadid</i> (<span style="font-family:'Amiri',serif;">شَدِيد</span>). Mereka berhujah bahawa Syin berada di hadapan, maka huruf yang di hadapan menguasai huruf yang di belakang. Inilah yang dipilih oleh Imam Abu Daud<sup class="supref">1</sup> — inilah pendapat yang terpilih.</p>
+        <div class="footnote-card"><div class="fn-head"><span class="fn-num">1</span><span>Beliau ialah Sulaiman bin Najah. Dilahirkan pada tahun 413H dan meninggal dunia pada tahun 496H.</span></div></div>
+      </div>
+      <div class="pendapat-card">
+        <span class="tag">Pendapat Kedua</span>
+        <p>Kata setengah ulama bahawa tanda tasydid adalah gabungan dua Dal yang menelentang ke atas (terangkat dua sayapnya ke atas), diambil daripada perkataan <i>Syadd</i> (<span style="font-family:'Amiri',serif;">شَدّ</span>). Mereka berhujah bahawa Dal adalah 2/3 daripada kalimah tersebut, maka yang banyak itu menguasai yang sedikit. Inilah yang dipilih oleh Imam Abu 'Amru al-Dani<sup class="supref">2</sup>.</p>
+        <div class="footnote-card"><div class="fn-head"><span class="fn-num">2</span><span>Beliau ialah Othman bin Said bin Othman bin Said bin Umar al-Dani al-Qurtubi. Dilahirkan pada tahun 371H dan meninggal dunia pada tahun 444H.</span></div></div>
+      </div>
+    </div>
+
+    <!-- Hukum Ghunnah -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--teal)">✦</div>
+      <div>
+        <h3>Hukum Ghunnah</h3>
+        <div class="sub">Hukum Nun dan Mim bertasydid wajib dibaca ghunnah dengan kadar 2 harakat<sup class="supref">1</sup>, sama ada ketika washal atau waqaf.</div>
+      </div>
+    </div>
+
+    <div class="footnote-card">
+      <div class="fn-head"><span class="fn-num">1</span><span>Ada pendapat yang mengatakan bahawa ghunnah dibaca 3 harakat — antaranya apa yang tersebut dalam kitab Mawahib, bahawa bermula masa ghunnah itu kurang daripada dua Alif (4 harakat) dan lebih daripada satu Alif (2 harakat).</span></div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَغُنَّ مِيمًا ثُمَّ نُونًا شُدِّدَا ۞ وَسَمِّ كُلَّا حَرْفَ غُنَّةٍ بَدَا</div>
+      <div class="translation">"Dan dengungkanlah olehmu akan Mim serta Nun bertasydid, dan dinamakan kedua-duanya itu Huruf Ghunnah"</div>
+      <div class="attribution">— Kata Syeikh Sulaiman al-Jamzuri</div>
+    </div>
+
+    <div class="quote-card">
+      <div class="arabic">وَأَظْهِرِ ٱلْغُنَّةَ مِنْ نُونٍ وَمِنْ ۞ مِيمٍ إِذَا مَا شُدِّدَا</div>
+      <div class="translation">"Dan nyatakanlah olehmu akan ghunnah pada Nun dan pada Mim apabila kedua-dua bersabdu"</div>
+      <div class="attribution">— Kata Imam Ibnu al-Jazari</div>
+    </div>
+
+    <!-- Lima Martabat -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--amber)">①</div>
+      <div>
+        <h3>Lima Martabat Ghunnah</h3>
+        <div class="sub">Disusun daripada martabat yang paling kuat hingga yang paling lemah.</div>
+      </div>
+    </div>
+
+    <div class="martabat-list" id="martabat-list"></div>
+
+    <!-- Nipis / Tebal -->
+    <div class="chapter-banner">
+      <div class="num" style="background:var(--rose)">◐</div>
+      <div>
+        <h3>Ghunnah pada Nun Sakinah yang Diikhfa'kan</h3>
+        <div class="sub">Terbahagi kepada dua keadaan.</div>
+      </div>
+    </div>
+
+    <div class="kadar-grid" id="kadar-list"></div>
+
+    <div class="quote-card">
+      <div class="arabic">وَتَتْبَعُ مَا قَبْلَهَا ٱلْأَلِفْ ۞ وَٱلْعَكْسُ فِى ٱلْغَنِّ أُلِفْ</div>
+      <div class="translation">"Dan Alif itu mengikut huruf sebelumnya, dan sebaliknya berlaku pada ghunnah (iaitu mengikut huruf selepasnya)"</div>
+      <div class="attribution">— Kata Ulama Tajwid</div>
+    </div>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   BOOK DATA — Hukum Nun dan Mim Bertasydid
+   ============================================================ */
+
+function ex(arabic, ref){ return { arabic, ref }; }
+
+const martabat = [
+  { rank: 1, color: "var(--coral)", title: "Ghunnah yang terdapat pada Nun dan Mim yang bertasydid",
+    sub: [
+      { label: "(a) Nun bertasydid dalam satu kalimah.", examples: [ex("إِنَّ","al-A'raf · 196")] },
+      { label: "(b) Mim bertasydid dalam satu kalimah.", examples: [ex("إِمَّا","al-Insan · 3")] },
+      { label: "(c) Nun bertasydid dalam dua kalimah — hasil daripada Idgham Nun Sakinah pada Nun.", examples: [ex("فَمَن نَّكَثَ","al-Fath · 10")] },
+      { label: "(d) Mim bertasydid dalam dua kalimah — hasil daripada Idgham Nun Sakinah pada Mim.", examples: [ex("وَمَن مَّعَكَ","al-Mu'minun · 28")] },
+      { label: "(e) Mim bertasydid dalam dua kalimah — hasil daripada Idgham Mim Sakinah pada Mim.", examples: [ex("كَم مِّن","al-Baqarah · 249")] },
+      { label: "(f) Mim bertasydid dalam dua kalimah — hasil daripada Idgham Ba' Sakinah pada Mim.", examples: [ex("ٱرْكَب مَّعَنَا","Hud · 42")] },
+      { label: "(g) Nun bertasydid jika dimasuki Lam Ta'rif sebelumnya.", examples: [ex("ٱلنَّاسِ","al-Nas · 6")] }
+    ]
+  },
+  { rank: 2, color: "var(--amber)", title: "Ghunnah yang terdapat pada Nun Sakinah yang diidghamkan sebagai Idgham Naqish",
+    examples: [ex("مِن وَالٍ","al-Ra'd · 11"), ex("مَن يَقُولُ","al-Baqarah · 8")]
+  },
+  { rank: 3, color: "var(--teal)", title: "Ghunnah yang terdapat pada Nun Sakinah dan Mim Sakinah yang diikhfa'kan",
+    sub: [
+      { label: "(a) Ikhfa' Nun Sakinah pada salah satu daripada Huruf Ikhfa'.", examples: [ex("مَن كَانَ","Maryam · 75")] },
+      { label: "(b) Ikhfa' Mim Sakinah pada Ba'.", examples: [ex("وَتُزَكِّيهِم بِهَا","al-Taubah · 103")] },
+      { label: "(c) Ikhfa' Mim Sakinah (asalnya adalah Nun Sakinah) pada Ba'.", examples: [ex("يُنۢبِتُ","al-Nahl · 11")] }
+    ]
+  },
+  { rank: 4, color: "var(--violet)", title: "Ghunnah yang terdapat pada Nun Sakinah dan Mim Sakinah yang diizharkan",
+    examples: [ex("مَنْ أُوتِىَ","al-Insyiqaq · 7"), ex("لَمْ يَتُوبُوا۟","al-Buruj · 10")]
+  },
+  { rank: 5, color: "var(--blue)", title: "Ghunnah yang terdapat pada Nun dan Mim yang berbaris",
+    examples: [ex("نَسِىَ","al-Kahf · 57"), ex("مَكَرَ","Ali 'Imran · 54")]
+  }
+];
+
+const kadarList = [
+  { cls: "nipis", tag: "Dibaca Nipis", text: "Jika diikuti Huruf Istifal selepasnya.", examples: [ex("مَن كَذَبَ","Toha · 48")] },
+  { cls: "tebal", tag: "Dibaca Tebal", text: "Jika diikuti Huruf Isti'la' selepasnya.", examples: [ex("مَن قَتَلَ","al-Maidah · 32")] }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+function exampleItem(e){
+  return `<div class="example-item"><span class="arabic">${e.arabic}</span><span class="ref">${e.ref}</span></div>`;
+}
+
+document.getElementById('martabat-list').innerHTML = martabat.map(m => `
+  <div class="martabat-card">
+    <div class="martabat-top">
+      <span class="martabat-rank" style="background:${m.color}">${m.rank}</span>
+      <span class="martabat-title">${m.title}</span>
+    </div>
+    ${m.sub
+      ? m.sub.map(s => `
+          <div class="sub-item">
+            <div class="sub-label">${s.label}</div>
+            <div class="example-row" style="margin-top:0;">${s.examples.map(exampleItem).join('')}</div>
+          </div>
+        `).join('')
+      : `<div class="example-row" style="margin-top:0;">${m.examples.map(exampleItem).join('')}</div>`
+    }
+  </div>
+`).join('');
+
+document.getElementById('kadar-list').innerHTML = kadarList.map(k => `
+  <div class="kadar-card ${k.cls}">
+    <span class="tag">${k.tag}</span>
+    <p style="font-size:13.5px; color:var(--ink-soft); margin-bottom:12px;">${k.text}</p>
+    <div class="example-row" style="margin-top:0;">${k.examples.map(exampleItem).join('')}</div>
+  </div>
+`).join('');
+</script>
+
+</body>
+</html>
