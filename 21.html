@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sirah al-Quran · Pengumpulan &amp; Penulisan al-Quran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<script src="nav.js" defer></script>
+<style>
+  :root{
+    --paper: #FFFBF2;
+    --paper-alt: #FFF3DE;
+    --ink: #22302B;
+    --ink-soft: #5B6B64;
+    --line: #E7DCC4;
+
+    --teal:    #0F8B7E;   /* Rasulullah era */
+    --teal-bg: #E3F5F1;
+    --coral:   #FF6B57;   /* peperangan / bahaya */
+    --coral-bg:#FFE9E2;
+    --amber:   #F2A93C;   /* Abu Bakar era */
+    --amber-bg:#FCF0D9;
+    --emerald: #29A96B;   /* penulis wahyu */
+    --emerald-bg:#E3F6EC;
+    --violet:  #8B5CF6;   /* Othman era */
+    --violet-bg:#EFE7FD;
+    --rose:    #F2436B;   /* perselisihan */
+    --rose-bg: #FDE4EA;
+    --blue:    #3B82C4;   /* mushhaf / naskah */
+    --blue-bg: #E4EEF8;
+
+    --shadow: 0 8px 24px -8px rgba(34,48,43,0.18);
+    --radius: 18px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:
+      radial-gradient(circle at 100% 0%, #FFF6E5 0%, transparent 45%),
+      radial-gradient(circle at 0% 100%, #E9F8F1 0%, transparent 40%),
+      var(--paper);
+    color:var(--ink);
+    min-height:100vh;
+  }
+
+  .app{ display:flex; flex-direction:column; min-height:100vh; }
+
+  /* ---------- HEADER BAR ---------- */
+  .sidebar{
+    width:100%;
+    flex-shrink:0;
+    background: linear-gradient(120deg, #123B35 0%, #0B2D28 100%);
+    color:#EFF7F3;
+    padding:18px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+    box-shadow: 0 6px 20px -8px rgba(0,0,0,0.35);
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:0;
+  }
+  .brand-mark{
+    width:44px;height:44px;border-radius:12px;
+    background: conic-gradient(from 45deg, var(--amber), var(--coral), var(--violet), var(--teal), var(--amber));
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Amiri', serif;
+    font-size:22px;color:#0B2D28;font-weight:700;
+    box-shadow: inset 0 0 0 3px rgba(255,255,255,0.35);
+  }
+  .brand h1{
+    font-family:'Fredoka', sans-serif;
+    font-size:19px;
+    margin:0;
+    line-height:1.15;
+    letter-spacing:0.2px;
+  }
+  .brand span{
+    display:block;
+    font-size:11.5px;
+    color:#9FCBBE;
+    font-weight:600;
+    letter-spacing:0.4px;
+    text-transform:uppercase;
+    margin-top:2px;
+  }
+
+  /* ---------- MAIN ---------- */
+  main{ flex:1; min-width:0; padding:44px 52px 90px; max-width:980px; margin:0 auto; width:100%; }
+
+  .hero{
+    position:relative;
+    background: linear-gradient(120deg, #0F8B7E 0%, #0B6E63 100%);
+    border-radius:24px;
+    padding:38px 40px;
+    color:#F4FBF9;
+    overflow:hidden;
+    box-shadow: var(--shadow);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 85% 20%, rgba(255,255,255,0.14) 0, transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(242,169,60,0.25) 0, transparent 40%);
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:1px; text-transform:uppercase;
+    background:rgba(255,255,255,0.14);
+    padding:6px 14px; border-radius:30px;
+    position:relative;
+  }
+  .hero h2{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(24px, 3vw, 34px);
+    line-height:1.25;
+    margin:18px 0 10px;
+    max-width:720px;
+    position:relative;
+  }
+  .hero p{
+    max-width:640px;
+    font-size:15px;
+    color:#DFF3EE;
+    line-height:1.6;
+    position:relative;
+    margin:0;
+  }
+  .hero-arabic{
+    font-family:'Amiri', serif;
+    font-size:26px;
+    color:#FFE9C7;
+    margin-top:16px;
+    position:relative;
+    direction:rtl;
+  }
+
+  /* jump nav chips */
+  .jumpnav{
+    margin-top:22px;
+    display:flex; flex-wrap:wrap; gap:10px;
+  }
+  .jumpnav a{
+    text-decoration:none;
+    font-family:'Fredoka', sans-serif;
+    font-size:12.5px; font-weight:600;
+    padding:8px 16px;
+    border-radius:30px;
+    display:inline-flex; align-items:center; gap:7px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--ink);
+    box-shadow:var(--shadow);
+    transition:transform .15s ease;
+  }
+  .jumpnav a:hover{ transform:translateY(-2px); }
+  .jumpnav a i{ width:9px;height:9px;border-radius:50%; display:inline-block; }
+  .jumpnav a.era1 i{ background:var(--teal); } .jumpnav a.era1{ color:#0B6459; }
+  .jumpnav a.era2 i{ background:var(--amber); } .jumpnav a.era2{ color:#A5701A; }
+  .jumpnav a.era3 i{ background:var(--violet); } .jumpnav a.era3{ color:#6236C9; }
+
+  /* ---------- ERA SECTIONS ---------- */
+  .era-section{ margin-top:52px; scroll-margin-top:100px; }
+
+  .era-head{
+    display:flex; align-items:center; gap:14px;
+    margin-bottom:6px;
+  }
+  .era-num{
+    width:46px;height:46px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:19px; color:#fff;
+    flex-shrink:0;
+    box-shadow:var(--shadow);
+  }
+  .era-head h3{
+    font-family:'Fredoka', sans-serif;
+    font-size:clamp(19px,2.4vw,24px);
+    margin:0;
+    line-height:1.3;
+  }
+  .era-page{
+    font-size:12px; font-weight:700; color:var(--ink-soft);
+    letter-spacing:.5px; text-transform:uppercase;
+  }
+
+  .points{
+    display:flex; flex-direction:column; gap:14px;
+    margin-top:20px;
+  }
+  .point-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid var(--line);
+    padding:20px 22px;
+    display:grid;
+    grid-template-columns:40px 1fr;
+    gap:16px;
+    box-shadow: var(--shadow);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .point-card:hover{ transform:translateY(-2px); box-shadow:0 14px 30px -10px rgba(34,48,43,0.22); }
+  .point-num{
+    width:40px;height:40px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:15px; color:#fff;
+    flex-shrink:0;
+  }
+  .point-text{ font-size:15px; line-height:1.75; color:var(--ink); }
+  .point-text sup a{
+    text-decoration:none;
+    font-weight:800;
+    color:#fff;
+    background:var(--coral);
+    padding:1px 6px;
+    border-radius:8px;
+    font-size:10.5px;
+    margin-left:1px;
+    box-shadow:0 2px 6px -2px rgba(255,107,87,0.6);
+  }
+  .point-text sup a:hover{ filter:brightness(1.08); }
+
+  .sub-list{
+    margin-top:12px;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .sub-list .sub-item{
+    background:var(--paper-alt);
+    border-radius:12px;
+    padding:10px 14px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    display:flex; align-items:center; gap:8px;
+  }
+  .sub-list .sub-item b{ color:var(--ink); font-weight:700; }
+
+  /* mushhaf grid for othman section */
+  .mushhaf-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+    gap:16px;
+    margin-top:20px;
+  }
+  .mushhaf-card{
+    background:#fff;
+    border-radius:16px;
+    border:1px solid var(--line);
+    border-top:4px solid var(--violet);
+    padding:20px;
+    box-shadow:var(--shadow);
+    transition:transform .15s ease;
+  }
+  .mushhaf-card:hover{ transform:translateY(-2px); }
+  .mushhaf-card .num{
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; color:var(--violet); font-size:12.5px;
+    text-transform:uppercase; letter-spacing:.5px;
+  }
+  .mushhaf-card .arabic{
+    font-family:'Amiri', serif; font-size:24px;
+    direction:rtl; margin:10px 0 6px; color:var(--ink); line-height:1.7;
+  }
+  .mushhaf-card .name{
+    font-family:'Fredoka', sans-serif;
+    font-size:14.5px; font-weight:600; color:var(--ink); margin-bottom:4px;
+  }
+  .mushhaf-card .dest{ font-size:12.5px; color:var(--ink-soft); font-weight:600; }
+
+  .syarat-box{
+    margin-top:20px;
+    background:var(--violet-bg);
+    border:1px solid #DCC9FA;
+    border-radius:16px;
+    padding:18px 20px;
+  }
+  .syarat-box h4{
+    font-family:'Fredoka', sans-serif;
+    font-size:14.5px; margin:0 0 10px; color:#6236C9;
+  }
+  .syarat-box ol{ margin:0; padding-left:20px; }
+  .syarat-box li{ font-size:14px; line-height:1.7; color:var(--ink); margin-bottom:6px; }
+
+  /* footnotes */
+  .footnotes{
+    margin-top:22px;
+    background:var(--paper-alt);
+    border:1px dashed var(--line);
+    border-radius:16px;
+    padding:18px 22px;
+  }
+  .footnotes-title{
+    font-family:'Fredoka', sans-serif;
+    font-size:13px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.8px;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .footnotes ol{ margin:0; padding-left:20px; }
+  .footnotes li{
+    font-size:13px; line-height:1.65; color:var(--ink-soft);
+    margin-bottom:6px;
+    scroll-margin-top:100px;
+  }
+  .footnotes li:target{
+    color:var(--ink);
+    font-weight:700;
+  }
+  .footnotes a.back{
+    text-decoration:none;
+    font-weight:800;
+    color:var(--teal);
+    margin-left:4px;
+  }
+
+  /* timeline connector visual */
+  .timeline-strip{
+    display:flex; align-items:center; justify-content:center;
+    gap:8px; margin:36px 0;
+    color:var(--ink-soft);
+    font-family:'Fredoka', sans-serif;
+    font-size:12px; font-weight:600; letter-spacing:.5px; text-transform:uppercase;
+  }
+  .timeline-strip .dash{ flex:1; height:2px; background:var(--line); max-width:120px; }
+
+  footer{
+    margin-top:60px;
+    text-align:center;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    line-height:1.7;
+  }
+
+  @media (max-width: 880px){
+    .sidebar{ padding:16px 20px; }
+    main{ padding:28px 18px 60px; }
+    .point-card{ grid-template-columns:34px 1fr; padding:16px; }
+    .hero{ padding:26px 22px; }
+    .era-head{ gap:10px; }
+    .era-num{ width:38px;height:38px;font-size:16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ============ HEADER ============ -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">ت</div>
+      <h1>Kitab Tajwid<span>Nota Digital</span></h1>
+    </div>
+
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main>
+    <div class="hero">
+      <span class="hero-eyebrow">📖 Muka Surat 21 – 24</span>
+      <h2>Sejarah Pengumpulan dan Penulisan al-Quran: Zaman Rasulullah, Abu Bakar &amp; Othman bin 'Affan</h2>
+      <p>Perjalanan al-Quran daripada catatan pelepah tamar di zaman Rasulullah ﷺ, disatukan menjadi satu mushhaf oleh Abu Bakar al-Shiddiq, sehingga diselaraskan dan disebarkan ke seluruh negeri Islam oleh Othman bin 'Affan.</p>
+      <div class="hero-arabic">إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ</div>
+      <div class="jumpnav">
+        <a class="era1" href="#era1"><i></i>1. Zaman Rasulullah ﷺ</a>
+        <a class="era2" href="#era2"><i></i>2. Zaman Abu Bakar</a>
+        <a class="era3" href="#era3"><i></i>3. Zaman Othman</a>
+      </div>
+    </div>
+
+    <!-- ================= ERA 1 : RASULULLAH ================= -->
+    <section class="era-section" id="era1">
+      <div class="era-head">
+        <div class="era-num" style="background:var(--teal)">1</div>
+        <div>
+          <h3>Pengumpulan al-Quran Zaman Rasulullah Shallallahu 'Alaihi Wasallam</h3>
+          <div class="era-page">Muka Surat 21</div>
+        </div>
+      </div>
+
+      <div class="points">
+        <div class="point-card">
+          <div class="point-num" style="background:var(--teal)">1</div>
+          <div class="point-text">
+            Penulisan al-Quran bermula dari zaman Rasulullah Shallallahu 'Alaihi Wasallam. Menurut ahli sejarah, sebaik sahaja Rasulullah Shallallahu 'Alaihi Wasallam menerima wahyu, maka baginda telah memerintahkan para jurutulisnya supaya mencatatkan ayat-ayat al-Quran yang diwahyukan kepada baginda.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--teal)">2</div>
+          <div class="point-text">
+            Di antara jurutulis Rasulullah Shallallahu 'Alaihi Wasallam yang masyhur iaitu Khulafa' al-Rasyidin (Abu Bakar, Umar, Othman dan Ali<sup><a href="#fn1-1" id="fnref1-1">1</a></sup>), Zaid bin Thabit<sup><a href="#fn1-2" id="fnref1-2">2</a></sup>, Ubai bin Ka'ab<sup><a href="#fn1-3" id="fnref1-3">3</a></sup>, Thabit bin Qais<sup><a href="#fn1-4" id="fnref1-4">4</a></sup>, Mu'adz bin Jabal<sup><a href="#fn1-5" id="fnref1-5">5</a></sup>, Amr bin al-'Ash<sup><a href="#fn1-6" id="fnref1-6">6</a></sup>, Mu'awiyah bin Abu Sufian<sup><a href="#fn1-7" id="fnref1-7">7</a></sup>, Khalid bin al-Walid<sup><a href="#fn1-8" id="fnref1-8">8</a></sup>, Abdullah bin Salam<sup><a href="#fn1-9" id="fnref1-9">9</a></sup>, Yazid bin Abu Sufian, Hudzaifah bin al-Yaman<sup><a href="#fn1-10" id="fnref1-10">10</a></sup>, Huwaitib bin Abdul 'Uzza, Abban bin Said<sup><a href="#fn1-11" id="fnref1-11">11</a></sup> dan al-Zubir bin al-Awwam<sup><a href="#fn1-12" id="fnref1-12">12</a></sup>.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--teal)">3</div>
+          <div class="point-text">
+            Oleh kerana pada masa itu ketiadaan kertas, maka para jurutulis telah mencatatkannya pada pelepah-pelepah tamar, batu-batu, kulit-kulit binatang dan sebagainya. Kaum muslimin yang lain menyalin ayat-ayat al-Quran daripada catatan-catatan tersebut tetapi kebanyakan para sahabat lebih mengutamakan cara hafalan daripada menulis.
+          </div>
+        </div>
+      </div>
+
+      <div class="footnotes">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 21</div>
+        <ol>
+          <li id="fn1-1">Beliau ialah Abu al-Hasan Ali bin Abi Talib bin Abdul Muttalib bin Hasyim bin Abdi Manaf bin Qushai bin Kilab bin Murrah bin Ka'ab bin Luay bin Ghalib bin Fihr bin Malik bin Nadhar bin Kinanah. Dilahirkan di Mekah pada tahun 603 M dan syahid di Kufah pada tahun 40 H. <a class="back" href="#fnref1-1">↩</a></li>
+          <li id="fn1-2">Meninggal dunia di Madinah pada tahun 45 H. <a class="back" href="#fnref1-2">↩</a></li>
+          <li id="fn1-3">Meninggal dunia di Madinah pada tahun 20 H. <a class="back" href="#fnref1-3">↩</a></li>
+          <li id="fn1-4">Meninggal dunia di Yamamah pada tahun 12 H. <a class="back" href="#fnref1-4">↩</a></li>
+          <li id="fn1-5">Meninggal dunia di Syam pada tahun 17 H. <a class="back" href="#fnref1-5">↩</a></li>
+          <li id="fn1-6">Meninggal dunia di Syam pada tahun 43 H. <a class="back" href="#fnref1-6">↩</a></li>
+          <li id="fn1-7">Meninggal dunia di Damsyiq pada tahun 60 H. <a class="back" href="#fnref1-7">↩</a></li>
+          <li id="fn1-8">Meninggal dunia di Syam pada tahun 21 H. <a class="back" href="#fnref1-8">↩</a></li>
+          <li id="fn1-9">Meninggal dunia di Madinah pada tahun 43 H. <a class="back" href="#fnref1-9">↩</a></li>
+          <li id="fn1-10">Meninggal dunia di Madain pada tahun 36 H. <a class="back" href="#fnref1-10">↩</a></li>
+          <li id="fn1-11">Meninggal dunia pada tahun 13 H. <a class="back" href="#fnref1-11">↩</a></li>
+          <li id="fn1-12">Meninggal dunia di Bashrah pada tahun 36 H. <a class="back" href="#fnref1-12">↩</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="timeline-strip"><span class="dash"></span> 632 M — Kewafatan Rasulullah ﷺ <span class="dash"></span></div>
+
+    <!-- ================= ERA 2 : ABU BAKAR ================= -->
+    <section class="era-section" id="era2">
+      <div class="era-head">
+        <div class="era-num" style="background:var(--amber)">2</div>
+        <div>
+          <h3>Penulisan al-Quran Zaman Abu Bakar al-Shiddiq</h3>
+          <div class="era-page">Muka Surat 22</div>
+        </div>
+      </div>
+
+      <div class="points">
+        <div class="point-card">
+          <div class="point-num" style="background:var(--amber)">1</div>
+          <div class="point-text">
+            Setelah kewafatan Rasulullah Shallallahu 'Alaihi Wasallam maka para sahabat bersepakat melantik Saiyidina Abu Bakar<sup><a href="#fn2-1" id="fnref2-1">1</a></sup> sebagai khalifah.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--amber)">2</div>
+          <div class="point-text">
+            Pada zaman beliau berlaku beberapa peperangan. Keadaan ini berlaku kerana memerangi kaum murtad dan mereka yang enggan membayar zakat. Dalam satu peperangan yang terkenal dengan peperangan al-Yamamah, ramai daripada kalangan para huffaz yang terkorban. Ahli sejarah menyatakan sehingga 70 orang para huffaz yang syahid.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--amber)">3</div>
+          <div class="point-text">
+            Hal ini telah membimbangkan Saiyidina Umar al-Khattab<sup><a href="#fn2-2" id="fnref2-2">2</a></sup>. Beliau mencadangkan kepada Khalifah Abu Bakar supaya mengumpul al-Quran kerana bimbang al-Quran akan terhapus dengan sebab kematian para huffaz. Hasil daripada cadangan tersebut, Khalifah Abu Bakar telah memerintahkan Zaid bin Thabit dengan dibantu oleh beberapa orang sahabat untuk mengumpul al-Quran. Mereka menyalin al-Quran yang ada pada zaman Rasulullah Shallallahu 'Alaihi Wasallam dan dikumpulkan dalam satu Mushhaf.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--amber)">4</div>
+          <div class="point-text">
+            Setelah Khalifah Abu Bakar wafat, Mushhaf al-Quran tersebut disimpan di rumah Saiyidina Umar dan setelah beliau wafat, Mushhaf tersebut disimpan pula oleh anaknya Ummul Mu'minin Hafshah<sup><a href="#fn2-3" id="fnref2-3">3</a></sup>.
+          </div>
+        </div>
+      </div>
+
+      <div class="footnotes">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 22</div>
+        <ol>
+          <li id="fn2-1">Beliau ialah Abdullah bin Abi Qahafah Othman bin 'Aamir bin 'Amru bin Kaab bin Saad bin Tim bin Murrah bin Luay bin Ghalib bin Fihr al-Quraisyi. Dilahirkan di Mekah pada tahun 573 M dan meninggal dunia di Madinah pada tahun 13 H serta dikebumikan di sisi kekasihnya Rasulullah Shallallahu 'Alaihi Wasallam. <a class="back" href="#fnref2-1">↩</a></li>
+          <li id="fn2-2">Beliau ialah Umar bin al-Khattab bin Nufail bin Abdul 'Uzza bin Ribah bin Abdullah bin Qart bin Rizah bin 'Addi bin Ka'ab bin Luay al-Quraisyi. Dilahirkan di Mekah pada tahun 584 M dan syahid di Madinah pada tahun 23 H juga dikebumikan di sisi Rasulullah Shallallahu 'Alaihi Wasallam. <a class="back" href="#fnref2-2">↩</a></li>
+          <li id="fn2-3">Meninggal dunia di Madinah pada tahun 45 H. <a class="back" href="#fnref2-3">↩</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="timeline-strip"><span class="dash"></span> 644 M — Pelantikan Khalifah Othman bin 'Affan <span class="dash"></span></div>
+
+    <!-- ================= ERA 3 : OTHMAN ================= -->
+    <section class="era-section" id="era3">
+      <div class="era-head">
+        <div class="era-num" style="background:var(--violet)">3</div>
+        <div>
+          <h3>Penulisan dan Penyusunan al-Quran Zaman Othman bin 'Affan</h3>
+          <div class="era-page">Muka Surat 23 – 24</div>
+        </div>
+      </div>
+
+      <div class="points">
+        <div class="point-card">
+          <div class="point-num" style="background:var(--violet)">1</div>
+          <div class="point-text">
+            Pada zaman pemerintahan Khalifah Othman bin 'Affan<sup><a href="#fn3-1" id="fnref3-1">1</a></sup>, Islam telah berkembang dengan luasnya hingga ke negeri Syam, Kufah dan banyak lagi negara lain.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--violet)">2</div>
+          <div class="point-text">
+            Umat Islam yang berada di merata tempat telah mempelajari dan membaca al-Quran menurut kaedah bacaan yang diambil daripada para sahabat yang masyhur di kalangan mereka seperti penduduk Syam mengambil bacaan daripada Ubai bin Ka'ab dan penduduk Kufah mengambil bacaan daripada Abdullah bin Mas'ud<sup><a href="#fn3-2" id="fnref3-2">2</a></sup>.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--violet)">3</div>
+          <div class="point-text">
+            Perbezaan kaedah yang dibawa oleh para sahabat menimbulkan sedikit masalah kepada Umat Islam akhirnya berlakulah satu perselisihan yang hebat di kalangan mereka mengenai bacaan al-Quran dan perkara yang berkaitan dengannya.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--violet)">4</div>
+          <div class="point-text">
+            Keadaan tersebut membimbangkan Hudzaifah al-Yamani. Maka beliau mencadangkan kepada Khalifah Othman mencari jalan menyatukan kaum muslimin dengan cara menyelaraskan Mushhaf agar tidak berlaku lagi perbalahan dan perpecahan di kalangan Umat Islam kerana perbezaan mereka dalam membaca al-Quran.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--violet)">5</div>
+          <div class="point-text">
+            Khalifah Othman telah membentuk satu jawatankuasa penulisan al-Quran. Anggotanya terdiri daripada Zaid bin Thabit (sebagai ketua), Abdullah bin Zubir<sup><a href="#fn3-3" id="fnref3-3">3</a></sup>, Said bin al-'Ash<sup><a href="#fn3-4" id="fnref3-4">4</a></sup> dan Abdul Rahman bin Harith<sup><a href="#fn3-5" id="fnref3-5">5</a></sup>. Tugas jawatankuasa ini ialah membukukan al-Quran iaitu dengan menyalin lembaran-lembaran al-Quran yang diambil daripada Hafshah untuk dijadikan satu Mushhaf.
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--violet)">6</div>
+          <div class="point-text">
+            Saiyidina Othman berpesan kepada mereka bahawa dua perkara yang perlu diambil kira semasa menjalankan tugas iaitu:
+            <div class="syarat-box">
+              <h4>Dua Panduan Utama Jawatankuasa</h4>
+              <ol>
+                <li>Mengambil keputusan dalam penulisan al-Quran berdasarkan bacaan para huffaz.</li>
+                <li>Jika terdapat perbezaan dalam bacaan al-Quran maka mesti ditulis mengikut dialek suku Quraisy.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+
+        <div class="point-card">
+          <div class="point-num" style="background:var(--violet)">7</div>
+          <div class="point-text">
+            Al-Quran yang telah ditulis ada enam Mushhaf (naskah) mengikut pendapat yang masyhur serta dihantar ke bandar-bandar utama untuk dijadikan pedoman. Huraiannya seperti berikut:
+          </div>
+        </div>
+      </div>
+
+      <div class="mushhaf-grid">
+        <div class="mushhaf-card">
+          <div class="num">Naskah 1</div>
+          <div class="arabic">مصحف مكي</div>
+          <div class="name">Mushhaf Makki</div>
+          <div class="dest">Dihantar ke Mekah · diketuai Abdullah bin al-Saib<sup><a href="#fn3-6" id="fnref3-6">6</a></sup></div>
+        </div>
+        <div class="mushhaf-card">
+          <div class="num">Naskah 2</div>
+          <div class="arabic">مصحف بصري</div>
+          <div class="name">Mushhaf Bashri</div>
+          <div class="dest">Dihantar ke Bashrah · diketuai 'Aamir bin Qais</div>
+        </div>
+        <div class="mushhaf-card">
+          <div class="num">Naskah 3</div>
+          <div class="arabic">مصحف كوفي</div>
+          <div class="name">Mushhaf Kufi</div>
+          <div class="dest">Dihantar ke Kufah · diketuai Abu Abdul Rahman al-Salma<sup><a href="#fn3-7" id="fnref3-7">7</a></sup></div>
+        </div>
+        <div class="mushhaf-card">
+          <div class="num">Naskah 4</div>
+          <div class="arabic">مصحف شامي</div>
+          <div class="name">Mushhaf Syami</div>
+          <div class="dest">Dihantar ke Syam · diketuai al-Mughirah bin Syihab<sup><a href="#fn3-8" id="fnref3-8">8</a></sup></div>
+        </div>
+        <div class="mushhaf-card">
+          <div class="num">Naskah 5</div>
+          <div class="arabic">مصحف مدني</div>
+          <div class="name">Mushhaf Madani</div>
+          <div class="dest">Ditinggalkan di Madinah · diketuai Zaid bin Thabit</div>
+        </div>
+        <div class="mushhaf-card">
+          <div class="num">Naskah 6</div>
+          <div class="arabic">مصحف إمام</div>
+          <div class="name">Mushhaf Imam</div>
+          <div class="dest">Disimpan oleh Khalifah Othman untuk dirinya</div>
+        </div>
+      </div>
+
+      <div class="footnotes">
+        <div class="footnotes-title">📌 Nota Kaki — Muka Surat 23 &amp; 24</div>
+        <ol>
+          <li id="fn3-1">Beliau ialah Othman bin 'Affan bin Abi al-'Ash bin Umaiyah bin Abdi Syams bin Abdi Manaf bin Qushai bin Kilab bin Murrah bin Ka'ab bin Ghalib al-Umawi al-Quraisyi. Dilahirkan di Mekah pada tahun 577 M dan syahid di Madinah pada tahun 35 H serta dikebumikan di perkuburan Baqi'. <a class="back" href="#fnref3-1">↩</a></li>
+          <li id="fn3-2">Meninggal dunia di Madinah pada tahun 32 H. <a class="back" href="#fnref3-2">↩</a></li>
+          <li id="fn3-3">Meninggal dunia di Mekah pada tahun 73 H. <a class="back" href="#fnref3-3">↩</a></li>
+          <li id="fn3-4">Meninggal dunia pada tahun 58 H. <a class="back" href="#fnref3-4">↩</a></li>
+          <li id="fn3-5">Meninggal dunia pada tahun 43 H. <a class="back" href="#fnref3-5">↩</a></li>
+          <li id="fn3-6">Meninggal dunia pada tahun 70 H. <a class="back" href="#fnref3-6">↩</a></li>
+          <li id="fn3-7">Meninggal dunia pada tahun 73 H. <a class="back" href="#fnref3-7">↩</a></li>
+          <li id="fn3-8">Meninggal dunia pada tahun 91 H. <a class="back" href="#fnref3-8">↩</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <footer>
+      Compiled by Bazli
+    </footer>
+  </main>
+
+</div>
+
+</body>
+</html>
